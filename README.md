@@ -2,6 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Clone the repo, branch for develop, and work there, when you are done make a pull request. someone will approve.  
 First, run the development server:
 
 ```bash
