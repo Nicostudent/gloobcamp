@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import teamMembers from "@/app/utils/team-members.json";
 const UsersCard = ({ picture }) => {
   return (
     <div className="bg-white max-w-fit pb-4">
