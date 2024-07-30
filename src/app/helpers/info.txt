@@ -1,0 +1,1 @@
+Aqui va lo relacionado a funciones reutilizables (como funciones para formatear fechas, trasnformar strings o números, etc) /regex
