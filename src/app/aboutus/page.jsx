@@ -1,4 +1,4 @@
-import UsersCard from "@/components/UsersCard";
+import UsersCard from "@/app/components/UsersCard";
 const AboutUs = () => {
   return (
     <section id="aboutus">
