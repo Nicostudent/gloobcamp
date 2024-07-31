@@ -1,0 +1,1 @@
+Aqui va algun archivo de configuracion. Por ejemplo, se pueden colocar los labels e iconos para realizar sidebar
