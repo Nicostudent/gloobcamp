@@ -1,0 +1,512 @@
+[
+  {
+    "id": "1",
+    "title": "Contexto de Ejecución en JavaScript",
+    "content": "El contexto de ejecución es el entorno en el que se evalúa y ejecuta el código de JavaScript. Cuando el navegador (o el entorno de ejecución de JavaScript) comienza a ejecutar tu código, primero entra en un contexto de ejecución global. Este contexto es creado antes de que cualquier código sea ejecutado y maneja la ejecución de todo el script. Cada vez que se llama a una función, se crea un nuevo contexto de ejecución para esa función. Este contexto de ejecución tiene dos fases: la fase de creación y la fase de ejecución. Durante la fase de creación, el motor de JavaScript escanea el código y asigna memoria a las variables y funciones. Este proceso se llama 'hoisting', que significa que las declaraciones de variables y funciones se elevan a la parte superior de su contexto de ejecución. Las variables declaradas con `var` son inicializadas con el valor `undefined` durante el hoisting. Esto significa que puedes referenciar una variable antes de su declaración en el código, pero si tratas de usarla antes de que se le asigne un valor, obtendrás `undefined`. Las funciones declaradas también son 'elevadas' y su definición completa se coloca en la parte superior del contexto, lo que permite que las funciones sean llamadas antes de su declaración en el código. Sin embargo, las funciones expresadas y las variables declaradas con `let` y `const` no son inicializadas durante el hoisting y no pueden ser usadas antes de su declaración. En la fase de ejecución, el motor ejecuta el código línea por línea. Es importante entender cómo funciona el hoisting para evitar errores inesperados y comprender mejor cómo JavaScript maneja el contexto de ejecución y el ámbito de las variables y funciones.",
+    "questions": [
+      {
+        "question": "¿Qué es un contexto de ejecución en JavaScript?",
+        "choices": [
+          "Una variable dentro de una función",
+          "El entorno donde se evalúa y ejecuta el código",
+          "Una estructura de datos",
+          "Una función global"
+        ],
+        "correctAnswer": "El entorno donde se evalúa y ejecuta el código"
+      },
+      {
+        "question": "¿Cuántos contextos de ejecución existen en una aplicación JavaScript?",
+        "choices": [
+          "Solo uno, el contexto global",
+          "Uno por cada función",
+          "Uno por cada variable",
+          "Dos, el global y el de función"
+        ],
+        "correctAnswer": "Uno por cada función"
+      },
+      {
+        "question": "¿Qué significa 'hoisting' en JavaScript?",
+        "choices": [
+          "Asignar valores a las variables",
+          "Elevar las declaraciones de variables y funciones al principio del contexto de ejecución",
+          "Ejecutar el código línea por línea",
+          "Crear un nuevo contexto de ejecución"
+        ],
+        "correctAnswer": "Elevar las declaraciones de variables y funciones al principio del contexto de ejecución"
+      }
+    ],
+    "image": "/path/to/image1.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Diferencias entre var, let y const",
+    "content": "En JavaScript, `var`, `let` y `const` se utilizan para declarar variables, pero tienen diferencias importantes en su comportamiento y alcance.\n  \n   1. **`var`**:\n     - **Ámbito**: Las variables declaradas con `var` tienen un ámbito de función. Esto significa que si declaras una variable con `var` dentro de una función, estará disponible en toda la función, pero no fuera de ella. Si `var` se declara fuera de cualquier función, tiene un ámbito global.\n     - **Hoisting**: Las variables declaradas con `var` son elevadas (hoisted) al inicio de su contexto de ejecución. Esto significa que puedes usar una variable declarada con `var` antes de su declaración, aunque su valor será `undefined` hasta que se asigne un valor en el código.\n     - **Reasignación y Redeclaración**: Las variables declaradas con `var` pueden ser reasignadas y redeclaradas dentro de su ámbito sin errores.\n  \n  2. **`let`**:\n     - **Ámbito**: Las variables declaradas con `let` tienen un ámbito de bloque. Un bloque se define por llaves `{}`. Esto significa que una variable `let` está disponible solo dentro del bloque en el que se declara, incluyendo cualquier bloque anidado.\n     - **Hoisting**: Aunque las variables `let` son elevadas al inicio de su bloque, no pueden ser usadas antes de su declaración en el código. Intentar hacerlo resultará en un error de referencia.\n     - **Reasignación y Redeclaración**: Las variables `let` pueden ser reasignadas, pero no pueden ser redeclaradas dentro del mismo bloque.\n  \n   3. **`const`**:\n     - **Ámbito**: Similar a `let`, las variables declaradas con `const` tienen un ámbito de bloque.\n     - **Hoisting**: Como con `let`, las variables `const` son elevadas al inicio de su bloque, pero no pueden ser usadas antes de su declaración.\n     - **Reasignación y Redeclaración**: Las variables `const` no pueden ser reasignadas ni redeclaradas. Una vez que una variable `const` se asigna, su valor no puede ser cambiado. Esto hace que `const` sea ideal para valores que no deben cambiar a lo largo de la ejecución del programa.\n     - **Inmutabilidad**: Es importante notar que `const` no hace el valor asignado inmutable. Si `const` se usa para asignar un objeto o un array, las propiedades del objeto o los elementos del array pueden ser modificados.",
+    "questions": [
+      {
+        "question": "¿Cuál es el ámbito de una variable declarada con `var`?",
+        "choices": ["Global", "De función", "De bloque", "Local"],
+        "correctAnswer": "De función"
+      },
+      {
+        "question": "¿Qué ocurre si intentas usar una variable `let` antes de su declaración?",
+        "choices": [
+          "Se inicializa con `undefined`",
+          "Provoca un error de referencia",
+          "Se inicializa con `null`",
+          "Se ignora la declaración"
+        ],
+        "correctAnswer": "Provoca un error de referencia"
+      },
+      {
+        "question": "¿Se puede reasignar una variable declarada con `const`?",
+        "choices": ["Sí", "No"],
+        "correctAnswer": "No"
+      },
+      {
+        "question": "¿Qué significa que las declaraciones `let` y `const` tengan un ámbito de bloque?",
+        "choices": [
+          "Que están disponibles solo dentro del bloque en el que se declaran",
+          "Que pueden ser usadas en cualquier parte del código",
+          "Que no pueden ser usadas antes de su declaración",
+          "Que están disponibles en toda la función"
+        ],
+        "correctAnswer": "Que están disponibles solo dentro del bloque en el que se declaran"
+      }
+    ],
+    "image": "/path/to/image2.jpg"
+  },
+  {
+    "id": "3",
+    "title": "La palabra clave `this` en JavaScript",
+    "content": "En JavaScript, la palabra clave `this` es un concepto fundamental que se refiere al contexto de ejecución en el que una función es llamada. El valor de `this` depende de cómo se invoque la función. Aquí hay algunas reglas generales:\n  \n   1. **En el contexto global**: Cuando `this` se usa en el contexto global (fuera de cualquier función), se refiere al objeto global (`window` en navegadores).\n  \n   2. **En un método de objeto**: Cuando `this` se usa dentro de un método de objeto, se refiere al objeto al que el método pertenece.\n  \n   3. **En una función regular**: En una función regular, el valor de `this` depende de cómo se llame la función. Por defecto, en modo estricto, `this` será `undefined`. En modo no estricto, `this` será el objeto global.\n  \n   4. **En un constructor**: Cuando `this` se usa en una función constructora (una función llamada con la palabra clave `new`), se refiere al nuevo objeto que se está creando.\n  \n   5. **En una función flecha**: Las funciones flecha (`=>`) no tienen su propio valor `this`. En cambio, heredan el valor `this` del contexto en el que se definen. Esto significa que el valor de `this` dentro de una función flecha es el mismo que el valor de `this` fuera de la función flecha.\n  \n   Comprender cómo funciona `this` es crucial para escribir y depurar código JavaScript de manera efectiva.",
+    "questions": [
+      {
+        "question": "¿A qué se refiere `this` en el contexto global?",
+        "choices": [
+          "A `undefined`",
+          "Al objeto global",
+          "Al objeto al que pertenece el método",
+          "A un nuevo objeto"
+        ],
+        "correctAnswer": "Al objeto global"
+      },
+      {
+        "question": "¿Qué valor toma `this` en una función flecha?",
+        "choices": [
+          "Al objeto global",
+          "Al objeto al que pertenece el método",
+          "A `undefined`",
+          "Hereda el valor de `this` del contexto en el que se define"
+        ],
+        "correctAnswer": "Hereda el valor de `this` del contexto en el que se define"
+      },
+      {
+        "question": "¿Qué valor toma `this` en un método de objeto?",
+        "choices": [
+          "A `undefined`",
+          "Al objeto global",
+          "Al objeto al que pertenece el método",
+          "A un nuevo objeto"
+        ],
+        "correctAnswer": "Al objeto al que pertenece el método"
+      },
+      {
+        "question": "¿Qué valor toma `this` en una función constructora?",
+        "choices": [
+          "A `undefined`",
+          "Al objeto global",
+          "Al objeto al que pertenece el método",
+          "A un nuevo objeto"
+        ],
+        "correctAnswer": "A un nuevo objeto"
+      }
+    ],
+    "image": "/path/to/image3.jpg"
+  },
+  {
+    "id": "4",
+    "title": "Event Loop en JavaScript",
+    "content": "El Event Loop es un mecanismo fundamental en JavaScript que permite que el lenguaje maneje operaciones asíncronas a pesar de ser de un solo hilo. Esto significa que aunque JavaScript se ejecute en un solo hilo, puede realizar múltiples tareas al mismo tiempo sin bloquear el hilo principal.\n  \n   El Event Loop funciona de la siguiente manera:\n  \n   1. **Pila de ejecución (Call Stack)**: Esta es una estructura de datos que registra las funciones que se están ejecutando. Cuando una función se invoca, se agrega a la parte superior de la pila. Cuando la función termina de ejecutarse, se elimina de la pila.\n  \n   2. **Cola de tareas (Task Queue)**: Esta es una cola donde se almacenan las funciones que están listas para ejecutarse después de que el Call Stack esté vacío. Las funciones asíncronas, como las devoluciones de llamada (`callbacks`) de `setTimeout`, `setInterval`, `promesas`, `fetch`, entre otras, se colocan en la cola de tareas una vez que están listas para ejecutarse.\n  \n   3. **Event Loop**: El Event Loop es un proceso que monitorea continuamente la pila de ejecución y la cola de tareas. Si la pila de ejecución está vacía, el Event Loop toma la primera tarea de la cola de tareas y la coloca en la pila de ejecución para que se ejecute. Este ciclo continúa indefinidamente mientras el programa está corriendo.\n  \n   Un aspecto importante del Event Loop es que garantiza que las tareas se ejecuten en orden y sin interrupciones. Si una tarea es asíncrona, el Event Loop se encargará de ejecutarla cuando el hilo principal esté disponible, permitiendo que otras tareas se ejecuten en el ínterin.",
+    "questions": [
+      {
+        "question": "¿Qué es la pila de ejecución (Call Stack) en JavaScript?",
+        "choices": [
+          "Una estructura de datos que registra las funciones que se están ejecutando",
+          "Una cola donde se almacenan las funciones asíncronas",
+          "Un proceso que monitorea continuamente la pila de ejecución y la cola de tareas",
+          "Una función de JavaScript que maneja eventos"
+        ],
+        "correctAnswer": "Una estructura de datos que registra las funciones que se están ejecutando"
+      },
+      {
+        "question": "¿Qué hace el Event Loop en JavaScript?",
+        "choices": [
+          "Ejecuta todas las funciones en orden",
+          "Monitorea la pila de ejecución y la cola de tareas",
+          "Maneja solo las operaciones síncronas",
+          "Elimina funciones de la pila de ejecución"
+        ],
+        "correctAnswer": "Monitorea la pila de ejecución y la cola de tareas"
+      },
+      {
+        "question": "¿Qué sucede cuando la pila de ejecución está vacía?",
+        "choices": [
+          "El Event Loop termina",
+          "El Event Loop toma la primera tarea de la cola de tareas y la coloca en la pila de ejecución",
+          "Todas las funciones se ejecutan de nuevo",
+          "Se agregan nuevas funciones a la pila de ejecución"
+        ],
+        "correctAnswer": "El Event Loop toma la primera tarea de la cola de tareas y la coloca en la pila de ejecución"
+      },
+      {
+        "question": "¿Qué tipo de funciones se colocan en la cola de tareas (Task Queue)?",
+        "choices": [
+          "Funciones síncronas",
+          "Funciones asíncronas",
+          "Funciones globales",
+          "Funciones anidadas"
+        ],
+        "correctAnswer": "Funciones asíncronas"
+      }
+    ],
+    "image": "/path/to/image4.jpg"
+  },
+  {
+    "id": "5",
+    "title": "JavaScript Asíncrono: De Callbacks a Async/Await",
+    "content": "La programación asíncrona en JavaScript ha evolucionado significativamente a lo largo del tiempo. Aquí exploramos los conceptos clave y su evolución, desde los callbacks hasta async/await.\n  \n   1. **Callbacks**: Los callbacks son funciones que se pasan como argumentos a otras funciones y se ejecutan después de que una operación asíncrona ha finalizado. Aunque los callbacks permiten manejar operaciones asíncronas, pueden llevar a un código difícil de leer y mantener, especialmente cuando se anidan muchos callbacks.\n  \n   2. **Callback Hell**: También conocido como 'pyramid of doom', ocurre cuando se anidan múltiples callbacks dentro de otros callbacks. Esto hace que el código sea difícil de leer, entender y depurar. A medida que la complejidad aumenta, el código se vuelve más propenso a errores.\n  \n   3. **Promises**: Las promesas representan el resultado de una operación asíncrona que puede completarse en el futuro. Las promesas proporcionan una forma más estructurada de manejar el resultado de una operación asíncrona, permitiendo encadenar operaciones usando `then()` y manejar errores con `catch()`. Esto mejora la legibilidad y el mantenimiento del código en comparación con los callbacks.\n  \n   4. **Async/Await**: Introducido en ECMAScript 2017, `async/await` simplifica aún más el manejo de operaciones asíncronas. `async` convierte una función en una función asincrónica, que siempre devuelve una promesa. Dentro de una función `async`, se puede usar `await` para esperar a que una promesa se resuelva, lo que permite escribir código asíncrono que se asemeja al código síncrono en su estructura. Esto facilita la lectura y el manejo de errores de manera más intuitiva.",
+    "questions": [
+      {
+        "question": "¿Qué es un callback en JavaScript?",
+        "choices": [
+          "Una función que se pasa como argumento y se ejecuta después de que una operación asíncrona finaliza",
+          "Una función que se ejecuta inmediatamente sin esperar",
+          "Un objeto que representa una operación asíncrona",
+          "Una estructura de datos que almacena funciones asíncronas"
+        ],
+        "correctAnswer": "Una función que se pasa como argumento y se ejecuta después de que una operación asíncrona finaliza"
+      },
+      {
+        "question": "¿Qué es 'callback hell'?",
+        "choices": [
+          "El uso de múltiples callbacks anidados, dificultando la legibilidad del código",
+          "Un tipo de error en las promesas",
+          "Un problema con las funciones síncronas",
+          "Una técnica para manejar operaciones asíncronas de forma eficiente"
+        ],
+        "correctAnswer": "El uso de múltiples callbacks anidados, dificultando la legibilidad del código"
+      },
+      {
+        "question": "¿Qué es una promesa en JavaScript?",
+        "choices": [
+          "Un objeto que representa el resultado de una operación asíncrona que puede completarse en el futuro",
+          "Una función que se ejecuta al final de una operación síncrona",
+          "Un tipo de callback",
+          "Una estructura de datos que almacena operaciones asíncronas"
+        ],
+        "correctAnswer": "Un objeto que representa el resultado de una operación asíncrona que puede completarse en el futuro"
+      },
+      {
+        "question": "¿Cómo facilita el manejo de operaciones asíncronas 'async/await'?",
+        "choices": [
+          "Permite escribir código asíncrono que se asemeja al código síncrono, mejorando la legibilidad",
+          "Elimina la necesidad de manejar errores en operaciones asíncronas",
+          "Reemplaza completamente a las promesas",
+          "Anida múltiples callbacks en funciones asíncronas"
+        ],
+        "correctAnswer": "Permite escribir código asíncrono que se asemeja al código síncrono, mejorando la legibilidad"
+      }
+    ],
+    "image": "/path/to/image5.jpg"
+  },
+  {
+    "id": "6",
+    "title": "Prototipos en JavaScript",
+    "content": "En JavaScript, el sistema de prototipos es una característica fundamental para la herencia y la reutilización de código. Los prototipos permiten que los objetos hereden propiedades y métodos de otros objetos. Aquí se explica cómo funcionan los prototipos en JavaScript:\n  \n   1. **Prototipo de un Objeto**: Cada objeto en JavaScript tiene una propiedad interna llamada `[[Prototype]]` que se refiere a otro objeto. Este objeto referenciado es conocido como el prototipo del objeto. Las propiedades y métodos del prototipo están disponibles en el objeto que lo hereda.\n  \n   2. **Cadena de Prototipos (Prototype Chain)**: La cadena de prototipos es la secuencia de objetos a través de los cuales JavaScript busca propiedades y métodos. Si un objeto no tiene una propiedad específica, JavaScript busca esa propiedad en su prototipo y en los prototipos de sus prototipos, hasta llegar a `Object.prototype`, el prototipo base que no tiene un prototipo propio.\n  \n  3. **Método `Object.create()`**: Este método permite crear un nuevo objeto con un prototipo específico. Por ejemplo, `Object.create(proto)` crea un nuevo objeto con `proto` como su prototipo. Esto es útil para establecer una relación de herencia entre objetos de manera explícita.\n \n  4. **Función Constructora y Prototipo**: Las funciones constructoras tienen una propiedad especial llamada `prototype`. Los objetos creados con la función constructora heredan propiedades y métodos del objeto `prototype` de la función constructora. Por ejemplo, si se define una función constructora `Person`, todos los objetos creados con `new Person()` tendrán acceso a las propiedades y métodos definidos en `Person.prototype`.\n \n  5. **Modificación del Prototipo**: Puedes agregar o modificar propiedades y métodos en el prototipo de un objeto. Por ejemplo, si deseas agregar un método `saludar` a todos los objetos creados con la función constructora `Person`, puedes hacerlo modificando `Person.prototype`.",
+    "questions": [
+      {
+        "question": "¿Qué es el prototipo de un objeto en JavaScript?",
+        "choices": [
+          "El objeto al que el objeto actual hace referencia para heredar propiedades y métodos",
+          "Una propiedad que almacena datos específicos del objeto",
+          "Una función que se usa para crear nuevos objetos",
+          "Una estructura de datos para almacenar métodos"
+        ],
+        "correctAnswer": "El objeto al que el objeto actual hace referencia para heredar propiedades y métodos"
+      },
+      {
+        "question": "¿Qué es la cadena de prototipos (Prototype Chain)?",
+        "choices": [
+          "La secuencia de objetos a través de los cuales JavaScript busca propiedades y métodos",
+          "Un conjunto de funciones que se ejecutan en el orden correcto",
+          "Una lista de métodos que se pueden utilizar en un objeto",
+          "Una estructura de datos que contiene todos los prototipos"
+        ],
+        "correctAnswer": "La secuencia de objetos a través de los cuales JavaScript busca propiedades y métodos"
+      },
+      {
+        "question": "¿Cómo se crea un nuevo objeto con un prototipo específico?",
+        "choices": [
+          "Utilizando `Object.create(proto)`",
+          "Definiendo una función constructora",
+          "Modificando el prototipo de un objeto existente",
+          "Usando el operador `new` con un constructor"
+        ],
+        "correctAnswer": "Utilizando `Object.create(proto)`"
+      },
+      {
+        "question": "¿Qué es la propiedad `prototype` en una función constructora?",
+        "choices": [
+          "Un objeto que contiene las propiedades y métodos heredados por los objetos creados con la función constructora",
+          "Una función que define cómo se crean los objetos",
+          "Un método para modificar el prototipo de un objeto",
+          "Una propiedad que almacena datos específicos de cada objeto"
+        ],
+        "correctAnswer": "Un objeto que contiene las propiedades y métodos heredados por los objetos creados con la función constructora"
+      }
+    ],
+    "image": "/path/to/image6.jpg"
+  },
+  {
+    "id": "7",
+    "title": "Herencia en JavaScript",
+    "content": "La herencia en JavaScript permite que un objeto herede propiedades y métodos de otro objeto. Esta característica es fundamental para crear estructuras de código reutilizables y organizadas. A continuación se detalla cómo funciona la herencia en JavaScript:\n \n  1. **Herencia Prototípica**: JavaScript utiliza un sistema de herencia prototípica. Esto significa que los objetos pueden heredar propiedades y métodos de otros objetos a través de la cadena de prototipos (prototype chain). Cuando un objeto busca una propiedad o método, JavaScript primero verifica el objeto en sí mismo y luego sigue la cadena de prototipos hasta encontrar la propiedad o hasta llegar a `Object.prototype`.\n \n  2. **Herencia con Funciones Constructoras**: La herencia se puede implementar utilizando funciones constructoras y el objeto `prototype`. Al definir una función constructora base y extenderla con una función constructora derivada, los objetos creados con la función derivada heredan las propiedades y métodos de la función base. Se puede usar `Object.create()` para establecer explícitamente la relación de herencia entre los objetos.\n \n  3. **Herencia con Clases (ES6)**: Con la introducción de las clases en ECMAScript 2015 (ES6), la herencia en JavaScript se vuelve más intuitiva. Las clases permiten definir una clase base y extenderla utilizando la palabra clave `extends`. Los métodos y propiedades de la clase base se heredan automáticamente en la clase derivada. La clase derivada puede sobrescribir métodos de la clase base y agregar nuevos métodos o propiedades.\n \n  4. **Método `super`**: Dentro de una clase derivada, se puede utilizar la palabra clave `super` para llamar al constructor y a los métodos de la clase base. Esto permite acceder a las propiedades y métodos de la clase base desde la clase derivada, facilitando la extensión y personalización de la funcionalidad.\n \n  5. **Composición sobre Herencia**: Aunque la herencia es poderosa, a veces es más conveniente usar composición, que implica combinar objetos para crear nuevas funcionalidades en lugar de depender exclusivamente de la herencia. La composición puede ofrecer una mayor flexibilidad y evitar problemas comunes asociados con la herencia compleja.",
+    "questions": [
+      {
+        "question": "¿Cómo funciona la herencia prototípica en JavaScript?",
+        "choices": [
+          "Los objetos heredan propiedades y métodos a través de la cadena de prototipos",
+          "Los objetos heredan propiedades y métodos mediante la asignación directa",
+          "Los objetos crean una nueva instancia de otro objeto",
+          "Los objetos copian propiedades y métodos al ser creados"
+        ],
+        "correctAnswer": "Los objetos heredan propiedades y métodos a través de la cadena de prototipos"
+      },
+      {
+        "question": "¿Cómo se establece la herencia entre funciones constructoras?",
+        "choices": [
+          "Usando el objeto `prototype` y `Object.create()`",
+          "Creando una función constructora dentro de otra",
+          "Asignando propiedades directamente a la función constructora",
+          "Utilizando la palabra clave `extends`"
+        ],
+        "correctAnswer": "Usando el objeto `prototype` y `Object.create()`"
+      },
+      {
+        "question": "¿Qué introduce ECMAScript 2015 (ES6) para facilitar la herencia en JavaScript?",
+        "choices": [
+          "Las clases y la palabra clave `extends`",
+          "El método `Object.create()`",
+          "Funciones constructoras avanzadas",
+          "El método `super`"
+        ],
+        "correctAnswer": "Las clases y la palabra clave `extends`"
+      },
+      {
+        "question": "¿Para qué se utiliza la palabra clave `super` en una clase derivada?",
+        "choices": [
+          "Para llamar al constructor y a los métodos de la clase base",
+          "Para crear una nueva instancia de la clase base",
+          "Para sobrescribir métodos de la clase base",
+          "Para acceder a propiedades privadas de la clase base"
+        ],
+        "correctAnswer": "Para llamar al constructor y a los métodos de la clase base"
+      }
+    ],
+    "image": "/path/to/image7.jpg"
+  },
+  {
+    "id": "8",
+    "title": "Destructuring en JavaScript",
+    "content": "El destructuring es una característica de JavaScript que permite extraer valores de arrays u objetos y asignarlos a variables de una manera concisa. Introducido en ECMAScript 2015 (ES6), el destructuring facilita la extracción y asignación de valores sin necesidad de acceder a cada propiedad o índice individualmente.\n \n  1. **Destructuring de Arrays**: El destructuring de arrays permite extraer elementos de un array en variables individuales. Se utiliza una sintaxis de corchetes para asignar valores a variables. Por ejemplo:\n \n ```javascript\n  const numbers = [1, 2, 3];\n  const [a, b, c] = numbers;\n  console.log(a); // 1\n  console.log(b); // 2\n  console.log(c); // 3\n ```\n \n  2. **Destructuring de Objetos**: El destructuring de objetos permite extraer propiedades de un objeto en variables individuales. Se utiliza una sintaxis de llaves para asignar valores a variables. Por ejemplo:\n \n ```javascript\n  const person = { name: 'John', age: 30 };\n  const { name, age } = person;\n  console.log(name); // John\n  console.log(age); // 30\n ```\n \n  3. **Destructuring con Valores por Defecto**: Puedes proporcionar valores por defecto en caso de que las propiedades o elementos a los que se hace destructuring no existan. Esto evita errores y asegura que las variables tengan un valor predeterminado. Por ejemplo:\n \n ```javascript\n  const numbers = [1];\n  const [a, b = 2] = numbers;\n  console.log(a); // 1\n  console.log(b); // 2\n ```\n \n  4. **Destructuring Anidado**: El destructuring también puede aplicarse a arrays y objetos anidados. Esto permite extraer valores de estructuras más complejas de manera eficiente. Por ejemplo:\n \n ```javascript\n  const user = { name: 'Alice', address: { city: 'Wonderland', zip: '12345' } };\n  const { name, address: { city } } = user;\n  console.log(name); // Alice\n  console.log(city); // Wonderland\n ```\n \n  5. **Destructuring en Parámetros de Funciones**: El destructuring puede usarse en los parámetros de funciones para extraer propiedades de un objeto o elementos de un array directamente en la firma de la función. Esto simplifica la manipulación de datos en funciones.\n \n  ```javascript\n  function displayInfo({ name, age }) {\n   console.log(`Name: ${name}, Age: ${age}`);\n }\n \n  const person = { name: 'Bob', age: 25 };\n  displayInfo(person); // Name: Bob, Age: 25\n ```\n \n  El destructuring mejora la legibilidad del código y facilita la extracción y asignación de valores en JavaScript.",
+    "questions": [
+      {
+        "question": "¿Cómo se realiza el destructuring de un array en JavaScript?",
+        "choices": [
+          "Usando corchetes para asignar valores a variables",
+          "Usando llaves para extraer propiedades",
+          "Utilizando el método `Array.prototype.map()`",
+          "Llamando a la función `Object.assign()`"
+        ],
+        "correctAnswer": "Usando corchetes para asignar valores a variables"
+      },
+      {
+        "question": "¿Qué sucede si un valor no está presente en el destructuring de un array y se proporciona un valor por defecto?",
+        "choices": [
+          "La variable tomará el valor por defecto",
+          "El código arrojará un error",
+          "La variable se asignará como `undefined`",
+          "El valor por defecto será ignorado"
+        ],
+        "correctAnswer": "La variable tomará el valor por defecto"
+      },
+      {
+        "question": "¿Cómo se puede realizar destructuring de un objeto anidado?",
+        "choices": [
+          "Utilizando llaves anidadas en la sintaxis de destructuring",
+          "Accediendo a las propiedades anidadas con notación de puntos",
+          "Aplicando el destructuring en el interior de un array",
+          "Utilizando la función `Object.assign()`"
+        ],
+        "correctAnswer": "Utilizando llaves anidadas en la sintaxis de destructuring"
+      },
+      {
+        "question": "¿Cómo se puede utilizar el destructuring en los parámetros de una función?",
+        "choices": [
+          "Desestructurando un objeto o array directamente en la firma de la función",
+          "Asignando valores por defecto en el cuerpo de la función",
+          "Usando el método `bind()` para pasar valores",
+          "Aplicando destructuring en el retorno de la función"
+        ],
+        "correctAnswer": "Desestructurando un objeto o array directamente en la firma de la función"
+      }
+    ],
+    "image": "/path/to/image8.jpg"
+  },
+  {
+    "id": "9",
+    "title": "Funciones Flecha en JavaScript",
+    "content": "Las funciones flecha (arrow functions) fueron introducidas en ECMAScript 2015 (ES6) y proporcionan una sintaxis más concisa para escribir funciones en JavaScript. Además de su sintaxis compacta, las funciones flecha tienen comportamientos específicos en cuanto a `this` y otros aspectos. A continuación se detalla cómo funcionan las funciones flecha:\n \n  1. **Sintaxis**: La sintaxis de las funciones flecha es más breve que la de las funciones tradicionales. Se utiliza la notación de `=>` en lugar de `function`. Por ejemplo:\n \n ```javascript\n // Función tradicional\n  function add(a, b) {\n   return a + b;\n }\n \n  // Función flecha\n  const add = (a, b) => a + b;\n ```\n \n  2. **Ámbito de `this`**: A diferencia de las funciones tradicionales, las funciones flecha no tienen su propio `this`. En su lugar, heredan el `this` del contexto en el que fueron definidas. Esto las hace útiles para trabajar con métodos en objetos o en callbacks donde se desea que `this` se refiera al objeto exterior o al contexto de la función que las rodea.\n \n ```javascript\n function Timer() {\n   this.seconds = 0;\n   setInterval(() => this.seconds++, 1000);\n }\n \n  const timer = new Timer();\n ```\n \n  3. **Funciones Flecha con un Solo Parámetro**: Si una función flecha tiene un solo parámetro, se pueden omitir los paréntesis alrededor del parámetro. Por ejemplo:\n \n ```javascript\n const square = x => x * x;\n ```\n \n  4. **Funciones Flecha con Bloque de Código**: Si la función flecha tiene más de una expresión o necesita realizar múltiples operaciones, se debe usar un bloque de código `{}` y la palabra clave `return` para devolver un valor.\n \n ```javascript\n  const add = (a, b) => {\n   const sum = a + b;\n   return sum;\n };\n ```\n \n  5. **Funciones Flecha y `arguments`**: Las funciones flecha no tienen un objeto `arguments`. Si se necesita acceder a los argumentos pasados a la función, se debe usar una función tradicional o usar el operador rest (`...args`).\n \n ```javascript\n  const sum = (...args) => args.reduce((a, b) => a + b, 0);\n ```\n \n  Las funciones flecha ofrecen una manera más clara y concisa de escribir funciones, especialmente en casos donde el manejo del contexto de `this` es crucial.",
+    "questions": [
+      {
+        "question": "¿Cuál es la principal ventaja de usar funciones flecha en comparación con funciones tradicionales?",
+        "choices": [
+          "Sintaxis más concisa y manejo del contexto `this`",
+          "Mayor flexibilidad en el número de argumentos",
+          "Soporte para el objeto `arguments`",
+          "Capacidad de definir métodos en objetos"
+        ],
+        "correctAnswer": "Sintaxis más concisa y manejo del contexto `this`"
+      },
+      {
+        "question": "¿Cómo se maneja `this` en una función flecha?",
+        "choices": [
+          "Hereda el `this` del contexto donde fue definida",
+          "Tiene su propio `this` que se refiere a la función",
+          "Es igual al `this` del objeto global",
+          "No tiene acceso a `this`"
+        ],
+        "correctAnswer": "Hereda el `this` del contexto donde fue definida"
+      },
+      {
+        "question": "¿Cómo se define una función flecha con un solo parámetro?",
+        "choices": [
+          "Se pueden omitir los paréntesis alrededor del parámetro",
+          "Se deben usar paréntesis alrededor del parámetro",
+          "Se utiliza una función tradicional",
+          "El parámetro debe ser una expresión"
+        ],
+        "correctAnswer": "Se pueden omitir los paréntesis alrededor del parámetro"
+      },
+      {
+        "question": "¿Qué sucede si una función flecha necesita realizar múltiples operaciones?",
+        "choices": [
+          "Se debe usar un bloque de código `{}` y la palabra clave `return`",
+          "La función debe ser transformada en una función tradicional",
+          "Las operaciones deben estar en una sola línea",
+          "No se puede usar una función flecha en este caso"
+        ],
+        "correctAnswer": "Se debe usar un bloque de código `{}` y la palabra clave `return`"
+      }
+    ],
+    "image": "/path/to/image9.jpg"
+  },
+  {
+    "id": "10",
+    "title": "Closures en JavaScript",
+    "content": "Un closure (o cierre) en JavaScript es una función que tiene acceso a las variables de su contexto de creación, incluso después de que la función exterior haya terminado su ejecución. Los closures permiten que una función tenga una 'memoria' de las variables de su contexto original, lo que es útil para crear funciones con estado privado y para técnicas avanzadas de programación.\n \n   1. **Definición de un Closure**: Un closure se crea cuando una función interna accede a las variables de su función externa. Por ejemplo:\n  \n  ```javascript\n  function outerFunction() {\n    let outerVariable = 'I am outside!';\n    function innerFunction() {\n      console.log(outerVariable);\n    }\n    return innerFunction;\n  }\n  \n  const myClosure = outerFunction();\n  myClosure(); // I am outside!\n  ```\n  \n  2. **Privacidad y Encapsulación**: Los closures se utilizan para crear variables privadas. Las variables en la función exterior no pueden ser accedidas directamente desde fuera de la función, pero la función interna puede acceder a ellas.\n  \n  ```javascript\n  function createCounter() {\n    let count = 0;\n    return function() {\n      count++;\n      return count;\n    };\n  }\n  \n  const counter = createCounter();\n  console.log(counter()); // 1\n  console.log(counter()); // 2\n  ```\n  \n  3. **Closures y Iteradores**: Los closures pueden ser utilizados para crear iteradores personalizados que mantienen el estado de una serie de valores.\n  \n  ```javascript\n  function createRange(start, end) {\n    let current = start;\n    return function() {\n      if (current <= end) return current++;\n      return null;\n    };\n  }\n  \n  const range = createRange(1, 3);\n  console.log(range()); // 1\n  console.log(range()); // 2\n  console.log(range()); // 3\n  console.log(range()); // null\n  ```\n  \n  4. **Alcance Léxico**: Los closures se basan en el alcance léxico, que significa que las funciones recuerdan el entorno en el que fueron creadas. Esto es diferente al alcance dinámico, donde las variables son buscadas en el contexto de llamada de la función.\n  \n  5. **Uso de Closures en Callbacks**: Los closures son útiles en funciones de callback y en eventos, donde pueden capturar el estado de las variables en el momento en que se crea el callback.\n  \n  ```javascript\n  function setupButton(buttonId) {\n    let clickCount = 0;\n    document.getElementById(buttonId).addEventListener('click', function() {\n      clickCount++;\n      console.log(`Button clicked ${clickCount} times`);\n    });\n  }\n  ```\n  \n  Los closures proporcionan una gran flexibilidad y son una herramienta poderosa para el manejo del estado y la creación de funciones más complejas en JavaScript.",
+    "questions": [
+      {
+        "question": "¿Qué es un closure en JavaScript?",
+        "choices": [
+          "Una función que tiene acceso a las variables de su contexto de creación",
+          "Una función que no tiene acceso a variables externas",
+          "Un tipo especial de variable",
+          "Una función que se ejecuta inmediatamente"
+        ],
+        "correctAnswer": "Una función que tiene acceso a las variables de su contexto de creación"
+      },
+      {
+        "question": "¿Cómo se utiliza un closure para crear variables privadas?",
+        "choices": [
+          "Encapsulando las variables en una función externa y devolviendo una función interna",
+          "Declarando variables como `const` dentro de la función",
+          "Utilizando el método `Object.freeze()`",
+          "Definiendo las variables en un módulo separado"
+        ],
+        "correctAnswer": "Encapsulando las variables en una función externa y devolviendo una función interna"
+      },
+      {
+        "question": "¿Cuál es la diferencia entre el alcance léxico y el alcance dinámico?",
+        "choices": [
+          "El alcance léxico recuerda el entorno en el que se creó la función, mientras que el alcance dinámico busca variables en el contexto de llamada",
+          "El alcance léxico busca variables en el contexto de llamada, mientras que el alcance dinámico recuerda el entorno en el que se creó la función",
+          "El alcance léxico solo funciona con objetos, mientras que el alcance dinámico funciona con funciones",
+          "No hay diferencia entre los dos alcances"
+        ],
+        "correctAnswer": "El alcance léxico recuerda el entorno en el que se creó la función, mientras que el alcance dinámico busca variables en el contexto de llamada"
+      },
+      {
+        "question": "¿Cómo se pueden usar los closures en callbacks y eventos?",
+        "choices": [
+          "Capturando el estado de las variables en el momento en que se crea el callback",
+          "Ejecutando las funciones en un contexto global",
+          "Usando el operador `new` para crear nuevas instancias",
+          "Utilizando el método `bind()` para enlazar el contexto"
+        ],
+        "correctAnswer": "Capturando el estado de las variables en el momento en que se crea el callback"
+      }
+    ],
+    "image": "/path/to/image10.jpg"
+  },
+  {
+    "id": "11",
+    "title": "Scope (Alcance) en JavaScript",
+    "content": "El concepto de scope (alcance) en JavaScript define la visibilidad y accesibilidad de las variables en diferentes partes del código. Existen varios tipos de scope que determinan cómo y dónde se pueden acceder las variables. Aquí se explica cómo funciona el scope en JavaScript:\n  \n  1. **Scope Global**: Las variables definidas en el contexto global (fuera de cualquier función) tienen un scope global. Estas variables están disponibles en cualquier parte del código y en todas las funciones.\n  \n  ```javascript\n  let globalVar = 'I am global';\n  function showGlobal() {\n    console.log(globalVar);\n  }\n  showGlobal(); // I am global\n  ```\n  \n  2. **Scope de Función (Local)**: Las variables definidas dentro de una función tienen un scope local. Estas variables solo están disponibles dentro de la función en la que fueron definidas y no son accesibles desde fuera de la función.\n  \n  ```javascript\n  function localScope() {\n    let localVar = 'I am local';\n    console.log(localVar);\n  }\n  \n  localScope(); // I am local\n  console.log(localVar); // Error: localVar is not defined\n  ```\n  \n  3. **Scope de Bloque**: Con la introducción de `let` y `const` en ECMAScript 2015 (ES6), se puede definir un scope de bloque. Las variables definidas dentro de un bloque (`{}`) con `let` o `const` solo están disponibles dentro de ese bloque.\n  \n  ```javascript\n  if (true) {\n    let blockVar = 'I am block scoped';\n    console.log(blockVar);\n  }\n  \n  console.log(blockVar); // Error: blockVar is not defined\n  ```\n  \n  4. **Ámbito Léxico**: JavaScript utiliza un scope léxico, lo que significa que el scope de las variables se determina en el momento de la escritura del código, no en el momento de la ejecución. Las funciones tienen acceso a las variables en el contexto en el que fueron definidas, no en el contexto en el que son llamadas.\n  \n  5. **Encapsulación y Ámbito**: El uso de funciones y bloques ayuda a encapsular variables y evitar conflictos de nombres. Esto promueve un código más modular y menos propenso a errores al evitar el uso accidental de variables globales.\n  \n  ```javascript\n  function createCounter() {\n    let count = 0;\n    return function() {\n      count++;\n      return count;\n    };\n  }\n  \n  const counter = createCounter();\n  console.log(counter()); // 1\n  console.log(counter()); // 2\n  ```\n  \n  El entendimiento del scope es esencial para escribir código limpio y evitar problemas con la visibilidad y la vida útil de las variables en JavaScript.",
+    "questions": [
+      {
+        "question": "¿Qué es el scope global en JavaScript?",
+        "choices": [
+          "Variables definidas fuera de cualquier función que están disponibles en todo el código",
+          "Variables definidas dentro de una función que están disponibles solo en esa función",
+          "Variables definidas dentro de un bloque que están disponibles solo en ese bloque",
+          "Variables definidas con `let` o `const` que están disponibles en todo el código"
+        ],
+        "correctAnswer": "Variables definidas fuera de cualquier función que están disponibles en todo el código"
+      },
+      {
+        "question": "¿Cómo afecta el scope de bloque a las variables definidas con `let` y `const`?",
+        "choices": [
+          "Las variables están disponibles solo dentro del bloque en el que fueron definidas",
+          "Las variables están disponibles en todo el código",
+          "Las variables están disponibles solo dentro de la función en la que fueron definidas",
+          "Las variables pueden ser accedidas desde cualquier función"
+        ],
+        "correctAnswer": "Las variables están disponibles solo dentro del bloque en el que fueron definidas"
+      },
+      {
+        "question": "¿Qué significa el scope léxico en JavaScript?",
+        "choices": [
+          "El scope de las variables se determina en el momento de la escritura del código",
+          "El scope de las variables se determina en el momento de la ejecución del código",
+          "Las variables son accesibles desde cualquier lugar del código",
+          "El scope de las variables es dinámico y cambia durante la ejecución"
+        ],
+        "correctAnswer": "El scope de las variables se determina en el momento de la escritura del código"
+      },
+      {
+        "question": "¿Por qué es importante entender el scope en JavaScript?",
+        "choices": [
+          "Para escribir código limpio y evitar problemas con la visibilidad y la vida útil de las variables",
+          "Para utilizar el operador `this` correctamente",
+          "Para definir funciones con un solo parámetro",
+          "Para trabajar con objetos y arrays"
+        ],
+        "correctAnswer": "Para escribir código limpio y evitar problemas con la visibilidad y la vida útil de las variables"
+      }
+    ],
+    "image": "/path/to/image11.jpg"
+  }
+  
+  
+]
