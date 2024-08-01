@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`max-w-7xl mx-auto ${poppins.className}`}>
+      <body className={`max-w-7xl mx-auto ${poppins.className}`}> {/* Ese max-w-7xl achica la navbar, lo dejo igual por si lo dejaron por algun motivo */}
         {children}
       </body>
     </html>
