@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Lorem ipsum 1",
+    "path": "/lorem-ipsum1",
+    "icon": "/lorem-ipsum1.svg"
+  },
+  {
+    "title": "Lorem ipsum2",
+    "path": "/lorem-ipsum2",
+    "icon": "/lorem-ipsum2.svg"
+  },
+  {
+    "title": "Lorem ipsum 3",
+    "path": "/lorem-ipsum3",
+    "icon": "/lorem-ipsum3.svg"
+  }
+]
