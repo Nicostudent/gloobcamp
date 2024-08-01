@@ -1,58 +1,66 @@
 [
   {
-    "name": "Arriazu, Jonathan",
+    "lastname": "Arriazu",
+    "name": "Jonathan",
     "position": "Frontend Developer",
     "image": "/jonathan.webp",
+    "linkedin": "https://www.linkedin.com/in/jonathanarriazu/",
+    "github": "https://github.com/JonathanArriazu"
+  },
+  {
+    "lastname": "Cabezón",
+    "name": "Carmelo",
+    "position": "Frontend Developer",
+    "image": "/carmelo.webp",
+    "linkedin": "https://www.linkedin.com/in/carmelo-cabezon-662a4923a/",
+    "github": "https://github.com/PinchiDev"
+  },
+  {
+    "lastname": "Herrera",
+    "name": "Nicolás",
+    "position": "Frontend Developer",
+    "image": "/nicoherrera.webp",
+    "linkedin": "https://www.linkedin.com/in/nicolasherrera95/",
+    "github": "https://github.com/herreranicolas"
+  },
+  {
+    "lastname": "Rojo",
+    "name": "Nicolas",
+    "position": "Frontend Developer",
+    "image": "/nicorojo.webp",
     "linkedin": "https://www.linkedin.com/in/jonathan-arriazu/",
     "github": "https://github.com/jonathan-arriazu"
   },
   {
-    "name": "Cabezón, Carmelo",
+    "lastname": "Rojas Guindan",
+    "name": "Emanuel",
     "position": "Frontend Developer",
-    "image": "/jonathan.webp",
-    "linkedin": "https://www.linkedin.com/in/jonathan-arriazu/",
-    "github": "https://github.com/jonathan-arriazu"
+    "image": "/emanuel.webp",
+    "linkedin": "https://www.linkedin.com/in/emanuel-rojas-guindan/",
+    "github": "https://github.com/EmaRG1"
   },
   {
-    "name": "Herrera, Nicolás",
+    "lastname": "Ruiz",
+    "name": "Silvio",
     "position": "Frontend Developer",
-    "image": "/jonathan.webp",
-    "linkedin": "https://www.linkedin.com/in/jonathan-arriazu/",
-    "github": "https://github.com/jonathan-arriazu"
-  },
-  {
-    "name": "Rojo, Nicolas",
-    "position": "Frontend Developer",
-    "image": "/jonathan.webp",
-    "linkedin": "https://www.linkedin.com/in/jonathan-arriazu/",
-    "github": "https://github.com/jonathan-arriazu"
-  },
-  {
-    "name": "Rojas, Emanuel",
-    "position": "Frontend Developer",
-    "image": "/jonathan.webp",
-    "linkedin": "https://www.linkedin.com/in/jonathan-arriazu/",
-    "github": "https://github.com/jonathan-arriazu"
-  },
-  {
-    "name": "Ruiz, Silvio",
-    "position": "Frontend Developer",
-    "image": "/jonathan.webp",
+    "image": "/silvio.webp",
     "linkedin": "https://www.linkedin.com/in/silvioruiz/",
-    "github": "https://github.com/jonathan-arriazu"
+    "github": "https://github.com/silvioruiz"
   },
   {
-    "name": "Valdez, Leonardo",
+    "lastname": "Valdez",
+    "name": "Leonardo",
     "position": "Frontend Developer",
     "image": "/leonardo.webp",
     "linkedin": "https://www.linkedin.com/in/leonardo-juan-pablo-valdez-16825a30b/",
     "github": "https://github.com/orbitadoo"
   },
   {
-    "name": "Zapulla, Gaston",
+    "lastname": "Zappulla",
+    "name": "Gaston",
     "position": "Frontend Developer",
-    "image": "/jonathan.webp",
-    "linkedin": "https://www.linkedin.com/in/jonathan-arriazu/",
-    "github": "https://github.com/jonathan-arriazu"
+    "image": "/gaston.webp",
+    "linkedin": "https://www.linkedin.com/in/gastonzappulla/",
+    "github": "https://github.com/GastonZ"
   }
 ]
