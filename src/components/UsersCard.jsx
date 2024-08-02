@@ -2,23 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 const UsersCard = ({ picture, lastname, name, position, github, linkedin }) => {
   return (
-    <div id="usersCard" className="bg-white max-w-fit shadow-lg rounded-lg">
-      <Image
-        src={picture}
-        alt="A picture of the member team"
-        width={500}
-        height={500}
-        className="size-72"
-      />
+    <div className="bg-white max-w-fit shadow-lg rounded-lg">
+      <article>
+        <Image
+          src={picture}
+          alt="A picture of the member team"
+          width={500}
+          height={500}
+          className="size-72"
+        />
+      </article>
 
-      <div className="py-2 px-4 text-center">
-        <h3 className="text-xl">
-          {lastname}, <span className="font-bold text-primary">{name}</span>
+      <article className="py-2 px-4 text-center">
+        <h3 className="text-xl text-secondary font-bold">
+          {lastname}, <span className="text-primary">{name}</span>
         </h3>
         <p className="text-gray-600">{position}</p>
-      </div>
+      </article>
 
-      <div className="flex text-center">
+      <article className="flex text-center">
         <Link
           href={github}
           target="_blank"
@@ -40,7 +42,7 @@ const UsersCard = ({ picture, lastname, name, position, github, linkedin }) => {
             height={20}
           />
         </Link>
-      </div>
+      </article>
     </div>
   );
 };

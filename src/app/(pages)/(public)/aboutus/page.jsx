@@ -1,10 +1,12 @@
 import UsersCard from "@/components/UsersCard";
 import teamMembers from "@/utils/team-members.json";
+import SubTitle from "@/components/SubTitle.jsx";
 
 const AboutUs = () => {
   return (
     <section id="aboutus">
-      <h2 className="text-3xl font-bold text-primary">Our Team</h2>
+      <SubTitle text="A little introduction of Our Project" />
+      <SubTitle text="Our Team" />
       <p>Our team is made up of experienced developers and designers.</p>
 
       <div className="flex justify-center mt-8">
