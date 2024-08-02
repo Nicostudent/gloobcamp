@@ -1,35 +1,49 @@
 const Quiz = () => {
   return (
-    <section className="border px-6 md:w-3/4 w-full py-6 rounded-2xl text-primary border-primary mx-2 md:mx-0">
-      <h1 className="text-6xl md:text-8xl text-center mb-6">¡Quiz!</h1>
-      <h2 className="text-3xl md:text-4xl mb-6">
-        <span className="me-2 text-white bg-primary rounded-md p-4 py-1 font-medium ring-1 ring-inset ring-purple-700/10">
-          1
-        </span>
-        Question
-      </h2>
-      <section className="text-center h-auto flex flex-col justify-center items-center">
-        <ul className="w-3/4 md:text-2xl">
-          <li className="border border-primary hover:bg-primary hover:text-white mb-3 py-3 rounded">
-            Answer 1
-          </li>
-          <li className="border border-primary hover:bg-primary hover:text-white mb-3 py-3 rounded">
-            Answer 2
-          </li>
-          <li className="border border-primary hover:bg-primary hover:text-white mb-3 py-3 rounded">
-            Answer 3
-          </li>
-          <li className="border border-primary hover:bg-primary hover:text-white mb-3 py-3 rounded">
-            Answer 4
-          </li>
-        </ul>
-        <div className="self-end">
-          <button className="bg-primary text-white rounded-md p-4 font-medium text-xl">
-            Next
-          </button>
-        </div>
-      </section>
-    </section>
+    <div className="w-full rounded-xl bg-gradient-to-br from-primary via-purple-100 to-primary p-1 m-1">
+      <div className="flex flex-col h-full w-full bg-black p-6 rounded-xl">
+        <h1 className="text-6xl md:text-8xl font-black text-center text-indigo-300 mb-6">
+          ¡Quiz!
+        </h1>
+        <h2 className="text-3xl md:text-4xl text-indigo-300">
+          <div className="bg-gradient-to-br from-primary via-purple-100 to-primary rounded-full inline-flex p-1 mb-6 mx-3">
+            <button className="bg-black text-indigo-300 rounded-full px-4">
+              1
+            </button>
+          </div>
+          Question
+        </h2>
+        <section className="text-center h-auto flex flex-col justify-center items-center">
+          <ul className="w-3/4 md:text-2xl">
+            <li className="bg-gradient-to-br from-primary via-purple-100 to-primary p-1 mb-6 rounded-full">
+              <p className="bg-black text-indigo-300 py-3 rounded-full">
+                Answer 1
+              </p>
+            </li>
+            <li className="bg-gradient-to-br from-primary via-purple-100 to-primary p-1 mb-6 rounded-full">
+              <p className="bg-black text-indigo-300 py-3 rounded-full">
+                Answer 2
+              </p>
+            </li>
+            <li className="bg-gradient-to-br from-primary via-purple-100 to-primary p-1 mb-6 rounded-full">
+              <p className="bg-black text-indigo-300 py-3 rounded-full">
+                Answer 3
+              </p>
+            </li>
+            <li className="bg-gradient-to-br from-primary via-purple-100 to-primary p-1 mb-6 rounded-full">
+              <p className="bg-black text-indigo-300 py-3 rounded-full">
+                Answer 4
+              </p>
+            </li>
+          </ul>
+          <div className="self-end bg-gradient-to-br from-primary via-purple-100 to-primary rounded-full p-1 mb-3">
+            <button className="bg-black text-indigo-300 px-12 py-3 rounded-full text-xl md:text-2xl">
+              Next
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
   );
 };
 
