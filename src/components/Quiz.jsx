@@ -43,13 +43,24 @@ const Quiz = ({ questions = JSONData, nextTopicPath = "/" }) => {
 
   const [isFinished, setIsFinished] = useState(false);
 
+  const [correctChoices, setCorrectChoices] = useState(0);
+
+  const [incorrectChoices, setIncorrectChoices] = useState(0);
+
   const currentQuestion = questions[questionIndex];
 
   const totalQuestions = questions.length;
 
-  const isLastQuestion = questionIndex + 1 === totalQuestions;
+  const handleIsCorrectChoice = (e) => {
+    const selectedChoice = e.target.innerHTML;
+    if (selectedChoice === currentQuestion.correctAnswer) {
+      console.log("Es correcto");
+      setCorrectChoices((prev) => prev + 1);
+    } else {
+      console.log("Le erraste pa.");
+      setIncorrectChoices((prev) => prev + 1);
+    }
 
-  const handleClick = (e) => {
     if (questionIndex < totalQuestions) {
       setQuestionIndex((prev) => prev + 1);
     }
@@ -62,23 +73,17 @@ const Quiz = ({ questions = JSONData, nextTopicPath = "/" }) => {
   if (isFinished) {
     return (
       <div className="w-full rounded-xl bg-gradient-to-br from-primary via-purple-100 to-primary p-1 m-1">
-        <div className="flex flex-col h-full w-full bg-black p-6 rounded-xl text-indigo-300 justify-center items-center">
-          <h1 className="text-6xl md:text-8xl font-black text-center mb-6">
-            ¡Bien hecho!
+        <div className="flex flex-col h-full w-full bg-black p-6 rounded-xl text-indigo-300 justify-center items-center text-center">
+          <h1 className="text-4xl md:text-8xl font-black text-center mb-6">
+            Resultados
           </h1>
           <div className="mb-3">
-            <p className="text-3xl">Respuestas correctas: 1</p>
+            <p className="text-3xl">Respuestas correctas: {correctChoices}</p>
           </div>
           <div className="mb-3">
-            <p className="text-3xl">Respuestas incorrectas: 1</p>
-          </div>
-          <div className="bg-gradient-to-br from-primary via-purple-100 to-primary rounded-full p-1 inline-flex my-3 w-fit">
-            <Link
-              className="bg-black px-12 py-3 rounded-full text-xl md:text-2xl"
-              href={nextTopicPath}
-            >
-              Siguiente lección
-            </Link>
+            <p className="text-3xl">
+              Respuestas incorrectas: {incorrectChoices}
+            </p>
           </div>
         </div>
       </div>
@@ -91,39 +96,36 @@ const Quiz = ({ questions = JSONData, nextTopicPath = "/" }) => {
         <h1 className="text-6xl md:text-8xl font-black text-center mb-6">
           ¡Quiz!
         </h1>
-        <p className="text-end mb-3">
+        <p className="text-end text-xl mb-3">
           Pregunta {questionIndex + 1} de {totalQuestions}
         </p>
-        <h2 className="text-3xl md:text-4xl ">
-          <div className="bg-gradient-to-br from-primary via-purple-100 to-primary rounded-full inline-flex p-1 mb-6 mx-3">
+        <div className="flex flex-col md:flex-row justify-center items-center">
+          <span className="bg-gradient-to-br from-primary via-purple-100 to-primary rounded-full inline-flex p-1 mx-3 w-fit text-4xl">
             <button className="bg-black  rounded-full px-4">
               {questionIndex + 1}
             </button>
-          </div>
-          {currentQuestion.question}
-        </h2>
+          </span>
+          <h2 className="text-2xl md:text-4xl text-center text-pretty">
+            {currentQuestion.question}
+          </h2>
+        </div>
         <section className="text-center h-auto flex flex-col justify-center items-center">
-          <ul className="w-3/4 md:text-2xl">
+          <ul className="w-full md:w-3/4 md:text-2xl text-pretty">
             {currentQuestion.choices.map((choice, index) => (
               <li
                 className="bg-gradient-to-br from-primary via-purple-100 to-primary p-1 w-full my-6 rounded-full"
                 key={index}
               >
-                <button className="bg-black py-3 rounded-full w-full">
+                <button
+                  className="bg-black py-3 rounded-full w-full"
+                  onClick={handleIsCorrectChoice}
+                >
                   {choice}
                 </button>
               </li>
             ))}
           </ul>
         </section>
-        <div className="self-end bg-gradient-to-br from-primary via-purple-100 to-primary rounded-full p-1 mb-3">
-          <button
-            className="bg-black  px-12 py-3 rounded-full text-xl md:text-2xl"
-            onClick={handleClick}
-          >
-            {isLastQuestion ? "Finalizar" : "Siguiente"}
-          </button>
-        </div>
       </div>
     </div>
   );
