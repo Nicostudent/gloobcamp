@@ -1,7 +1,7 @@
-'use client'
-import React, { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,16 +11,36 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="fixed w-full bg-primary p-3">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center">
-          <Image src="/logo.png" alt="Logo" width={40} height={40} />
-          <Link href="/" className="text-white ml-3 text-lg">Globcamp</Link>
+        <div>
+          <Link
+            href="/"
+            className="flex items-center text-white font-bold ml-3 text-lg gap-3"
+          >
+            <Image src="/icon.svg" alt="Logo" width={40} height={40} />
+            Gloobcamp
+          </Link>
         </div>
         <div className="hidden md:flex items-center">
-          <Link href="/" className="text-white px-3 py-2 rounded-md text-sm font-medium">Home</Link>
-          <Link href="/about" className="text-white px-3 py-2 rounded-md text-sm font-medium">About</Link>
-          <Link href="/contact" className="text-white px-3 py-2 rounded-md text-sm font-medium">Contact</Link>
+          <Link
+            href="/"
+            className="text-white px-3 py-2 rounded-md text-sm font-medium"
+          >
+            Home
+          </Link>
+          <Link
+            href="/aboutus"
+            className="text-white px-3 py-2 rounded-md text-sm font-medium"
+          >
+            About
+          </Link>
+          <Link
+            href="/contact"
+            className="text-white px-3 py-2 rounded-md text-sm font-medium"
+          >
+            Contact
+          </Link>
         </div>
         <div className="md:hidden">
           <button
@@ -55,9 +75,24 @@ const Navbar = () => {
       </div>
       {isOpen && (
         <div className="md:hidden">
-          <Link href="/" className="block text-white px-3 py-2 rounded-md text-base font-medium">Home</Link>
-          <Link href="/about" className="block text-white px-3 py-2 rounded-md text-base font-medium">About</Link>
-          <Link href="/contact" className="block text-white px-3 py-2 rounded-md text-base font-medium">Contact</Link>
+          <Link
+            href="/"
+            className="block text-white px-3 py-2 rounded-md text-base font-medium"
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            className="block text-white px-3 py-2 rounded-md text-base font-medium"
+          >
+            About
+          </Link>
+          <Link
+            href="/contact"
+            className="block text-white px-3 py-2 rounded-md text-base font-medium"
+          >
+            Contact
+          </Link>
         </div>
       )}
     </nav>
