@@ -173,7 +173,7 @@
   },
   {
     "id": "5",
-    "title": "JavaScript Asíncrono: De Callbacks a Async/Await",
+    "title": "JavaScript Asíncrono",
     "content": "La programación asíncrona en JavaScript ha evolucionado significativamente a lo largo del tiempo. Aquí exploramos los conceptos clave y su evolución, desde los callbacks hasta async/await.\n  \n   1. **Callbacks**: Los callbacks son funciones que se pasan como argumentos a otras funciones y se ejecutan después de que una operación asíncrona ha finalizado. Aunque los callbacks permiten manejar operaciones asíncronas, pueden llevar a un código difícil de leer y mantener, especialmente cuando se anidan muchos callbacks.\n  \n   2. **Callback Hell**: También conocido como 'pyramid of doom', ocurre cuando se anidan múltiples callbacks dentro de otros callbacks. Esto hace que el código sea difícil de leer, entender y depurar. A medida que la complejidad aumenta, el código se vuelve más propenso a errores.\n  \n   3. **Promises**: Las promesas representan el resultado de una operación asíncrona que puede completarse en el futuro. Las promesas proporcionan una forma más estructurada de manejar el resultado de una operación asíncrona, permitiendo encadenar operaciones usando `then()` y manejar errores con `catch()`. Esto mejora la legibilidad y el mantenimiento del código en comparación con los callbacks.\n  \n   4. **Async/Await**: Introducido en ECMAScript 2017, `async/await` simplifica aún más el manejo de operaciones asíncronas. `async` convierte una función en una función asincrónica, que siempre devuelve una promesa. Dentro de una función `async`, se puede usar `await` para esperar a que una promesa se resuelva, lo que permite escribir código asíncrono que se asemeja al código síncrono en su estructura. Esto facilita la lectura y el manejo de errores de manera más intuitiva.",
     "questions": [
       {
@@ -507,6 +507,4 @@
     ],
     "image": "/path/to/image11.jpg"
   }
-  
-  
 ]
