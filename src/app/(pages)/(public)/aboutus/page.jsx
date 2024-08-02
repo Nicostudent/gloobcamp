@@ -1,29 +1,16 @@
-import UsersCard from "@/components/UsersCard";
-import teamMembers from "@/utils/team-members.json";
-import SubTitle from "@/components/SubTitle.jsx";
+import SubTitle from "@/components/Writing/SubTitle.jsx";
+import Paragraph from "@/components/Writing/Paragraph.jsx";
+import MapUsers from "@/components/UserCard/MapUsers.jsx";
 
 const AboutUs = () => {
   return (
-    <section id="aboutus">
+    <section>
       <SubTitle text="A little introduction of Our Project" />
+      <Paragraph text="Introduction Lorem ipsum odor amet, consectetuer adipiscing elit. Aliquam nostra orci euismod cursus efficitur vehicula. Neque aliquet condimentum amet tortor faucibus cubilia. Metus cubilia quis id magna porttitor. Pulvinar facilisi quis adipiscing class risus. Et orci accumsan feugiat ad suspendisse. Lobortis sapien amet consequat hendrerit fusce nec molestie. Litora ut pharetra rutrum pharetra molestie sit accumsan in. Sit per lobortis auctor neque; mattis gravida penatibus montes taciti. Ante magna blandit at scelerisque ipsum. Interdum curabitur platea nulla ridiculus sed suscipit himenaeos. Maximus ad consequat semper magnis tellus ullamcorper id fringilla? Ex nisi at lacus venenatis ultrices magnis tincidunt ullamcorper. Tempor aliquet sodales morbi facilisi est blandit natoque odio. Primis egestas elementum vitae sodales ac. Consequat ipsum himenaeos facilisi dolor nisl aliquam habitasse massa. Eros tellus senectus eros tempus aptent molestie amet. Neque hendrerit iaculis accumsan justo pellentesque" />
       <SubTitle text="Our Team" />
-      <p>Our team is made up of experienced developers and designers.</p>
+      <Paragraph text="Our team Lorem ipsum odor amet, consectetuer adipiscing elit. Imperdiet augue natoque mi sit pulvinar etiam imperdiet convallis. Suspendisse aliquet ad a a himenaeos nisl? Quis elit nam at habitasse mus enim arcu. Laoreet velit dictumst neque ullamcorper habitant." />
 
-      <div className="flex justify-center mt-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {teamMembers.map((member) => (
-            <UsersCard
-              key={member.name}
-              picture={member.image}
-              name={member.name}
-              lastname={member.lastname}
-              position={member.position}
-              github={member.github}
-              linkedin={member.linkedin}
-            />
-          ))}
-        </div>
-      </div>
+      <MapUsers />
     </section>
   );
 };

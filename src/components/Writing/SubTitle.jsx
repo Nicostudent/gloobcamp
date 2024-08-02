@@ -1,6 +1,6 @@
 const SubTitle = ({ text }) => {
   return (
-    <h2 className="text-6xl font-bold text-secondary">
+    <h2 className="font-bold text-4xl md:text-6xl text-secondary">
       {text}
       <span className="text-primary">.</span>
     </h2>
