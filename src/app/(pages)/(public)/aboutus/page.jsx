@@ -1,5 +1,5 @@
-import UsersCard from "@/app/components/UsersCard";
-import teamMembers from "@/app/utils/team-members.json";
+import UsersCard from "@/components/UsersCard";
+import teamMembers from "@/utils/team-members.json";
 
 const AboutUs = () => {
   return (
