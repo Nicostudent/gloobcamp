@@ -10,14 +10,22 @@ const Quiz = () => {
       </h2>
       <section className="text-center h-auto flex flex-col justify-center items-center">
         <ul className="w-3/4 md:text-2xl">
-          <li className="border border-primary mb-3 py-3 rounded">Answer 1</li>
-          <li className="border border-primary mb-3 py-3 rounded">Answer 2</li>
-          <li className="border border-primary mb-3 py-3 rounded">Answer 3</li>
-          <li className="border border-primary mb-3 py-3 rounded">Answer 4</li>
+          <li className="border border-primary hover:bg-primary hover:text-white mb-3 py-3 rounded">
+            Answer 1
+          </li>
+          <li className="border border-primary hover:bg-primary hover:text-white mb-3 py-3 rounded">
+            Answer 2
+          </li>
+          <li className="border border-primary hover:bg-primary hover:text-white mb-3 py-3 rounded">
+            Answer 3
+          </li>
+          <li className="border border-primary hover:bg-primary hover:text-white mb-3 py-3 rounded">
+            Answer 4
+          </li>
         </ul>
         <div className="self-end">
           <button className="bg-primary text-white rounded-md p-4 font-medium text-xl">
-            Submit
+            Next
           </button>
         </div>
       </section>
