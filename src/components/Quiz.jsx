@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 
 const JSONData = [
   {
@@ -54,10 +53,8 @@ const Quiz = ({ questions = JSONData, nextTopicPath = "/" }) => {
   const handleIsCorrectChoice = (e) => {
     const selectedChoice = e.target.innerHTML;
     if (selectedChoice === currentQuestion.correctAnswer) {
-      console.log("Es correcto");
       setCorrectChoices((prev) => prev + 1);
     } else {
-      console.log("Le erraste pa.");
       setIncorrectChoices((prev) => prev + 1);
     }
 
