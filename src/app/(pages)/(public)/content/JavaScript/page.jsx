@@ -5,10 +5,12 @@ import SubTitle from "@/components/Writing/SubTitle";
 import jsTopics from "@/utils/js-topics-and-questions.json";
 import Link from "next/link";
 import { useState } from "react";
+import { useConfetti } from "@/utils/useConfetti.js";
 const Subject = () => {
   const [progress, setProgress] = useState(0);
   const limit = jsTopics.length;
   const percentage = 100 / limit;
+
   console.log(percentage);
   const handleCheckboxChange = (event) => {
     if (event.target.checked) {
@@ -20,11 +22,14 @@ const Subject = () => {
 
   if (progress >= 100) {
     return (
-      <section>
-        <Heading text="JavaScript" />
-        <SubTitle text="Content" />
-        <Paragraph text="Congratulations, you have completed all the topics!" />
-      </section>
+      useConfetti(),
+      (
+        <section>
+          <Heading text="JavaScript" />
+          <SubTitle text="Content" />
+          <Paragraph text="Congratulations, you have completed all the topics!" />
+        </section>
+      )
     );
   }
 
