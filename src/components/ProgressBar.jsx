@@ -1,4 +1,4 @@
-export const ProgressBar = ({ progress }) => {
+const ProgressBar = ({ progress }) => {
   console.log(progress);
   
   return (
@@ -17,3 +17,4 @@ export const ProgressBar = ({ progress }) => {
   );
 };
 
+export default ProgressBar;

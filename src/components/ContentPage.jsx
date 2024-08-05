@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-export const ContentPage = ({ title, content, children = null }) => {
+const ContentPage = ({ title, content, children = null }) => {
   const [modal, setModal] = useState(false);
 
   return (
@@ -22,3 +22,5 @@ export const ContentPage = ({ title, content, children = null }) => {
     </div>
   );
 };
+
+export default ContentPage;
