@@ -10,6 +10,8 @@ import useProgress from "@/utils/useProgress";
 
 const Subject = () => {
   const { progress, handleCheckboxChange } = useProgress(jsTopics.length);
+  console.log(jsTopics.length);
+
   const jsConfetti = new JSConfetti();
 
   if (progress >= 100) {
@@ -28,10 +30,9 @@ const Subject = () => {
     <section>
       <Heading text="JavaScript" />
       <SubTitle text="Content" />
+      <ProgressBar progress={progress} />
 
       <IndexCard handleCheckboxChange={handleCheckboxChange} />
-
-      <ProgressBar progress={progress} />
     </section>
   );
 };

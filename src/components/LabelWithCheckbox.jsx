@@ -1,9 +1,6 @@
-const LabelWithCheckbox = ({ childrenText, key, inputId, inputOnClick }) => {
+const LabelWithCheckbox = ({ childrenText, inputId, inputOnClick }) => {
   return (
-    <label
-      key={key}
-      className="flex items-center gap-4 hover:bg-slate-100 py-4 rounded-md duration-100 ease-in-out"
-    >
+    <label className="flex items-center gap-4 hover:bg-slate-100 py-4 rounded-md duration-100 ease-in-out">
       <input
         type="checkbox"
         id={inputId}
