@@ -5,7 +5,7 @@ import SubTitle from "@/components/Writing/SubTitle";
 import jsTopics from "@/utils/js-topics-and-questions.json";
 import ProgressBar from "@/components/ProgressBar";
 import JSConfetti from "js-confetti";
-import IndexCard from "@/components/IndexCard/IndexCard";
+import {IndexCard} from "@/components/IndexCard/IndexCard";
 import useProgress from "@/utils/useProgress";
 
 const Subject = () => {

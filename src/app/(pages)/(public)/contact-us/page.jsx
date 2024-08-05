@@ -52,7 +52,7 @@ const ContactUs = () => {
               <p className="text-tertiary text-lg font-normal leading-7 mb-6 text-center">Want to connect? Send us a message!</p>
             </div>
             <div className="flex flex-col items-center gap-5 bg-primary rounded-full justify-center w-52 lg:w-72 aspect-square">
-              <Image src="/icon.svg" alt="Logo"  />
+              <Image src="/icon.svg" alt="Logo" width={100} height={100} />
               <h2 className="text-white font-manrope text-2xl font-semibold lg:text-left text-center">Gloobcamp</h2>
             </div>
           </div>

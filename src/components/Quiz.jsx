@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { LinkButton } from "./LinkButton";
 
 
 
@@ -51,8 +52,7 @@ const Quiz = ({ questions, nextTopicPath }) => {
             </p>
           </div>
         </div>
-        <Link className="self-end text-end w-full border-2 border-red-400" href={nextTopicPath}>Next
-        </Link>
+        <LinkButton href={nextTopicPath} />        
       </div>
     );
   }

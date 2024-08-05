@@ -2,7 +2,6 @@
 import { ContentPage } from "@/components/ContentPage.jsx";
 import jsTopics from "@/utils/js-topics-and-questions.json";
 import Quiz from "@/components/Quiz";
-import Link from "next/link";
 import { EndTopic } from "@/components/EndTopic";
 
 const TopicPage = ({ params: { topics } }) => {
@@ -12,7 +11,7 @@ const TopicPage = ({ params: { topics } }) => {
   if (`/${topics}` === "/end") {
     return <EndTopic />;
   }
-  
+
   if (!topicData) {
     return <div>Topic not found</div>;
   }
