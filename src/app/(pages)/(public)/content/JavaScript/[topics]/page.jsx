@@ -6,7 +6,6 @@ import EndTopic  from "@/components/EndTopic";
 
 const TopicPage = ({ params: { topics } }) => {
   const topicData = jsTopics.find((t) => t.path === `/${topics}`);
-  console.log(`/${topics}`);
 
   if (`/${topics}` === "/end") {
     return <EndTopic />;

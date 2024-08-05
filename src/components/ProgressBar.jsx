@@ -1,5 +1,4 @@
 const ProgressBar = ({ progress }) => {
-  console.log(progress);
   
   return (
     <article>

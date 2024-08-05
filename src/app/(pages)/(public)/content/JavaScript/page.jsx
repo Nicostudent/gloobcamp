@@ -10,7 +10,6 @@ import useProgress from "@/utils/useProgress";
 
 const Subject = () => {
   const { progress, handleCheckboxChange } = useProgress(jsTopics.length);
-  console.log(jsTopics.length);
 
   const jsConfetti = new JSConfetti();
 
