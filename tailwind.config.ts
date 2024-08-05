@@ -22,6 +22,7 @@ const config: Config = {
     },
   },
   plugins: [
+    require('@tailwindcss/typography'),
     plugin(function ({addVariant}) {
       addVariant('progress-unfilled', ['&::-webkit-progress-bar', '&']);
       addVariant('progress-filled', ['&::-webkit-progress-value', '&::-moz-progress-bar', '&']);

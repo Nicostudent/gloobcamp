@@ -82,18 +82,21 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden">
           <Link
+            onClick={toggleDropdown}
             href="/"
             className="block text-white px-3 py-2 rounded-md text-base font-medium"
           >
             Home
           </Link>
           <Link
+            onClick={toggleDropdown}
             href="/about"
             className="block text-white px-3 py-2 rounded-md text-base font-medium"
           >
             About
           </Link>
           <Link
+            onClick={toggleDropdown}
             href="/contact"
             className="block text-white px-3 py-2 rounded-md text-base font-medium"
           >

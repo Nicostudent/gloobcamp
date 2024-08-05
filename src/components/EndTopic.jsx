@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Paragraph from "./Writing/Paragraph";
-export const EndTopic = ({paragraph = null}) => {
+const EndTopic = ({paragraph = null}) => {
   return (
     <div>
       <div>
@@ -10,3 +10,4 @@ export const EndTopic = ({paragraph = null}) => {
     </div>
   );
 };
+export default EndTopic;

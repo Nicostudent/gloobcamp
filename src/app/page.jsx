@@ -1,7 +1,5 @@
 import Heading from "@/components/Writing/Heading";
-import SubTitle from "@/components/Writing/SubTitle";
 import Paragraph from "@/components/Writing/Paragraph";
-import Link from "next/link";
 import { LinkButton } from "@/components/LinkButton";
 
 const App = () => {
