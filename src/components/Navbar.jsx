@@ -36,7 +36,7 @@ const Navbar = () => {
             About
           </Link>
           <Link
-            href="/contact"
+            href="/contact-us"
             className="text-white px-3 py-2 rounded-md text-sm font-medium"
           >
             Contact
