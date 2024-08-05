@@ -1,43 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
-const JSONData = [
-  {
-    question: "¿Qué es un contexto de ejecución en JavaScript?",
-    choices: [
-      "Una variable dentro de una función",
-      "El entorno donde se evalúa y ejecuta el código",
-      "Una estructura de datos",
-      "Una función global",
-    ],
-    correctAnswer: "El entorno donde se evalúa y ejecuta el código",
-  },
-  {
-    question:
-      "¿Cuántos contextos de ejecución existen en una aplicación JavaScript?",
-    choices: [
-      "Solo uno, el contexto global",
-      "Uno por cada función",
-      "Uno por cada variable",
-      "Dos, el global y el de función",
-    ],
-    correctAnswer: "Uno por cada función",
-  },
-  {
-    question: "¿Qué significa 'hoisting' en JavaScript?",
-    choices: [
-      "Asignar valores a las variables",
-      "Elevar las declaraciones de variables y funciones al principio del contexto de ejecución",
-      "Ejecutar el código línea por línea",
-      "Crear un nuevo contexto de ejecución",
-    ],
-    correctAnswer:
-      "Elevar las declaraciones de variables y funciones al principio del contexto de ejecución",
-  },
-];
 
-const Quiz = ({ questions = JSONData, nextTopicPath = "/" }) => {
+
+const Quiz = ({ questions, nextTopicPath }) => {
   const [questionIndex, setQuestionIndex] = useState(0);
 
   const [isFinished, setIsFinished] = useState(false);
@@ -83,6 +51,8 @@ const Quiz = ({ questions = JSONData, nextTopicPath = "/" }) => {
             </p>
           </div>
         </div>
+        <Link className="self-end text-end w-full border-2 border-red-400" href={nextTopicPath}>Next
+        </Link>
       </div>
     );
   }

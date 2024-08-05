@@ -1,5 +1,5 @@
 import LabelWithCheckbox from "@/components/LabelWithCheckbox";
-import IndexLink from "@/components/IndexCard/IndexLink";
+import { IndexLink } from "@/components/IndexCard/IndexLink";
 import jsTopics from "@/utils/js-topics-and-questions.json";
 const IndexCard = ({ handleCheckboxChange }) => {
   return (

@@ -31,7 +31,6 @@ const Subject = () => {
       <Heading text="JavaScript" />
       <SubTitle text="Content" />
       <ProgressBar progress={progress} />
-
       <IndexCard handleCheckboxChange={handleCheckboxChange} />
     </section>
   );

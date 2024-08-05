@@ -18,7 +18,13 @@ const Navbar = () => {
             href="/"
             className="flex items-center text-white font-bold ml-3 text-lg gap-3"
           >
-            <Image src="/icon.svg" alt="Logo" width={40} height={40} />
+            <Image
+              src="/icon.svg"
+              alt="Logo"
+              width={40} 
+              height={40} 
+              style={{ width: "40px", height: "40px" }}
+            />
             Gloobcamp
           </Link>
         </div>

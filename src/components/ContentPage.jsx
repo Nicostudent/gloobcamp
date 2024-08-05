@@ -16,7 +16,6 @@ export const ContentPage = ({ title, content, children = null }) => {
       </button>
       {modal && (
         <div>
-          insert quiz here!
           {children}
         </div>
       )}
