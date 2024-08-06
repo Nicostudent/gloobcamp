@@ -11,7 +11,7 @@ import CompletedContent from "@/components/Dashboard/CompletedContent";
 
 const Subject = () => {
   const { progress, handleCheckboxChange } = useProgress(jsTopics.length);
-  const PROGRESS_MAX_VALUE = 10;
+  const PROGRESS_MAX_VALUE = 100;
   const PROGRESS_VALUE = progress.toFixed();
 
   if (PROGRESS_VALUE >= PROGRESS_MAX_VALUE) {
