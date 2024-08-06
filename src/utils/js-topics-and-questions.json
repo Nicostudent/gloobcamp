@@ -36,7 +36,8 @@
       }
     ],
     "image": "/path/to/image1.jpg",
-    "path": "/execution-context"
+    "path": "/execution-context",
+    "next" : "/var-let-const"
   },
   {
     "id": "2",
@@ -75,7 +76,8 @@
       }
     ],
     "image": "/path/to/image2.jpg",
-    "path": "/var-let-const"
+    "path": "/var-let-const",
+    "next" : "/this-keyword"
   },
   {
     "id": "3",
@@ -124,7 +126,8 @@
       }
     ],
     "image": "/path/to/image3.jpg",
-    "path": "/this-keyword"
+    "path": "/this-keyword",
+    "next" : "/async-await"
   },
   {
     "id": "4",
@@ -173,7 +176,8 @@
       }
     ],
     "image": "/path/to/image5.jpg",
-    "path": "/async-await"
+    "path": "/async-await",
+    "next" : "/prototypes"
   },
   {
     "id": "5",
@@ -222,7 +226,8 @@
       }
     ],
     "image": "/path/to/image6.jpg",
-    "path": "/prototypes"
+    "path": "/prototypes",
+    "next" : "/inheritance"
   },
   {
     "id": "6",
@@ -271,7 +276,8 @@
       }
     ],
     "image": "/path/to/image7.jpg",
-    "path": "/inheritance"
+    "path": "/inheritance",
+    "next" : "/descrtucturing"
   },
   {
     "id": "7",
@@ -320,7 +326,8 @@
       }
     ],
     "image": "/path/to/image8.jpg",
-    "path": "/descrtucturing"
+    "path": "/descrtucturing",
+    "next" : "/arrow-functions"
   },
   {
     "id": "8",
@@ -369,7 +376,8 @@
       }
     ],
     "image": "/path/to/image9.jpg",
-    "path": "/arrow-functions"
+    "path": "/arrow-functions",
+    "next" : "/closures"
   },
   {
     "id": "9",
@@ -418,56 +426,10 @@
       }
     ],
     "image": "/path/to/image10.jpg",
-    "path": "/closures"
+    "path": "/closures",
+    "next" : "/call-stack"
   },
-  {
-    "id": "10",
-    "title": "Closures in JavaScript",
-    "content": "A closure in JavaScript is a function that has access to variables from its creation context, even after the outer function has finished executing. Closures allow a function to have 'memory' of the variables from its original context, which is useful for creating functions with private state and for advanced programming techniques.\n\n1. **Defining a Closure**: A closure is created when an inner function accesses variables from its outer function. For example:\n\n```javascript\nfunction outerFunction() {\n  let outerVariable = 'I am outside!';\n  function innerFunction() {\n    console.log(outerVariable);\n  }\n  return innerFunction;\n}\n\nconst myClosure = outerFunction();\nmyClosure(); // I am outside!\n```\n\n2. **Privacy and Encapsulation**: Closures are used to create private variables. Variables in the outer function cannot be accessed directly from outside the function, but the inner function can access them.\n\n```javascript\nfunction createCounter() {\n  let count = 0;\n  return function() {\n    count++;\n    return count;\n  };\n}\n\nconst counter = createCounter();\nconsole.log(counter()); // 1\nconsole.log(counter()); // 2\n```\n\n3. **Closures and Iterators**: Closures can be used to create custom iterators that maintain the state of a series of values.\n\n```javascript\nfunction createRange(start, end) {\n  let current = start;\n  return function() {\n    if (current <= end) return current++;\n    return null;\n  };\n}\n\nconst range = createRange(1, 3);\nconsole.log(range()); // 1\nconsole.log(range()); // 2\nconsole.log(range()); // 3\nconsole.log(range()); // null\n```\n\n4. **Lexical Scope**: Closures are based on lexical scope, meaning that functions remember the environment in which they were created. This is different from dynamic scope, where variables are searched in the calling context of the function.\n\n5. **Using Closures in Callbacks**: Closures are useful in callback functions and events, where they can capture the state of variables at the time the callback is created.\n\n```javascript\nfunction setupButton(buttonId) {\n  let clickCount = 0;\n  document.getElementById(buttonId).addEventListener('click', function() {\n    clickCount++;\n    console.log(`Button clicked ${clickCount} times`);\n  });\n}\n```\n\nClosures provide great flexibility and are a powerful tool for state management and creating more complex functions in JavaScript.",
-    "questions": [
-      {
-        "question": "What is a closure in JavaScript?",
-        "choices": [
-          "A function that has access to variables from its creation context",
-          "A function that does not have access to external variables",
-          "A special type of variable",
-          "A function that executes immediately"
-        ],
-        "correctAnswer": "A function that has access to variables from its creation context"
-      },
-      {
-        "question": "How is a closure used to create private variables?",
-        "choices": [
-          "By encapsulating variables in an outer function and returning an inner function",
-          "By declaring variables as `const` within the function",
-          "Using the `Object.freeze()` method",
-          "Defining variables in a separate module"
-        ],
-        "correctAnswer": "By encapsulating variables in an outer function and returning an inner function"
-      },
-      {
-        "question": "What is the difference between lexical scope and dynamic scope?",
-        "choices": [
-          "Lexical scope remembers the environment in which the function was created, while dynamic scope searches for variables in the calling context",
-          "Lexical scope searches for variables in the calling context, while dynamic scope remembers the environment in which the function was created",
-          "Lexical scope only works with objects, while dynamic scope works with functions",
-          "There is no difference between the two scopes"
-        ],
-        "correctAnswer": "Lexical scope remembers the environment in which the function was created, while dynamic scope searches for variables in the calling context"
-      },
-      {
-        "question": "How can closures be used in callbacks and events?",
-        "choices": [
-          "By capturing the state of variables at the time the callback is created",
-          "By executing functions in a global context",
-          "By using the `new` operator to create new instances",
-          "By using the `bind()` method to bind the context"
-        ],
-        "correctAnswer": "By capturing the state of variables at the time the callback is created"
-      }
-    ],
-    "image": "/path/to/image10.jpg"
-  },
+  
   {
     "id": "11",
     "title": "JavaScript Call Stack",
@@ -525,7 +487,8 @@
       }
     ],
     "image": "/path/to/image5.jpg",
-    "path": "/call-stack"
+    "path": "/call-stack",
+    "next" : "/value-types-reference-types"
   },
   {
     "id": "12",
@@ -554,27 +517,18 @@
       },
       {
         "question": "Which of the following is an example of a value type?",
-        "choices": [
-          "Number",
-          "Object",
-          "Array",
-          "Function"
-        ],
+        "choices": ["Number", "Object", "Array", "Function"],
         "correctAnswer": "Number"
       },
       {
         "question": "Which of the following is an example of a reference type?",
-        "choices": [
-          "Array",
-          "String",
-          "Boolean",
-          "Symbol"
-        ],
+        "choices": ["Array", "String", "Boolean", "Symbol"],
         "correctAnswer": "Array"
       }
     ],
     "image": "/path/to/image12.jpg",
-    "path": "/value-types-reference-types"
+    "path": "/value-types-reference-types",
+    "next" : "/typing-systems"
   },
   {
     "id": "13",
@@ -623,7 +577,8 @@
       }
     ],
     "image": "/path/to/image13.jpg",
-    "path": "/typing-systems"
+    "path": "/typing-systems",
+    "next" : "/comparison-operators"
   },
   {
     "id": "14",
@@ -662,17 +617,13 @@
       },
       {
         "question": "Which operator would you use to compare two values without type coercion?",
-        "choices": [
-          "`===`",
-          "`==`",
-          "`typeof`",
-          "`!=`"
-        ],
+        "choices": ["`===`", "`==`", "`typeof`", "`!=`"],
         "correctAnswer": "`===`"
       }
     ],
     "image": "/path/to/image14.jpg",
-    "path": "/comparison-operators"
+    "path": "/comparison-operators",
+    "next" : "/expressions-vs-statements"
   },
   {
     "id": "15",
@@ -701,12 +652,7 @@
       },
       {
         "question": "Which of the following is an example of a statement?",
-        "choices": [
-          "let y = 5;",
-          "Math.max(1, 2)",
-          "'Hello'.length",
-          "3 * 4"
-        ],
+        "choices": ["let y = 5;", "Math.max(1, 2)", "'Hello'.length", "3 * 4"],
         "correctAnswer": "let y = 5;"
       },
       {
@@ -721,7 +667,8 @@
       }
     ],
     "image": "/path/to/image15.jpg",
-    "path": "/expressions-vs-statements"
+    "path": "/expressions-vs-statements",
+    "next" : "/iife-modules-namespaces"
   },
   {
     "id": "16",
@@ -770,7 +717,8 @@
       }
     ],
     "image": "/path/to/image16.jpg",
-    "path": "/iife-modules-namespaces"
+    "path": "/iife-modules-namespaces",
+    "next" : "/timeout-interval-animationframe"
   },
   {
     "id": "17",
@@ -819,7 +767,8 @@
       }
     ],
     "image": "/path/to/image17.jpg",
-    "path": "/timeout-interval-animationframe"
+    "path": "/timeout-interval-animationframe",
+    "next" : "/javascript-engines"
   },
   {
     "id": "18",
@@ -828,12 +777,7 @@
     "questions": [
       {
         "question": "Which JavaScript engine is used by Google Chrome and Node.js?",
-        "choices": [
-          "V8",
-          "SpiderMonkey",
-          "JavaScriptCore",
-          "Chakra"
-        ],
+        "choices": ["V8", "SpiderMonkey", "JavaScriptCore", "Chakra"],
         "correctAnswer": "V8"
       },
       {
@@ -848,12 +792,7 @@
       },
       {
         "question": "Which JavaScript engine was used in Internet Explorer and early versions of Edge?",
-        "choices": [
-          "Chakra",
-          "V8",
-          "SpiderMonkey",
-          "JavaScriptCore"
-        ],
+        "choices": ["Chakra", "V8", "SpiderMonkey", "JavaScriptCore"],
         "correctAnswer": "Chakra"
       },
       {
@@ -868,7 +807,8 @@
       }
     ],
     "image": "/path/to/image18.jpg",
-    "path": "/javascript-engines"
+    "path": "/javascript-engines",
+    "next" : "/bitwise-operators-typed-arrays-array-buffers"
   },
   {
     "id": "19",
@@ -907,17 +847,13 @@
       },
       {
         "question": "Which typed array represents 32-bit signed integers?",
-        "choices": [
-          "Int32Array",
-          "Uint8Array",
-          "Float32Array",
-          "Int8Array"
-        ],
+        "choices": ["Int32Array", "Uint8Array", "Float32Array", "Int8Array"],
         "correctAnswer": "Int32Array"
       }
     ],
     "image": "/path/to/image19.jpg",
-    "path": "/bitwise-operators-typed-arrays-array-buffers"
+    "path": "/bitwise-operators-typed-arrays-array-buffers",
+    "next" : "/dom-layout-trees"
   },
   {
     "id": "20",
@@ -966,8 +902,9 @@
       }
     ],
     "image": "/path/to/image20.jpg",
-    "path": "/dom-layout-trees"
-  }, 
+    "path": "/dom-layout-trees",
+    "next" : "/this-call-apply-binds"
+  },
   {
     "id": "21",
     "title": "this, call, apply, and bind",
@@ -1015,7 +952,8 @@
       }
     ],
     "image": "/path/to/image21.jpg",
-    "path": "/this-call-apply-bind"
+    "path": "/this-call-apply-bind",
+    "next" : "/new-constructor-instanceof-instancess"
   },
   {
     "id": "22",
@@ -1064,7 +1002,8 @@
       }
     ],
     "image": "/path/to/image22.jpg",
-    "path": "/new-constructor-instanceof-instances"
+    "path": "/new-constructor-instanceof-instances",
+    "next" : "/object-create-assign"
   },
   {
     "id": "23",
@@ -1113,7 +1052,8 @@
       }
     ],
     "image": "/path/to/image23.jpg",
-    "path": "/object-create-assign"
+    "path": "/object-create-assign",
+    "next" : "/map-reduce-filter"
   },
   {
     "id": "24",
@@ -1162,7 +1102,8 @@
       }
     ],
     "image": "/path/to/image24.jpg",
-    "path": "/map-reduce-filter"
+    "path": "/map-reduce-filter",
+    "next" : "/pure-functions-side-effects-state-mutation"
   },
   {
     "id": "25",
@@ -1211,7 +1152,8 @@
       }
     ],
     "image": "/path/to/image25.jpg",
-    "path": "/pure-functions-side-effects-state-mutation"
+    "path": "/pure-functions-side-effects-state-mutation",
+    "next" : "/higher-order-functions"
   },
   {
     "id": "26",
@@ -1250,17 +1192,13 @@
       },
       {
         "question": "Which higher-order function is used to accumulate a single value from an array?",
-        "choices": [
-          "`reduce`",
-          "`map`",
-          "`filter`",
-          "`forEach`"
-        ],
+        "choices": ["`reduce`", "`map`", "`filter`", "`forEach`"],
         "correctAnswer": "`reduce`"
       }
     ],
     "image": "/path/to/image26.jpg",
-    "path": "/higher-order-functions"
+    "path": "/higher-order-functions",
+    "next" : "/recursion"
   },
   {
     "id": "27",
@@ -1309,7 +1247,8 @@
       }
     ],
     "image": "/path/to/image27.jpg",
-    "path": "/recursion"
+    "path": "/recursion",
+    "next" : "/collections-generators"
   },
   {
     "id": "28",
@@ -1348,17 +1287,13 @@
       },
       {
         "question": "Which collection type in JavaScript allows you to store key-value pairs where keys can be of any type?",
-        "choices": [
-          "Map",
-          "Set",
-          "WeakMap",
-          "Array"
-        ],
+        "choices": ["Map", "Set", "WeakMap", "Array"],
         "correctAnswer": "Map"
       }
     ],
     "image": "/path/to/image28.jpg",
-    "path": "/collections-generators"
+    "path": "/collections-generators",
+    "next" : "/data-structure"
   },
   {
     "id": "29",
@@ -1407,7 +1342,8 @@
       }
     ],
     "image": "/path/to/image29.jpg",
-    "path": "/data-structures"
+    "path": "/data-structures",
+    "next" : "/design-patterns"
   },
   {
     "id": "30",
@@ -1466,7 +1402,8 @@
       }
     ],
     "image": "/path/to/image30.jpg",
-    "path": "/design-patterns"
+    "path": "/design-patterns",
+    "next" : "/tpartial-applications-currying-compose-pipe"
   },
   {
     "id": "32",
@@ -1515,7 +1452,8 @@
       }
     ],
     "image": "/path/to/image32.jpg",
-    "path": "/partial-applications-currying-compose-pipe"
+    "path": "/partial-applications-currying-compose-pipe",
+    "next" : "/clean-code"
   },
   {
     "id": "33",
@@ -1564,28 +1502,7 @@
       }
     ],
     "image": "/path/to/image34.jpg",
-    "path": "/clean-code"
+    "path": "/clean-code",
+    "next" : "/end"
   }
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ]

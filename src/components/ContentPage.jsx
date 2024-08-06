@@ -1,25 +1,32 @@
-"use client"; 
+"use client";
 
 import React, { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
-export const ContentPage = ({ title, content, children = null }) => {
+const ContentPage = ({ title, content, children = null }) => {
   const [modal, setModal] = useState(false);
 
   return (
-    <div className='w-full h-full gap-10 flex flex-col justify-between items-center'>
-      <h1 className='text-center text-4xl'>{title}</h1>
-      <div className='flex justify-center items-center'>
-        <p className='text-center w-1/2'>{content}</p>
+    <div className='w-full h-full flex flex-col md:gap-10 justify-between items-center'>
+      <h1 className='text-center text-2xl md:text-4xl font-bold'>{title}</h1>
+      <div className='flex justify-center items-center w-full'>
+        <div className='w-full  prose md:prose-lg text-left markdown-content'>
+          <ReactMarkdown>{content}</ReactMarkdown>
+        </div>
       </div>
-      <button className='border rounded-lg px-2 p-6' onClick={() => setModal(!modal)}>
+      <button
+        className='border rounded-lg px-4 py-2 md:px-6 md:py-3'
+        onClick={() => setModal(!modal)}
+      >
         Take the Quiz
       </button>
       {modal && (
-        <div>
-          insert quiz here!
+        <div className='w-full mt-4'>
           {children}
         </div>
       )}
     </div>
   );
 };
+
+export default ContentPage;

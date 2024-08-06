@@ -18,21 +18,21 @@ const NotFound = () => {
   };
 
   return (
-    <main className="h-screen flex flex-col justify-center items-center">
+    <main className="flex flex-col justify-center items-center h-screen">
       <div className="relative">
-        <h1 className="text-9xl font-extrabold text-black tracking-widest">
+        <h1 className="font-extrabold text-9xl text-black tracking-widest">
           404
         </h1>
-        <div className="bg-primary px-2 text-xl rounded rotate-12 absolute top-10 font-bold w-full text-center tracking-widest">
+        <div className="top-10 absolute bg-primary px-2 rounded w-full font-bold text-center text-xl tracking-widest rotate-12">
           <p>Page Not Found</p>
         </div>
       </div>
-      <p className="text-black mt-4">
+      <p className="mt-4 text-black">
         You will be redirected to home in {countdown} seconds...
       </p>
       <button
         onClick={handleGoHomeClick}
-        className="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-5"
+        className="bg-primary hover:bg-blue-700 mt-5 px-4 py-2 border border-blue-700 rounded font-bold text-white"
       >
         Go Home
       </button>
