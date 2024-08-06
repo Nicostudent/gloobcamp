@@ -10,8 +10,8 @@ const ContentPage = ({ title, content, children = null }) => {
     <div className='w-full h-full flex flex-col gap-10 justify-between items-center'>
       <h1 className='text-center text-4xl font-bold'>{title}</h1>
       <div className='flex justify-center items-center w-full'>
-        <div className='w-full pr-12 prose prose-lg text-start overflow-x-scroll md:overflow-x-hidden  '>
-          <ReactMarkdown >{content}</ReactMarkdown>
+        <div className='w-full borer prose prose-lg text-start overflow-x-scroll overflow-auto  '>
+          <ReactMarkdown  className={''}>{content}</ReactMarkdown>
         </div>
       </div>
      
