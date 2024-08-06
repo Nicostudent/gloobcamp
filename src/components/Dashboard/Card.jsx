@@ -12,7 +12,7 @@ const Card = ({ handleCheckboxChange }) => {
             inputId={topic.id}
             inputOnClick={handleCheckboxChange}
             childrenText={
-              <LinkButton href={`/content/JavaScript/${topic.path}`}>
+              <LinkButton href={`/content/javascript/${topic.path}`}>
                 {topic.id}. {topic.title}
               </LinkButton>
             }
