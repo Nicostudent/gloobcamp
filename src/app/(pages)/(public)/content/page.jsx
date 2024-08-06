@@ -5,8 +5,8 @@ import Paragraph from "@/components/Writing/Paragraph";
 
 const page = () => {
   return (
-    <section className="flex flex-col justify-center items-center h-screen">
-      <Heading>Welcome</Heading>
+    <section className="flex flex-col justify-center items-center space-y-4 h-screen">
+      <Heading addClass={"text-center"}>What do you want to learn now?</Heading>
       <Paragraph>Choose your content</Paragraph>
 
       <div className="flex justify-between items-center gap-8">

@@ -19,7 +19,7 @@ const App = () => {
       </div>
       <div className="flex flex-col justify-center items-center px-4 max-w-lg text-center">
         <Paragraph>Start your learning journey!</Paragraph>
-        <LinkButton dark href={"/content/javascript"}>
+        <LinkButton dark href={"/content"}>
           Click here
         </LinkButton>
       </div>
