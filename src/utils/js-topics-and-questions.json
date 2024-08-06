@@ -1,0 +1,1508 @@
+[
+  {
+    "id": "1",
+    "title": "Execution Context in JavaScript",
+    "content": "The execution context is the environment in which JavaScript code is evaluated and executed. When the browser (or the JavaScript runtime environment) starts executing your code, it first enters a global execution context. This context is created before any code is executed and handles the execution of the entire script. Every time a function is called, a new execution context is created for that function. This execution context has two phases: the creation phase and the execution phase. During the creation phase, the JavaScript engine scans the code and allocates memory for variables and functions. This process is called 'hoisting,' which means that variable and function declarations are lifted to the top of their execution context. Variables declared with `var` are initialized with the value `undefined` during hoisting. This means that you can reference a variable before its declaration in the code, but if you try to use it before it is assigned a value, you will get `undefined`. Function declarations are also 'hoisted,' and their full definition is placed at the top of the context, allowing functions to be called before their declaration in the code. However, function expressions and variables declared with `let` and `const` are not initialized during hoisting and cannot be used before their declaration. In the execution phase, the engine executes the code line by line. Understanding how hoisting works is important to avoid unexpected errors and to better understand how JavaScript manages execution context and the scope of variables and functions.",
+    "questions": [
+      {
+        "question": "What is an execution context in JavaScript?",
+        "choices": [
+          "A variable within a function",
+          "The environment where the code is evaluated and executed",
+          "A data structure",
+          "A global function"
+        ],
+        "correctAnswer": "The environment where the code is evaluated and executed"
+      },
+      {
+        "question": "How many execution contexts exist in a JavaScript application?",
+        "choices": [
+          "Only one, the global context",
+          "One for each function",
+          "One for each variable",
+          "Two, the global and the function context"
+        ],
+        "correctAnswer": "One for each function"
+      },
+      {
+        "question": "What does 'hoisting' mean in JavaScript?",
+        "choices": [
+          "Assigning values to variables",
+          "Lifting variable and function declarations to the top of the execution context",
+          "Executing the code line by line",
+          "Creating a new execution context"
+        ],
+        "correctAnswer": "Lifting variable and function declarations to the top of the execution context"
+      }
+    ],
+    "image": "/path/to/image1.jpg",
+    "path": "/execution-context",
+    "next" : "/var-let-const"
+  },
+  {
+    "id": "2",
+    "title": "Differences between var, let, and const",
+    "content": "In JavaScript, `var`, `let`, and `const` are used to declare variables, but they have important differences in their behavior and scope.\n\n1. **`var`**:\n   - **Scope**: Variables declared with `var` have function scope. This means that if you declare a variable with `var` inside a function, it will be available throughout the function but not outside of it. If `var` is declared outside of any function, it has a global scope.\n   - **Hoisting**: Variables declared with `var` are hoisted to the beginning of their execution context. This means you can use a variable declared with `var` before its declaration, although its value will be `undefined` until it is assigned a value in the code.\n   - **Reassignment and Redeclaration**: Variables declared with `var` can be reassigned and redeclared within their scope without errors.\n\n 2. **`let`**:\n   - **Scope**: Variables declared with `let` have block scope. A block is defined by curly braces `{}`. This means that a `let` variable is available only within the block in which it is declared, including any nested blocks.\n   - **Hoisting**: Although `let` variables are hoisted to the beginning of their block, they cannot be used before their declaration in the code. Attempting to do so will result in a reference error.\n   - **Reassignment and Redeclaration**: `let` variables can be reassigned but cannot be redeclared within the same block.\n\n3. **`const`**:\n   - **Scope**: Similar to `let`, variables declared with `const` have block scope.\n   - **Hoisting**: Like `let`, `const` variables are hoisted to the beginning of their block, but they cannot be used before their declaration.\n   - **Reassignment and Redeclaration**: `const` variables cannot be reassigned or redeclared. Once a `const` variable is assigned, its value cannot be changed. This makes `const` ideal for values that should not change throughout the execution of the program.\n   - **Immutability**: It's important to note that `const` does not make the assigned value immutable. If `const` is used to assign an object or an array, the properties of the object or the elements of the array can be modified.",
+    "questions": [
+      {
+        "question": "What is the scope of a variable declared with `var`?",
+        "choices": ["Global", "Function", "Block", "Local"],
+        "correctAnswer": "Function"
+      },
+      {
+        "question": "What happens if you try to use a `let` variable before its declaration?",
+        "choices": [
+          "It initializes with `undefined`",
+          "It causes a reference error",
+          "It initializes with `null`",
+          "The declaration is ignored"
+        ],
+        "correctAnswer": "It causes a reference error"
+      },
+      {
+        "question": "Can a variable declared with `const` be reassigned?",
+        "choices": ["Yes", "No"],
+        "correctAnswer": "No"
+      },
+      {
+        "question": "What does it mean for `let` and `const` declarations to have block scope?",
+        "choices": [
+          "They are available only within the block in which they are declared",
+          "They can be used anywhere in the code",
+          "They cannot be used before their declaration",
+          "They are available throughout the function"
+        ],
+        "correctAnswer": "They are available only within the block in which they are declared"
+      }
+    ],
+    "image": "/path/to/image2.jpg",
+    "path": "/var-let-const",
+    "next" : "/this-keyword"
+  },
+  {
+    "id": "3",
+    "title": "The `this` Keyword in JavaScript",
+    "content": "In JavaScript, the `this` keyword is a fundamental concept that refers to the execution context in which a function is called. The value of `this` depends on how the function is invoked. Here are some general rules:\n\n1. **In the global context**: When `this` is used in the global context (outside of any function), it refers to the global object (`window` in browsers).\n\n2. **In an object method**: When `this` is used inside an object method, it refers to the object to which the method belongs.\n\n3. **In a regular function**: In a regular function, the value of `this` depends on how the function is called. By default, in strict mode, `this` will be `undefined`. In non-strict mode, `this` will be the global object.\n\n4. **In a constructor**: When `this` is used in a constructor function (a function called with the `new` keyword), it refers to the new object being created.\n\n5. **In an arrow function**: Arrow functions (`=>`) do not have their own `this` value. Instead, they inherit the `this` value from the context in which they are defined. This means that the value of `this` inside an arrow function is the same as the value of `this` outside the arrow function.\n\nUnderstanding how `this` works is crucial for writing and debugging JavaScript code effectively.",
+    "questions": [
+      {
+        "question": "What does `this` refer to in the global context?",
+        "choices": [
+          "`undefined`",
+          "The global object",
+          "The object to which the method belongs",
+          "A new object"
+        ],
+        "correctAnswer": "The global object"
+      },
+      {
+        "question": "What value does `this` take in an arrow function?",
+        "choices": [
+          "The global object",
+          "The object to which the method belongs",
+          "`undefined`",
+          "It inherits the value of `this` from the context in which it is defined"
+        ],
+        "correctAnswer": "It inherits the value of `this` from the context in which it is defined"
+      },
+      {
+        "question": "What value does `this` take in an object method?",
+        "choices": [
+          "`undefined`",
+          "The global object",
+          "The object to which the method belongs",
+          "A new object"
+        ],
+        "correctAnswer": "The object to which the method belongs"
+      },
+      {
+        "question": "What value does `this` take in a constructor function?",
+        "choices": [
+          "`undefined`",
+          "The global object",
+          "The object to which the method belongs",
+          "A new object"
+        ],
+        "correctAnswer": "A new object"
+      }
+    ],
+    "image": "/path/to/image3.jpg",
+    "path": "/this-keyword",
+    "next" : "/async-await"
+  },
+  {
+    "id": "4",
+    "title": "Asynchronous JavaScript: From Callbacks to Async/Await",
+    "content": "Asynchronous programming in JavaScript has evolved significantly over time. Here we explore key concepts and their evolution, from callbacks to async/await.\n\n1. **Callbacks**: Callbacks are functions that are passed as arguments to other functions and are executed after an asynchronous operation has completed. While callbacks allow handling asynchronous operations, they can lead to code that is difficult to read and maintain, especially when many callbacks are nested.\n\n2. **Callback Hell**: Also known as the 'pyramid of doom', this occurs when multiple callbacks are nested within other callbacks. This makes the code difficult to read, understand, and debug. As complexity increases, the code becomes more error-prone.\n\n3. **Promises**: Promises represent the result of an asynchronous operation that may complete in the future. Promises provide a more structured way to handle the result of an asynchronous operation, allowing chaining operations using `then()` and handling errors with `catch()`. This improves code readability and maintainability compared to callbacks.\n\n4. **Async/Await**: Introduced in ECMAScript 2017, `async/await` further simplifies handling asynchronous operations. `async` turns a function into an asynchronous function, which always returns a promise. Within an `async` function, `await` can be used to wait for a promise to resolve, allowing writing asynchronous code that resembles synchronous code in structure. This makes the code more readable and intuitive for handling errors.",
+    "questions": [
+      {
+        "question": "What is a callback in JavaScript?",
+        "choices": [
+          "A function that is passed as an argument and is executed after an asynchronous operation completes",
+          "A function that runs immediately without waiting",
+          "An object that represents an asynchronous operation",
+          "A data structure that stores asynchronous functions"
+        ],
+        "correctAnswer": "A function that is passed as an argument and is executed after an asynchronous operation completes"
+      },
+      {
+        "question": "What is 'callback hell'?",
+        "choices": [
+          "The use of multiple nested callbacks, making the code difficult to read",
+          "A type of error in promises",
+          "A problem with synchronous functions",
+          "A technique for efficiently handling asynchronous operations"
+        ],
+        "correctAnswer": "The use of multiple nested callbacks, making the code difficult to read"
+      },
+      {
+        "question": "What is a promise in JavaScript?",
+        "choices": [
+          "An object that represents the result of an asynchronous operation that may complete in the future",
+          "A function that runs at the end of a synchronous operation",
+          "A type of callback",
+          "A data structure that stores asynchronous operations"
+        ],
+        "correctAnswer": "An object that represents the result of an asynchronous operation that may complete in the future"
+      },
+      {
+        "question": "How does 'async/await' simplify handling asynchronous operations?",
+        "choices": [
+          "It allows writing asynchronous code that resembles synchronous code, improving readability",
+          "It eliminates the need to handle errors in asynchronous operations",
+          "It completely replaces promises",
+          "It nests multiple callbacks in asynchronous functions"
+        ],
+        "correctAnswer": "It allows writing asynchronous code that resembles synchronous code, improving readability"
+      }
+    ],
+    "image": "/path/to/image5.jpg",
+    "path": "/async-await",
+    "next" : "/prototypes"
+  },
+  {
+    "id": "5",
+    "title": "Prototypes in JavaScript",
+    "content": "In JavaScript, the prototype system is a fundamental feature for inheritance and code reuse. Prototypes allow objects to inherit properties and methods from other objects. Here's how prototypes work in JavaScript:\n\n1. **Prototype of an Object**: Every object in JavaScript has an internal property called `[[Prototype]]` that refers to another object. This referenced object is known as the prototype of the object. The properties and methods of the prototype are available to the object that inherits it.\n\n2. **Prototype Chain**: The prototype chain is the sequence of objects through which JavaScript looks for properties and methods. If an object does not have a specific property, JavaScript looks for that property in its prototype and in the prototypes of its prototypes, up to `Object.prototype`, the base prototype that has no prototype of its own.\n\n3. **`Object.create()` Method**: This method allows you to create a new object with a specific prototype. For example, `Object.create(proto)` creates a new object with `proto` as its prototype. This is useful for explicitly establishing an inheritance relationship between objects.\n\n4. **Constructor Function and Prototype**: Constructor functions have a special property called `prototype`. Objects created with the constructor function inherit properties and methods from the constructor function's `prototype` object. For example, if a constructor function `Person` is defined, all objects created with `new Person()` will have access to the properties and methods defined in `Person.prototype`.\n\n5. **Modifying the Prototype**: You can add or modify properties and methods on an object's prototype. For example, if you want to add a `greet` method to all objects created with the `Person` constructor function, you can do so by modifying `Person.prototype`.",
+    "questions": [
+      {
+        "question": "What is the prototype of an object in JavaScript?",
+        "choices": [
+          "The object the current object refers to for inheriting properties and methods",
+          "A property that stores specific data of the object",
+          "A function used to create new objects",
+          "A data structure for storing methods"
+        ],
+        "correctAnswer": "The object the current object refers to for inheriting properties and methods"
+      },
+      {
+        "question": "What is the prototype chain?",
+        "choices": [
+          "The sequence of objects through which JavaScript looks for properties and methods",
+          "A set of functions that run in the correct order",
+          "A list of methods that can be used on an object",
+          "A data structure that contains all prototypes"
+        ],
+        "correctAnswer": "The sequence of objects through which JavaScript looks for properties and methods"
+      },
+      {
+        "question": "How do you create a new object with a specific prototype?",
+        "choices": [
+          "Using `Object.create(proto)`",
+          "Defining a constructor function",
+          "Modifying the prototype of an existing object",
+          "Using the `new` operator with a constructor"
+        ],
+        "correctAnswer": "Using `Object.create(proto)`"
+      },
+      {
+        "question": "What is the `prototype` property in a constructor function?",
+        "choices": [
+          "An object that contains properties and methods inherited by objects created with the constructor function",
+          "A function that defines how objects are created",
+          "A method to modify the prototype of an object",
+          "A property that stores specific data of each object"
+        ],
+        "correctAnswer": "An object that contains properties and methods inherited by objects created with the constructor function"
+      }
+    ],
+    "image": "/path/to/image6.jpg",
+    "path": "/prototypes",
+    "next" : "/inheritance"
+  },
+  {
+    "id": "6",
+    "title": "Inheritance in JavaScript",
+    "content": "Inheritance in JavaScript allows an object to inherit properties and methods from another object. This feature is essential for creating reusable and organized code structures. Here is how inheritance works in JavaScript:\n\n1. **Prototypal Inheritance**: JavaScript uses a prototypal inheritance system. This means that objects can inherit properties and methods from other objects through the prototype chain. When an object looks for a property or method, JavaScript first checks the object itself and then follows the prototype chain until it finds the property or reaches `Object.prototype`.\n\n2. **Inheritance with Constructor Functions**: Inheritance can be implemented using constructor functions and the `prototype` object. By defining a base constructor function and extending it with a derived constructor function, objects created with the derived function inherit properties and methods from the base function. You can use `Object.create()` to explicitly establish the inheritance relationship between objects.\n\n3. **Inheritance with Classes (ES6)**: With the introduction of classes in ECMAScript 2015 (ES6), inheritance in JavaScript becomes more intuitive. Classes allow you to define a base class and extend it using the `extends` keyword. The methods and properties of the base class are automatically inherited by the derived class. The derived class can override methods of the base class and add new methods or properties.\n\n4. **`super` Keyword**: Within a derived class, you can use the `super` keyword to call the constructor and methods of the base class. This allows you to access the properties and methods of the base class from the derived class, facilitating extension and customization of functionality.\n\n5. **Composition over Inheritance**: While inheritance is powerful, it is sometimes more convenient to use composition, which involves combining objects to create new functionalities rather than relying solely on inheritance. Composition can offer greater flexibility and avoid common issues associated with complex inheritance.",
+    "questions": [
+      {
+        "question": "How does prototypal inheritance work in JavaScript?",
+        "choices": [
+          "Objects inherit properties and methods through the prototype chain",
+          "Objects inherit properties and methods through direct assignment",
+          "Objects create a new instance of another object",
+          "Objects copy properties and methods when created"
+        ],
+        "correctAnswer": "Objects inherit properties and methods through the prototype chain"
+      },
+      {
+        "question": "How is inheritance established between constructor functions?",
+        "choices": [
+          "Using the `prototype` object and `Object.create()`",
+          "Creating a constructor function within another",
+          "Directly assigning properties to the constructor function",
+          "Using the `extends` keyword"
+        ],
+        "correctAnswer": "Using the `prototype` object and `Object.create()`"
+      },
+      {
+        "question": "What does ECMAScript 2015 (ES6) introduce to facilitate inheritance in JavaScript?",
+        "choices": [
+          "Classes and the `extends` keyword",
+          "The `Object.create()` method",
+          "Advanced constructor functions",
+          "The `super` method"
+        ],
+        "correctAnswer": "Classes and the `extends` keyword"
+      },
+      {
+        "question": "What is the `super` keyword used for in a derived class?",
+        "choices": [
+          "To call the constructor and methods of the base class",
+          "To create a new instance of the base class",
+          "To override methods of the base class",
+          "To access private properties of the base class"
+        ],
+        "correctAnswer": "To call the constructor and methods of the base class"
+      }
+    ],
+    "image": "/path/to/image7.jpg",
+    "path": "/inheritance",
+    "next" : "/descrtucturing"
+  },
+  {
+    "id": "7",
+    "title": "Destructuring in JavaScript",
+    "content": "Destructuring is a feature in JavaScript that allows you to extract values from arrays or objects and assign them to variables in a concise manner. Introduced in ECMAScript 2015 (ES6), destructuring makes it easier to extract and assign values without needing to access each property or index individually.\n\n1. **Array Destructuring**: Array destructuring allows you to extract elements from an array into individual variables. It uses bracket syntax to assign values to variables. For example:\n\n```javascript\nconst numbers = [1, 2, 3];\nconst [a, b, c] = numbers;\nconsole.log(a); // 1\nconsole.log(b); // 2\nconsole.log(c); // 3\n```\n\n2. **Object Destructuring**: Object destructuring allows you to extract properties from an object into individual variables. It uses curly brace syntax to assign values to variables. For example:\n\n```javascript\nconst person = { name: 'John', age: 30 };\nconst { name, age } = person;\nconsole.log(name); // John\nconsole.log(age); // 30\n```\n\n3. **Destructuring with Default Values**: You can provide default values in case the properties or elements being destructured do not exist. This prevents errors and ensures that variables have a default value. For example:\n\n```javascript\nconst numbers = [1];\nconst [a, b = 2] = numbers;\nconsole.log(a); // 1\nconsole.log(b); // 2\n```\n\n4. **Nested Destructuring**: Destructuring can also be applied to nested arrays and objects. This allows you to efficiently extract values from more complex structures. For example:\n\n```javascript\nconst user = { name: 'Alice', address: { city: 'Wonderland', zip: '12345' } };\nconst { name, address: { city } } = user;\nconsole.log(name); // Alice\nconsole.log(city); // Wonderland\n```\n\n5. **Destructuring in Function Parameters**: Destructuring can be used in function parameters to extract properties from an object or elements from an array directly in the function signature. This simplifies data manipulation in functions.\n\n```javascript\nfunction displayInfo({ name, age }) {\n  console.log(`Name: ${name}, Age: ${age}`);\n}\n\nconst person = { name: 'Bob', age: 25 };\ndisplayInfo(person); // Name: Bob, Age: 25\n```\n\nDestructuring improves code readability and facilitates the extraction and assignment of values in JavaScript.",
+    "questions": [
+      {
+        "question": "How is array destructuring performed in JavaScript?",
+        "choices": [
+          "Using brackets to assign values to variables",
+          "Using curly braces to extract properties",
+          "Using the `Array.prototype.map()` method",
+          "Calling the `Object.assign()` function"
+        ],
+        "correctAnswer": "Using brackets to assign values to variables"
+      },
+      {
+        "question": "What happens if a value is not present in array destructuring and a default value is provided?",
+        "choices": [
+          "The variable will take the default value",
+          "The code will throw an error",
+          "The variable will be assigned as `undefined`",
+          "The default value will be ignored"
+        ],
+        "correctAnswer": "The variable will take the default value"
+      },
+      {
+        "question": "How can you perform destructuring of a nested object?",
+        "choices": [
+          "Using nested curly braces in the destructuring syntax",
+          "Accessing nested properties with dot notation",
+          "Applying destructuring inside an array",
+          "Using the `Object.assign()` function"
+        ],
+        "correctAnswer": "Using nested curly braces in the destructuring syntax"
+      },
+      {
+        "question": "How can destructuring be used in function parameters?",
+        "choices": [
+          "By destructuring an object or array directly in the function signature",
+          "By assigning default values in the function body",
+          "By using the `bind()` method to pass values",
+          "By applying destructuring in the function's return value"
+        ],
+        "correctAnswer": "By destructuring an object or array directly in the function signature"
+      }
+    ],
+    "image": "/path/to/image8.jpg",
+    "path": "/descrtucturing",
+    "next" : "/arrow-functions"
+  },
+  {
+    "id": "8",
+    "title": "Arrow Functions in JavaScript",
+    "content": "Arrow functions were introduced in ECMAScript 2015 (ES6) and provide a more concise syntax for writing functions in JavaScript. In addition to their compact syntax, arrow functions have specific behaviors regarding `this` and other aspects. Here's how arrow functions work:\n\n1. **Syntax**: Arrow functions have a shorter syntax compared to traditional functions. They use the `=>` notation instead of `function`. For example:\n\n```javascript\n// Traditional function\nfunction add(a, b) {\n  return a + b;\n}\n\n// Arrow function\nconst add = (a, b) => a + b;\n```\n\n2. **`this` Scope**: Unlike traditional functions, arrow functions do not have their own `this`. Instead, they inherit the `this` from the context in which they were defined. This makes them useful for working with methods in objects or in callbacks where you want `this` to refer to the outer object or the surrounding function's context.\n\n```javascript\nfunction Timer() {\n  this.seconds = 0;\n  setInterval(() => this.seconds++, 1000);\n}\n\nconst timer = new Timer();\n```\n\n3. **Arrow Functions with a Single Parameter**: If an arrow function has a single parameter, you can omit the parentheses around the parameter. For example:\n\n```javascript\nconst square = x => x * x;\n```\n\n4. **Arrow Functions with a Code Block**: If the arrow function has more than one expression or needs to perform multiple operations, you should use a code block `{}` and the `return` keyword to return a value.\n\n```javascript\nconst add = (a, b) => {\n  const sum = a + b;\n  return sum;\n};\n```\n\n5. **Arrow Functions and `arguments`**: Arrow functions do not have an `arguments` object. If you need to access the arguments passed to the function, you should use a traditional function or the rest operator (`...args`).\n\n```javascript\nconst sum = (...args) => args.reduce((a, b) => a + b, 0);\n```\n\nArrow functions offer a clearer and more concise way to write functions, especially in cases where handling the `this` context is crucial.",
+    "questions": [
+      {
+        "question": "What is the main advantage of using arrow functions compared to traditional functions?",
+        "choices": [
+          "More concise syntax and handling of the `this` context",
+          "Greater flexibility in the number of arguments",
+          "Support for the `arguments` object",
+          "Ability to define methods on objects"
+        ],
+        "correctAnswer": "More concise syntax and handling of the `this` context"
+      },
+      {
+        "question": "How is `this` handled in an arrow function?",
+        "choices": [
+          "It inherits the `this` from the context where it was defined",
+          "It has its own `this` that refers to the function",
+          "It is equal to the global `this`",
+          "It has no access to `this`"
+        ],
+        "correctAnswer": "It inherits the `this` from the context where it was defined"
+      },
+      {
+        "question": "How do you define an arrow function with a single parameter?",
+        "choices": [
+          "You can omit the parentheses around the parameter",
+          "You must use parentheses around the parameter",
+          "Use a traditional function",
+          "The parameter must be an expression"
+        ],
+        "correctAnswer": "You can omit the parentheses around the parameter"
+      },
+      {
+        "question": "What happens if an arrow function needs to perform multiple operations?",
+        "choices": [
+          "You should use a code block `{}` and the `return` keyword",
+          "The function should be transformed into a traditional function",
+          "Operations must be on a single line",
+          "An arrow function cannot be used in this case"
+        ],
+        "correctAnswer": "You should use a code block `{}` and the `return` keyword"
+      }
+    ],
+    "image": "/path/to/image9.jpg",
+    "path": "/arrow-functions",
+    "next" : "/closures"
+  },
+  {
+    "id": "9",
+    "title": "Closures in JavaScript",
+    "content": "A closure in JavaScript is a function that has access to variables from its creation context, even after the outer function has finished executing. Closures allow a function to have 'memory' of the variables from its original context, which is useful for creating functions with private state and for advanced programming techniques.\n\n1. **Defining a Closure**: A closure is created when an inner function accesses variables from its outer function. For example:\n\n```javascript\nfunction outerFunction() {\n  let outerVariable = 'I am outside!';\n  function innerFunction() {\n    console.log(outerVariable);\n  }\n  return innerFunction;\n}\n\nconst myClosure = outerFunction();\nmyClosure(); // I am outside!\n```\n\n2. **Privacy and Encapsulation**: Closures are used to create private variables. Variables in the outer function cannot be accessed directly from outside the function, but the inner function can access them.\n\n```javascript\nfunction createCounter() {\n  let count = 0;\n  return function() {\n    count++;\n    return count;\n  };\n}\n\nconst counter = createCounter();\nconsole.log(counter()); // 1\nconsole.log(counter()); // 2\n```\n\n3. **Closures and Iterators**: Closures can be used to create custom iterators that maintain the state of a series of values.\n\n```javascript\nfunction createRange(start, end) {\n  let current = start;\n  return function() {\n    if (current <= end) return current++;\n    return null;\n  };\n}\n\nconst range = createRange(1, 3);\nconsole.log(range()); // 1\nconsole.log(range()); // 2\nconsole.log(range()); // 3\nconsole.log(range()); // null\n```\n\n4. **Lexical Scope**: Closures are based on lexical scope, meaning that functions remember the environment in which they were created. This is different from dynamic scope, where variables are searched in the calling context of the function.\n\n5. **Using Closures in Callbacks**: Closures are useful in callback functions and events, where they can capture the state of variables at the time the callback is created.\n\n```javascript\nfunction setupButton(buttonId) {\n  let clickCount = 0;\n  document.getElementById(buttonId).addEventListener('click', function() {\n    clickCount++;\n    console.log(`Button clicked ${clickCount} times`);\n  });\n}\n```\n\nClosures provide great flexibility and are a powerful tool for state management and creating more complex functions in JavaScript.",
+    "questions": [
+      {
+        "question": "What is a closure in JavaScript?",
+        "choices": [
+          "A function that has access to variables from its creation context",
+          "A function that does not have access to external variables",
+          "A special type of variable",
+          "A function that executes immediately"
+        ],
+        "correctAnswer": "A function that has access to variables from its creation context"
+      },
+      {
+        "question": "How is a closure used to create private variables?",
+        "choices": [
+          "By encapsulating variables in an outer function and returning an inner function",
+          "By declaring variables as `const` within the function",
+          "Using the `Object.freeze()` method",
+          "Defining variables in a separate module"
+        ],
+        "correctAnswer": "By encapsulating variables in an outer function and returning an inner function"
+      },
+      {
+        "question": "What is the difference between lexical scope and dynamic scope?",
+        "choices": [
+          "Lexical scope remembers the environment in which the function was created, while dynamic scope searches for variables in the calling context",
+          "Lexical scope searches for variables in the calling context, while dynamic scope remembers the environment in which the function was created",
+          "Lexical scope only works with objects, while dynamic scope works with functions",
+          "There is no difference between the two scopes"
+        ],
+        "correctAnswer": "Lexical scope remembers the environment in which the function was created, while dynamic scope searches for variables in the calling context"
+      },
+      {
+        "question": "How can closures be used in callbacks and events?",
+        "choices": [
+          "By capturing the state of variables at the time the callback is created",
+          "By executing functions in a global context",
+          "By using the `new` operator to create new instances",
+          "By using the `bind()` method to bind the context"
+        ],
+        "correctAnswer": "By capturing the state of variables at the time the callback is created"
+      }
+    ],
+    "image": "/path/to/image10.jpg",
+    "path": "/closures",
+    "next" : "/call-stack"
+  },
+  
+  {
+    "id": "11",
+    "title": "JavaScript Call Stack",
+    "content": "A call stack is a mechanism for an interpreter (like the JavaScript interpreter in a web browser) to keep track of its place in a script that calls multiple functions — what function is currently being run and what functions are called from within that function, etc.\n\nWhen a script calls a function, the interpreter adds it to the call stack and then starts carrying out the function. Any functions that are called by that function are added to the call stack further up and run where their calls are reached. When the current function is finished, the interpreter takes it off the stack and resumes execution where it left off in the last code listing. If the stack takes up more space than it was assigned, a 'stack overflow' error is thrown.\n\n**Example**\n```js\nfunction greeting() {\n  // [1] Some code here\n  sayHi();\n  // [2] Some code here\n}\n\nfunction sayHi() {\n  return 'Hi!';\n}\n\n// Invoke the `greeting` function\ngreeting();\n\n// [3] Some code here\n```\n\nThe call stack will be empty at the very beginning, and the code above would be executed like this:\n\n1. Ignore all functions until it reaches the `greeting()` function invocation.\n2. Add the `greeting()` function to the call stack list, and we have:\n   - `greeting`\n3. Execute all lines of code inside the `greeting()` function.\n4. Get to the `sayHi()` function invocation.\n5. Add the `sayHi()` function to the call stack list, like:\n   - `sayHi`\n   - `greeting`\n6. Execute all lines of code inside the `sayHi()` function until it reaches its end.\n7. Return execution to the line that invoked `sayHi()` and continue executing the rest of the `greeting()` function.\n8. Delete the `sayHi()` function from our call stack list. Now the call stack looks like:\n   - `greeting`\n9. When everything inside the `greeting()` function has been executed, return to its invoking line to continue executing the rest of the JS code.\n10. Delete the `greeting()` function from the call stack list. Once again, the call stack becomes empty.\n\nIn summary, we start with an empty call stack. Whenever we invoke a function, it is automatically added to the call stack. Once the function has executed all of its code, it is automatically removed from the call stack. Ultimately, the stack is empty again.",
+    "questions": [
+      {
+        "question": "What is a call stack in JavaScript?",
+        "choices": [
+          "A mechanism to keep track of the current function being run and the functions called within it",
+          "A type of callback",
+          "A method to store variables",
+          "A function that runs at the end of a script"
+        ],
+        "correctAnswer": "A mechanism to keep track of the current function being run and the functions called within it"
+      },
+      {
+        "question": "What happens when a function is called in JavaScript?",
+        "choices": [
+          "The interpreter ignores it",
+          "The interpreter adds it to the call stack and starts executing it",
+          "The interpreter throws a stack overflow error",
+          "The interpreter deletes it from the call stack"
+        ],
+        "correctAnswer": "The interpreter adds it to the call stack and starts executing it"
+      },
+      {
+        "question": "What does 'stack overflow' mean?",
+        "choices": [
+          "The stack has taken up more space than it was assigned",
+          "A function has returned successfully",
+          "All functions have completed execution",
+          "The stack is empty"
+        ],
+        "correctAnswer": "The stack has taken up more space than it was assigned"
+      },
+      {
+        "question": "What is the initial state of the call stack when a script starts executing?",
+        "choices": [
+          "It contains the global object",
+          "It is empty",
+          "It contains all functions",
+          "It contains the first function to be executed"
+        ],
+        "correctAnswer": "It is empty"
+      },
+      {
+        "question": "What is the last step in the call stack process after a function has completed execution?",
+        "choices": [
+          "The function is removed from the call stack",
+          "The function is added to the call stack",
+          "A stack overflow error is thrown",
+          "The call stack is reset"
+        ],
+        "correctAnswer": "The function is removed from the call stack"
+      }
+    ],
+    "image": "/path/to/image5.jpg",
+    "path": "/call-stack",
+    "next" : "/value-types-reference-types"
+  },
+  {
+    "id": "12",
+    "title": "Value Types and Reference Types",
+    "content": "In JavaScript, values are categorized into two types: value types and reference types. Understanding the difference between these two types is crucial for managing data and avoiding common bugs.\n\n1. **Value Types (Primitive Types)**: Value types are data types where the actual value is stored directly in the variable. When you assign a value type to another variable, a copy of the value is made. This means that changes to one variable do not affect the other.\n\n   **Examples of Value Types**:\n   - **Number**: Represents numeric values.\n   - **String**: Represents sequences of characters.\n   - **Boolean**: Represents true or false values.\n   - **Undefined**: Represents a variable that has not been assigned a value.\n   - **Null**: Represents the intentional absence of any object value.\n   - **Symbol**: Represents unique and immutable values.\n   - **BigInt**: Represents large integers.\n\n   **Example**:\n   ```javascript\n   let a = 10;\n   let b = a; // b is now 10\n   b = 20; // a is still 10\n   console.log(a); // 10\n   console.log(b); // 20\n   ```\n\n2. **Reference Types**: Reference types are data types where the variable holds a reference (or memory address) to the actual value. When you assign a reference type to another variable, both variables refer to the same object. Changes to one variable affect the other.\n\n   **Examples of Reference Types**:\n   - **Object**: Represents collections of key-value pairs.\n   - **Array**: Represents ordered collections of values.\n   - **Function**: Represents callable blocks of code.\n   - **Date**: Represents dates and times.\n   - **RegExp**: Represents regular expressions.\n\n   **Example**:\n   ```javascript\n   let obj1 = { name: 'Alice' };\n   let obj2 = obj1; // obj2 refers to the same object as obj1\n   obj2.name = 'Bob';\n   console.log(obj1.name); // Bob\n   console.log(obj2.name); // Bob\n   ```\n\n3. **Key Differences**:\n   - **Assignment**: Value types are copied by value, while reference types are copied by reference.\n   - **Mutability**: Value types are immutable, meaning their values cannot be changed once created. Reference types are mutable, meaning their contents can be changed.\n\n   Understanding these differences helps prevent bugs related to unintended side effects when working with objects and primitive values.",
+    "questions": [
+      {
+        "question": "What is the main characteristic of value types in JavaScript?",
+        "choices": [
+          "The value is stored directly in the variable, and changes to one variable do not affect another",
+          "The variable holds a reference to the value, and changes affect all references",
+          "The value is mutable and can be changed",
+          "The variable does not store the value directly"
+        ],
+        "correctAnswer": "The value is stored directly in the variable, and changes to one variable do not affect another"
+      },
+      {
+        "question": "How does assigning a reference type to another variable affect the data?",
+        "choices": [
+          "Both variables refer to the same object, so changes affect both",
+          "Each variable gets a copy of the object, so changes do not affect the other",
+          "The reference type is immutable and cannot be changed",
+          "The original variable is deleted"
+        ],
+        "correctAnswer": "Both variables refer to the same object, so changes affect both"
+      },
+      {
+        "question": "Which of the following is an example of a value type?",
+        "choices": ["Number", "Object", "Array", "Function"],
+        "correctAnswer": "Number"
+      },
+      {
+        "question": "Which of the following is an example of a reference type?",
+        "choices": ["Array", "String", "Boolean", "Symbol"],
+        "correctAnswer": "Array"
+      }
+    ],
+    "image": "/path/to/image12.jpg",
+    "path": "/value-types-reference-types",
+    "next" : "/typing-systems"
+  },
+  {
+    "id": "13",
+    "title": "Implicit, Explicit, Nominal, Structural, and Duck Typing",
+    "content": "In programming, typing systems help manage how types are used and checked within a language. Different typing concepts, such as implicit, explicit, nominal, structural, and duck typing, define how type compatibility and type checking are performed.\n\n1. **Implicit Typing**: Implicit typing refers to the ability of a language to infer the type of a variable or expression without the programmer needing to specify it explicitly. The language’s type system automatically determines the type based on the assigned value.\n   \n   **Example in JavaScript**:\n   ```javascript\n   let age = 25; // The type of 'age' is inferred to be Number\n   ```\n\n2. **Explicit Typing**: Explicit typing requires the programmer to specify the type of a variable or function parameter explicitly. This can help catch errors early and improve code clarity by making type expectations clear.\n   \n   **Example in TypeScript**:\n   ```typescript\n   let age: number = 25; // The type of 'age' is explicitly specified as Number\n   ```\n\n3. **Nominal Typing**: Nominal typing is a type system where type compatibility is determined by the names of types rather than their structure. Two types are considered compatible only if they have the same name or are explicitly declared to be compatible.\n   \n   **Example in Java**:\n   ```java\n   class Person {}\n   class Employee extends Person {}\n   Person p = new Employee(); // Valid\n   Employee e = new Person(); // Invalid, different names\n   ```\n\n4. **Structural Typing**: Structural typing determines type compatibility based on the structure or shape of the types rather than their names. Two types are compatible if they have the same properties and methods, regardless of their names.\n   \n   **Example in TypeScript**:\n   ```typescript\n   interface Shape {\n     width: number;\n     height: number;\n   }\n   \n   let rectangle: Shape = { width: 10, height: 20 }; // Valid\n   let square = { width: 10, height: 10, color: 'blue' };\n   let shape: Shape = square; // Valid, because square has the same structure\n   ```\n\n5. **Duck Typing**: Duck typing is a concept where type compatibility is determined by whether an object implements certain behaviors or properties, rather than whether it inherits from a specific type. It is often summarized as \"if it looks like a duck and quacks like a duck, it must be a duck.\"\n   \n   **Example in Python**:\n   ```python\n   class Duck:\n       def quack(self):\n           print('Quack!')\n   \n   class Person:\n       def quack(self):\n           print('I am quacking like a duck!')\n   \n   def make_it_quack(duck_like):\n       duck_like.quack()\n   \n   duck = Duck()\n   person = Person()\n   make_it_quack(duck)   # Quack!\n   make_it_quack(person) # I am quacking like a duck!\n   ```\n\nUnderstanding these typing concepts helps in writing more robust and maintainable code by aligning type expectations with the intended behavior of the program.",
+    "questions": [
+      {
+        "question": "What is implicit typing?",
+        "choices": [
+          "Type inference where the type is automatically determined by the assigned value",
+          "Explicitly specifying the type of a variable or parameter",
+          "Checking types based on their names",
+          "Determining type compatibility by the structure of types"
+        ],
+        "correctAnswer": "Type inference where the type is automatically determined by the assigned value"
+      },
+      {
+        "question": "How does nominal typing determine type compatibility?",
+        "choices": [
+          "By the names of types",
+          "By the structure or shape of the types",
+          "By whether an object implements certain behaviors",
+          "By the order of type declaration"
+        ],
+        "correctAnswer": "By the names of types"
+      },
+      {
+        "question": "What is the main idea behind structural typing?",
+        "choices": [
+          "Types are compatible if they have the same properties and methods, regardless of names",
+          "Types are compatible if they have the same name",
+          "Types must be explicitly declared to be compatible",
+          "Types are determined by their order of use"
+        ],
+        "correctAnswer": "Types are compatible if they have the same properties and methods, regardless of names"
+      },
+      {
+        "question": "What does duck typing rely on to determine type compatibility?",
+        "choices": [
+          "Whether an object implements certain behaviors or properties",
+          "Whether types have the same name",
+          "Whether types are explicitly declared",
+          "Whether types are inferred automatically"
+        ],
+        "correctAnswer": "Whether an object implements certain behaviors or properties"
+      }
+    ],
+    "image": "/path/to/image13.jpg",
+    "path": "/typing-systems",
+    "next" : "/comparison-operators"
+  },
+  {
+    "id": "14",
+    "title": "== vs === vs typeof",
+    "content": "In JavaScript, `==`, `===`, and `typeof` are used for comparison and type checking. Understanding their differences and use cases is crucial for writing accurate and bug-free code.\n\n1. **`==` (Equality Operator)**: The `==` operator is used for comparing two values for equality, but it performs type coercion if the values are of different types. This means it converts the values to a common type before making the comparison.\n   \n   **Example**:\n   ```javascript\n   console.log(5 == '5'); // true, because '5' is coerced to a number\n   console.log(null == undefined); // true, because they are considered equivalent\n   console.log(0 == false); // true, because false is coerced to 0\n   ```\n\n2. **`===` (Strict Equality Operator)**: The `===` operator is used for comparing two values for equality without performing type coercion. Both the value and the type must be the same for the comparison to return `true`.\n   \n   **Example**:\n   ```javascript\n   console.log(5 === '5'); // false, because the types are different\n   console.log(null === undefined); // false, because they are different types\n   console.log(0 === false); // false, because the types are different\n   ```\n\n3. **`typeof` Operator**: The `typeof` operator is used to determine the type of a value or an expression. It returns a string representing the type of the operand.\n   \n   **Example**:\n   ```javascript\n   console.log(typeof 42); // 'number'\n   console.log(typeof 'hello'); // 'string'\n   console.log(typeof true); // 'boolean'\n   console.log(typeof {}); // 'object'\n   console.log(typeof []); // 'object', arrays are also objects\n   console.log(typeof undefined); // 'undefined'\n   ```\n\n**Summary**:\n- Use `==` when you want to compare values for equality with type coercion.\n- Use `===` when you want to compare values for equality without type coercion, ensuring both type and value match.\n- Use `typeof` to check the type of a value or expression, especially useful for debugging and type checking.",
+    "questions": [
+      {
+        "question": "What does the `==` operator do in JavaScript?",
+        "choices": [
+          "Compares values for equality with type coercion",
+          "Compares values for equality without type coercion",
+          "Determines the type of a value",
+          "Checks if two values are strictly equal"
+        ],
+        "correctAnswer": "Compares values for equality with type coercion"
+      },
+      {
+        "question": "What is the main difference between `==` and `===`?",
+        "choices": [
+          "`==` performs type coercion, while `===` does not",
+          "`===` performs type coercion, while `==` does not",
+          "Both `==` and `===` perform type coercion",
+          "Both `==` and `===` do not perform type coercion"
+        ],
+        "correctAnswer": "`==` performs type coercion, while `===` does not"
+      },
+      {
+        "question": "What does the `typeof` operator return?",
+        "choices": [
+          "A string representing the type of the operand",
+          "A boolean indicating type equality",
+          "The type of the operand with type coercion",
+          "The value of the operand"
+        ],
+        "correctAnswer": "A string representing the type of the operand"
+      },
+      {
+        "question": "Which operator would you use to compare two values without type coercion?",
+        "choices": ["`===`", "`==`", "`typeof`", "`!=`"],
+        "correctAnswer": "`===`"
+      }
+    ],
+    "image": "/path/to/image14.jpg",
+    "path": "/comparison-operators",
+    "next" : "/expressions-vs-statements"
+  },
+  {
+    "id": "15",
+    "title": "Expression vs Statement",
+    "content": "In JavaScript, the distinction between expressions and statements is fundamental for understanding how code is executed and structured.\n\n1. **Expression**: An expression is a piece of code that evaluates to a value. It can be a single value or a combination of values, operators, and functions that result in a value. Expressions can be used wherever values are expected, such as on the right side of an assignment or as arguments to functions.\n   \n   **Example**:\n   ```javascript\n   const sum = 2 + 3; // '2 + 3' is an expression that evaluates to 5\n   const result = sum * 4; // 'sum * 4' is an expression that evaluates to 20\n   const name = 'John'; // 'John' is an expression that evaluates to the string 'John'\n   console.log(name.length); // 'name.length' is an expression that evaluates to 4\n   ```\n\n2. **Statement**: A statement is a piece of code that performs an action. It does not necessarily return a value, but it can change the state of the program or perform an action. Statements are executed for their side effects, such as assigning values or controlling the flow of the program.\n   \n   **Example**:\n   ```javascript\n   let x = 10; // 'let x = 10;' is a statement that declares a variable and initializes it\n   if (x > 5) { // 'if (x > 5)' is a statement that controls the flow of execution based on a condition\n     console.log('x is greater than 5'); // 'console.log('x is greater than 5')' is a statement that performs an action\n   }\n   ```\n\n**Key Differences**:\n- **Return Value**: Expressions return a value, while statements do not.\n- **Usage**: Expressions can be used in statements, but statements cannot be used in expressions.\n- **Examples**: An assignment (`x = 5`), a function call (`alert('Hello')`), and a variable declaration (`let y`) are statements. An arithmetic operation (`2 + 3`), a function call result (`Math.max(1, 2)`), and a property access (`obj.prop`) are expressions.\n\n**Summary**:\n- **Expressions**: Evaluate to a value and can be used as part of statements.\n- **Statements**: Perform actions and can include expressions within them.",
+    "questions": [
+      {
+        "question": "What is the main difference between an expression and a statement in JavaScript?",
+        "choices": [
+          "Expressions evaluate to a value, while statements perform actions without returning a value",
+          "Statements evaluate to a value, while expressions perform actions",
+          "Expressions and statements are the same and can be used interchangeably",
+          "Expressions perform actions, while statements evaluate to a value"
+        ],
+        "correctAnswer": "Expressions evaluate to a value, while statements perform actions without returning a value"
+      },
+      {
+        "question": "Which of the following is an example of an expression?",
+        "choices": [
+          "2 + 3",
+          "let x = 10;",
+          "if (x > 5) { console.log('x is greater than 5'); }",
+          "console.log('Hello');"
+        ],
+        "correctAnswer": "2 + 3"
+      },
+      {
+        "question": "Which of the following is an example of a statement?",
+        "choices": ["let y = 5;", "Math.max(1, 2)", "'Hello'.length", "3 * 4"],
+        "correctAnswer": "let y = 5;"
+      },
+      {
+        "question": "Can expressions be used within statements?",
+        "choices": [
+          "Yes, expressions can be used within statements",
+          "No, expressions cannot be used within statements",
+          "Statements are used within expressions",
+          "Expressions and statements are not related"
+        ],
+        "correctAnswer": "Yes, expressions can be used within statements"
+      }
+    ],
+    "image": "/path/to/image15.jpg",
+    "path": "/expressions-vs-statements",
+    "next" : "/iife-modules-namespaces"
+  },
+  {
+    "id": "16",
+    "title": "IIFE, Modules, and Namespaces",
+    "content": "In JavaScript, IIFE (Immediately Invoked Function Expressions), modules, and namespaces are important concepts used to manage scope, encapsulate functionality, and organize code. Here’s a breakdown of each concept:\n\n1. **IIFE (Immediately Invoked Function Expression)**: An IIFE is a function expression that executes immediately after its creation. It helps create a new scope to avoid polluting the global namespace and is commonly used for encapsulating code.\n   \n   **Example**:\n   ```javascript\n   (function() {\n     let privateVariable = 'I am private';\n     console.log(privateVariable);\n   })();\n   \n   // The `privateVariable` is not accessible here\n   ```\n   In this example, `privateVariable` is scoped to the IIFE and cannot be accessed from outside of it.\n\n2. **Modules**: JavaScript modules are a way to divide code into reusable and self-contained units. They allow for exporting functions, objects, or values from one module and importing them into another. ES6 introduced native module support with `import` and `export` statements.\n   \n   **Example**:\n   **module.js**:\n   ```javascript\n   export const greeting = 'Hello';\n   export function greet(name) {\n     return `${greeting}, ${name}!`;\n   }\n   ```\n   \n   **main.js**:\n   ```javascript\n   import { greeting, greet } from './module.js';\n   console.log(greeting); // Hello\n   console.log(greet('World')); // Hello, World!\n   ```\n   Modules help manage dependencies and improve code maintainability.\n\n3. **Namespaces**: Namespaces are a way to group related code together, typically to avoid naming conflicts and to organize code in a hierarchical manner. While JavaScript doesn’t have a built-in namespace feature, developers often use objects to simulate namespaces.\n   \n   **Example**:\n   ```javascript\n   const MyNamespace = {\n     value: 42,\n     getValue: function() {\n       return this.value;\n     }\n   };\n   \n   console.log(MyNamespace.getValue()); // 42\n   ```\n   In this example, `MyNamespace` serves as a namespace containing related properties and methods.\n\n**Key Differences**:\n- **IIFE**: Used for encapsulation and avoiding global scope pollution.\n- **Modules**: Provide a structured way to export and import code, making it easier to manage dependencies.\n- **Namespaces**: Used to group related functionality and avoid naming collisions.\n\n**Summary**:\n- **IIFE**: Creates a new scope for encapsulation and immediate execution.\n- **Modules**: Offers a way to structure code into separate files and manage dependencies.\n- **Namespaces**: Helps organize code into logical groups to prevent naming conflicts.",
+    "questions": [
+      {
+        "question": "What is the main purpose of an IIFE in JavaScript?",
+        "choices": [
+          "To create a new scope and avoid polluting the global namespace",
+          "To define a module for exporting and importing functionality",
+          "To group related code into a hierarchical structure",
+          "To manage dependencies between different code files"
+        ],
+        "correctAnswer": "To create a new scope and avoid polluting the global namespace"
+      },
+      {
+        "question": "How do JavaScript modules facilitate code organization?",
+        "choices": [
+          "By allowing code to be exported and imported between files",
+          "By creating a new scope immediately upon execution",
+          "By grouping code into namespaces to avoid naming conflicts",
+          "By organizing code into hierarchical structures"
+        ],
+        "correctAnswer": "By allowing code to be exported and imported between files"
+      },
+      {
+        "question": "What is a common way to simulate namespaces in JavaScript?",
+        "choices": [
+          "Using objects to group related properties and methods",
+          "Using IIFEs to encapsulate code",
+          "Using ES6 modules for code separation",
+          "Using global variables for accessibility"
+        ],
+        "correctAnswer": "Using objects to group related properties and methods"
+      },
+      {
+        "question": "What is the difference between IIFE and modules?",
+        "choices": [
+          "IIFE provides immediate execution and scope encapsulation, while modules manage code separation and dependencies",
+          "IIFE groups related functionality, while modules are used for immediate execution",
+          "IIFE is used for code export and import, while modules create namespaces",
+          "IIFE and modules are the same and can be used interchangeably"
+        ],
+        "correctAnswer": "IIFE provides immediate execution and scope encapsulation, while modules manage code separation and dependencies"
+      }
+    ],
+    "image": "/path/to/image16.jpg",
+    "path": "/iife-modules-namespaces",
+    "next" : "/timeout-interval-animationframe"
+  },
+  {
+    "id": "17",
+    "title": "setTimeout, setInterval, and requestAnimationFrame",
+    "content": "In JavaScript, `setTimeout`, `setInterval`, and `requestAnimationFrame` are functions used for scheduling code execution. Each has specific use cases and characteristics:\n\n1. **setTimeout**: The `setTimeout` function is used to execute a function or a piece of code after a specified delay. The delay is specified in milliseconds, and the function will be executed once after the delay has elapsed.\n   \n   **Example**:\n   ```javascript\n   setTimeout(() => {\n     console.log('Executed after 2 seconds');\n   }, 2000);\n   ```\n   In this example, the message will be logged to the console after a delay of 2000 milliseconds (2 seconds).\n\n2. **setInterval**: The `setInterval` function is used to repeatedly execute a function or a piece of code at specified intervals. The interval is specified in milliseconds, and the function will be executed repeatedly with that interval until `clearInterval` is called to stop it.\n   \n   **Example**:\n   ```javascript\n   const intervalId = setInterval(() => {\n     console.log('Executed every 1 second');\n   }, 1000);\n   \n   // To stop the interval, you can use clearInterval\n   setTimeout(() => {\n     clearInterval(intervalId);\n     console.log('Interval cleared');\n   }, 5000);\n   ```\n   In this example, the message will be logged every second, and after 5 seconds, the interval will be cleared.\n\n3. **requestAnimationFrame**: The `requestAnimationFrame` function is used to schedule a function to be called before the next repaint of the browser. It is typically used for animations and ensures that updates happen at a frame rate that matches the display refresh rate, providing smoother animations compared to `setTimeout` or `setInterval`.\n   \n   **Example**:\n   ```javascript\n   function animate() {\n     // Update animation state\n     console.log('Animation frame');\n     requestAnimationFrame(animate);\n   }\n   \n   requestAnimationFrame(animate);\n   ```\n   In this example, the `animate` function will be called before each repaint, creating a continuous animation loop.\n\n**Key Differences**:\n- **setTimeout**: Executes once after a specified delay.\n- **setInterval**: Executes repeatedly at specified intervals.\n- **requestAnimationFrame**: Executes before the next repaint, ideal for animations.\n\n**Summary**:\n- **setTimeout**: Use for one-time delayed execution.\n- **setInterval**: Use for repeated execution at regular intervals.\n- **requestAnimationFrame**: Use for smooth animations synchronized with the display's refresh rate.",
+    "questions": [
+      {
+        "question": "What is the primary use of `setTimeout` in JavaScript?",
+        "choices": [
+          "To execute code once after a specified delay",
+          "To repeatedly execute code at regular intervals",
+          "To schedule code execution before the next repaint",
+          "To clear previously set intervals"
+        ],
+        "correctAnswer": "To execute code once after a specified delay"
+      },
+      {
+        "question": "How does `setInterval` differ from `setTimeout`?",
+        "choices": [
+          "`setInterval` executes repeatedly at intervals, while `setTimeout` executes once after a delay",
+          "`setInterval` executes once after a delay, while `setTimeout` executes repeatedly at intervals",
+          "`setInterval` schedules code before the next repaint, while `setTimeout` does not",
+          "`setInterval` clears existing timeouts, while `setTimeout` does not"
+        ],
+        "correctAnswer": "`setInterval` executes repeatedly at intervals, while `setTimeout` executes once after a delay"
+      },
+      {
+        "question": "What is the benefit of using `requestAnimationFrame` for animations?",
+        "choices": [
+          "It synchronizes animation updates with the display's refresh rate for smoother animations",
+          "It allows for repeated execution at regular intervals",
+          "It provides a one-time delayed execution",
+          "It clears previously set intervals"
+        ],
+        "correctAnswer": "It synchronizes animation updates with the display's refresh rate for smoother animations"
+      },
+      {
+        "question": "How can you stop a function that was scheduled with `setInterval`?",
+        "choices": [
+          "By calling `clearInterval` with the interval ID",
+          "By calling `setTimeout` with a delay of 0",
+          "By calling `cancelAnimationFrame`",
+          "By removing the interval ID from the call stack"
+        ],
+        "correctAnswer": "By calling `clearInterval` with the interval ID"
+      }
+    ],
+    "image": "/path/to/image17.jpg",
+    "path": "/timeout-interval-animationframe",
+    "next" : "/javascript-engines"
+  },
+  {
+    "id": "18",
+    "title": "JavaScript Engines",
+    "content": "JavaScript engines are programs that execute JavaScript code. They are integral to modern web browsers and environments that run JavaScript. Each browser or environment may use a different JavaScript engine, each with its own features and optimizations. Here's an overview of some of the most prominent JavaScript engines:\n\n1. **V8**: Developed by Google, V8 is the JavaScript engine used in Google Chrome and Node.js. It is known for its high performance and efficiency. V8 compiles JavaScript to native machine code before executing it, which allows for faster execution compared to interpretation.\n   \n   **Example**:\n   ```javascript\n   // V8 is used in Google Chrome and Node.js\n   console.log('Hello, V8!');\n   ```\n   In this example, V8 would compile and execute the code efficiently.\n\n2. **SpiderMonkey**: Developed by Mozilla, SpiderMonkey is the JavaScript engine used in Firefox. It is one of the oldest JavaScript engines and has evolved significantly over time. SpiderMonkey provides features such as Just-In-Time (JIT) compilation and supports modern JavaScript features.\n   \n   **Example**:\n   ```javascript\n   // SpiderMonkey is used in Mozilla Firefox\n   console.log('Hello, SpiderMonkey!');\n   ```\n   In this example, SpiderMonkey would handle the execution of the code within Firefox.\n\n3. **JavaScriptCore (JSC)**: Also known as Nitro, JavaScriptCore is the engine used by Apple's Safari browser. It provides high performance through a variety of optimization techniques, including Just-In-Time compilation and garbage collection.\n   \n   **Example**:\n   ```javascript\n   // JavaScriptCore is used in Safari\n   console.log('Hello, JavaScriptCore!');\n   ```\n   In this example, JavaScriptCore would execute the JavaScript code in Safari.\n\n4. **Chakra**: Developed by Microsoft, Chakra is the JavaScript engine used in Internet Explorer and was also used in the Edge browser before it switched to Chromium. Chakra is known for its performance and advanced debugging features.\n   \n   **Example**:\n   ```javascript\n   // Chakra was used in Internet Explorer and legacy Edge\n   console.log('Hello, Chakra!');\n   ```\n   In this example, Chakra would be responsible for executing the code in those browsers.\n\n**Key Features of JavaScript Engines**:\n- **Just-In-Time (JIT) Compilation**: Converts JavaScript code into native machine code at runtime to improve execution speed.\n- **Garbage Collection**: Automatically manages memory by reclaiming unused memory space.\n- **Optimization Techniques**: Includes methods like inline caching, hidden classes, and code de-optimization to enhance performance.\n\n**Summary**:\nJavaScript engines are crucial for executing JavaScript code efficiently. V8, SpiderMonkey, JavaScriptCore, and Chakra are some of the notable engines, each providing unique features and optimizations for their respective environments.",
+    "questions": [
+      {
+        "question": "Which JavaScript engine is used by Google Chrome and Node.js?",
+        "choices": ["V8", "SpiderMonkey", "JavaScriptCore", "Chakra"],
+        "correctAnswer": "V8"
+      },
+      {
+        "question": "What is a key feature of SpiderMonkey?",
+        "choices": [
+          "Just-In-Time (JIT) compilation and support for modern JavaScript features",
+          "Native machine code compilation",
+          "Garbage collection only",
+          "Legacy support for older JavaScript versions"
+        ],
+        "correctAnswer": "Just-In-Time (JIT) compilation and support for modern JavaScript features"
+      },
+      {
+        "question": "Which JavaScript engine was used in Internet Explorer and early versions of Edge?",
+        "choices": ["Chakra", "V8", "SpiderMonkey", "JavaScriptCore"],
+        "correctAnswer": "Chakra"
+      },
+      {
+        "question": "What is the primary role of a JavaScript engine in a browser?",
+        "choices": [
+          "To execute JavaScript code and perform optimizations",
+          "To render web pages",
+          "To handle network requests",
+          "To manage browser extensions"
+        ],
+        "correctAnswer": "To execute JavaScript code and perform optimizations"
+      }
+    ],
+    "image": "/path/to/image18.jpg",
+    "path": "/javascript-engines",
+    "next" : "/bitwise-operators-typed-arrays-array-buffers"
+  },
+  {
+    "id": "19",
+    "title": "Bitwise Operators, Typed Arrays, and Array Buffers",
+    "content": "JavaScript provides various tools for working with binary data and performing low-level operations. This includes bitwise operators, typed arrays, and array buffers. Here's an overview of each:\n\n1. **Bitwise Operators**: These operators perform operations on the binary representations of numbers. The bitwise operators include:\n   - **AND (`&`)**: Performs a bitwise AND operation.\n   - **OR (`|`)**: Performs a bitwise OR operation.\n   - **XOR (`^`)**: Performs a bitwise XOR operation.\n   - **NOT (`~`)**: Performs a bitwise NOT operation (inversion).\n   - **Left Shift (`<<`)**: Shifts bits to the left, filling with zeroes.\n   - **Right Shift (`>>`)**: Shifts bits to the right, preserving the sign bit.\n   - **Unsigned Right Shift (`>>>`)**: Shifts bits to the right, filling with zeroes.\n   \n   **Example**:\n   ```javascript\n   let a = 5; // 0101 in binary\n   let b = 3; // 0011 in binary\n   let andResult = a & b; // 0001 in binary (1 in decimal)\n   let orResult = a | b; // 0111 in binary (7 in decimal)\n   let xorResult = a ^ b; // 0110 in binary (6 in decimal)\n   let notResult = ~a; // 1010 in binary (negative value)\n   ```\n\n2. **Typed Arrays**: Typed arrays provide a way to work with binary data in a more efficient manner. They are arrays of binary data that use a specific data type for each element. Common typed arrays include:\n   - **Int8Array**: 8-bit signed integers.\n   - **Uint8Array**: 8-bit unsigned integers.\n   - **Int16Array**: 16-bit signed integers.\n   - **Uint16Array**: 16-bit unsigned integers.\n   - **Int32Array**: 32-bit signed integers.\n   - **Uint32Array**: 32-bit unsigned integers.\n   - **Float32Array**: 32-bit floating point numbers.\n   - **Float64Array**: 64-bit floating point numbers.\n   \n   **Example**:\n   ```javascript\n   let buffer = new ArrayBuffer(16); // Create a buffer of 16 bytes\n   let int32View = new Int32Array(buffer); // Create a view for 32-bit integers\n   int32View[0] = 42;\n   console.log(int32View[0]); // Output: 42\n   ```\n\n3. **Array Buffers**: An ArrayBuffer is a generic, fixed-length raw binary data buffer. It is used to create views on the binary data, such as typed arrays. ArrayBuffers are useful for managing binary data more efficiently.\n   \n   **Example**:\n   ```javascript\n   let buffer = new ArrayBuffer(8); // Create a buffer of 8 bytes\n   let view = new DataView(buffer); // Create a data view for the buffer\n   view.setInt8(0, 255); // Set the first byte to 255\n   console.log(view.getInt8(0)); // Output: 255\n   ```\n\n**Summary**:\nBitwise operators provide a way to perform low-level binary operations. Typed arrays offer a means to work with binary data more efficiently by specifying data types. Array buffers are raw data containers used with typed arrays and data views to handle binary data effectively.",
+    "questions": [
+      {
+        "question": "What does the bitwise AND operator (`&`) do?",
+        "choices": [
+          "Performs a bitwise AND operation on binary representations",
+          "Performs a bitwise OR operation on binary representations",
+          "Shifts bits to the left",
+          "Inverts the bits of a number"
+        ],
+        "correctAnswer": "Performs a bitwise AND operation on binary representations"
+      },
+      {
+        "question": "What is the purpose of typed arrays in JavaScript?",
+        "choices": [
+          "To work with binary data more efficiently by specifying data types",
+          "To store strings of different lengths",
+          "To handle JSON data",
+          "To manage arrays of objects"
+        ],
+        "correctAnswer": "To work with binary data more efficiently by specifying data types"
+      },
+      {
+        "question": "What is an ArrayBuffer used for?",
+        "choices": [
+          "To create a raw binary data buffer that can be used with typed arrays and data views",
+          "To store arrays of strings",
+          "To handle dynamic array resizing",
+          "To manage object-oriented data"
+        ],
+        "correctAnswer": "To create a raw binary data buffer that can be used with typed arrays and data views"
+      },
+      {
+        "question": "Which typed array represents 32-bit signed integers?",
+        "choices": ["Int32Array", "Uint8Array", "Float32Array", "Int8Array"],
+        "correctAnswer": "Int32Array"
+      }
+    ],
+    "image": "/path/to/image19.jpg",
+    "path": "/bitwise-operators-typed-arrays-array-buffers",
+    "next" : "/dom-layout-trees"
+  },
+  {
+    "id": "20",
+    "title": "DOM and Layout Trees",
+    "content": "The Document Object Model (DOM) and the layout tree are fundamental concepts in web development, particularly in how browsers render web pages. Here's an overview of each:\n\n1. **DOM (Document Object Model)**: The DOM represents the structure of a web page as a tree of objects, where each object corresponds to a node in the page's HTML or XML document. The DOM allows programming languages, such as JavaScript, to interact with the content and structure of a web page dynamically.\n   - **Nodes**: In the DOM tree, every element, attribute, and piece of text is represented as a node. Nodes can be elements, attributes, text, or comments.\n   - **Element Nodes**: Represent HTML elements like `<div>`, `<p>`, `<a>`, etc.\n   - **Text Nodes**: Represent the text within elements.\n   - **Attribute Nodes**: Represent attributes of elements, though these are not directly represented in the DOM tree in some implementations.\n   \n   **Example**:\n   ```javascript\n   // Accessing an element by its ID\n   const element = document.getElementById('myElement');\n   // Changing the text content of the element\n   element.textContent = 'New Content';\n   ```\n\n2. **Layout Tree**: The layout tree, or render tree, is a structure used by browsers to render the web page on the screen. It is derived from the DOM and contains information about the visual layout of elements, such as their position and size.\n   - **Construction**: The layout tree is built after the DOM tree and CSSOM (CSS Object Model) are created. The browser combines these trees to calculate the geometry of each element on the page.\n   - **Reflow**: The process of calculating the positions and sizes of elements is known as reflow. This occurs when changes to the DOM or CSS affect the layout of the page.\n   \n   **Example**:\n   ```javascript\n   // Triggering a reflow by changing the DOM or CSS\n   document.getElementById('myElement').style.width = '100px';\n   // The browser recalculates the layout to reflect the changes\n   ```\n\n3. **Relationship Between DOM and Layout Tree**:\n   - The DOM provides the structural representation of the document, while the layout tree represents how these structures are visually displayed on the screen.\n   - Changes to the DOM or CSS can trigger reflows, affecting the layout tree and potentially impacting performance.\n\n**Summary**:\nThe DOM represents the structure of a web page as a tree of nodes, allowing dynamic interaction with the page's content. The layout tree, derived from the DOM and CSSOM, provides information about how elements are visually arranged on the page. Understanding both concepts is crucial for effective web development and optimization.",
+    "questions": [
+      {
+        "question": "What does the DOM represent?",
+        "choices": [
+          "The structure of a web page as a tree of objects",
+          "The visual layout of a web page",
+          "The styles applied to a web page",
+          "The user interactions with a web page"
+        ],
+        "correctAnswer": "The structure of a web page as a tree of objects"
+      },
+      {
+        "question": "What is the purpose of the layout tree?",
+        "choices": [
+          "To represent the visual layout of elements on the screen",
+          "To store the HTML content of a web page",
+          "To manage JavaScript code execution",
+          "To handle user input events"
+        ],
+        "correctAnswer": "To represent the visual layout of elements on the screen"
+      },
+      {
+        "question": "What triggers a reflow in the layout tree?",
+        "choices": [
+          "Changes to the DOM or CSS that affect the layout",
+          "Loading new scripts",
+          "User interactions with the page",
+          "Fetching new data from the server"
+        ],
+        "correctAnswer": "Changes to the DOM or CSS that affect the layout"
+      },
+      {
+        "question": "What type of nodes are represented in the DOM tree?",
+        "choices": [
+          "Element nodes, text nodes, and attribute nodes",
+          "Image nodes, link nodes, and script nodes",
+          "Style nodes and comment nodes",
+          "Event nodes and callback nodes"
+        ],
+        "correctAnswer": "Element nodes, text nodes, and attribute nodes"
+      }
+    ],
+    "image": "/path/to/image20.jpg",
+    "path": "/dom-layout-trees",
+    "next" : "/this-call-apply-binds"
+  },
+  {
+    "id": "21",
+    "title": "this, call, apply, and bind",
+    "content": "In JavaScript, `this`, `call()`, `apply()`, and `bind()` are essential for handling function contexts and controlling how functions are executed. Here's an overview of each:\n\n1. **`this`**: The `this` keyword refers to the context in which a function is executed. Its value depends on how a function is called. In general, `this` can refer to the global object, an object, or be undefined (in strict mode).\n   - **Global Context**: In the global scope, `this` refers to the global object (`window` in browsers, `global` in Node.js).\n   - **Object Method**: When a function is called as a method of an object, `this` refers to the object that owns the method.\n   - **Constructor Function**: When a function is used as a constructor (with the `new` keyword), `this` refers to the newly created instance.\n   - **Arrow Functions**: Arrow functions do not have their own `this`; they inherit `this` from the surrounding lexical context.\n   \n   **Example**:\n   ```javascript\n   function show() {\n     console.log(this);\n   }\n   \n   const obj = { show: show };\n   obj.show(); // `this` refers to `obj`\n   ```\n\n2. **`call()`**: The `call()` method allows a function to be called with a specified `this` value and individual arguments. It invokes the function immediately.\n   - **Syntax**: `function.call(thisArg, arg1, arg2, ...)`\n   - **Example**:\n   ```javascript\n   function greet(greeting) {\n     console.log(`${greeting}, ${this.name}!`);\n   }\n   \n   const person = { name: 'Alice' };\n   greet.call(person, 'Hello'); // Output: Hello, Alice!\n   ```\n\n3. **`apply()`**: The `apply()` method is similar to `call()`, but it accepts arguments as an array (or array-like object) instead of individual arguments.\n   - **Syntax**: `function.apply(thisArg, [arg1, arg2, ...])`\n   - **Example**:\n   ```javascript\n   function sum(a, b) {\n     return a + b;\n   }\n   \n   const numbers = [5, 10];\n   console.log(sum.apply(null, numbers)); // Output: 15\n   ```\n\n4. **`bind()`**: The `bind()` method creates a new function with a specified `this` value and optionally pre-set arguments. Unlike `call()` and `apply()`, `bind()` does not invoke the function immediately. Instead, it returns a new function.\n   - **Syntax**: `function.bind(thisArg, arg1, arg2, ...)`\n   - **Example**:\n   ```javascript\n   function introduce(greeting) {\n     console.log(`${greeting}, my name is ${this.name}`);\n   }\n   \n   const person = { name: 'Bob' };\n   const introducePerson = introduce.bind(person, 'Hi');\n   introducePerson(); // Output: Hi, my name is Bob\n   ```\n\n**Summary**:\n- `this` is a special keyword that refers to the current context in which a function is executed.\n- `call()` and `apply()` are used to invoke functions with a specific `this` value and arguments.\n- `bind()` is used to create a new function with a specific `this` value and optional pre-set arguments without immediately invoking it.",
+    "questions": [
+      {
+        "question": "What does the `this` keyword refer to in JavaScript?",
+        "choices": [
+          "The context in which a function is executed",
+          "The global object only",
+          "The object where the function is defined",
+          "The function itself"
+        ],
+        "correctAnswer": "The context in which a function is executed"
+      },
+      {
+        "question": "How does `call()` differ from `apply()`?",
+        "choices": [
+          "`call()` accepts arguments individually, while `apply()` accepts an array of arguments",
+          "`apply()` is used to bind functions, while `call()` is used to invoke them",
+          "`call()` returns a new function, while `apply()` executes immediately",
+          "`apply()` changes the `this` context, while `call()` does not"
+        ],
+        "correctAnswer": "`call()` accepts arguments individually, while `apply()` accepts an array of arguments"
+      },
+      {
+        "question": "What does `bind()` do in JavaScript?",
+        "choices": [
+          "Creates a new function with a specified `this` value and optional arguments",
+          "Invokes a function immediately with a specified `this` value",
+          "Assigns a `this` context to a function without creating a new function",
+          "Executes a function and returns its result"
+        ],
+        "correctAnswer": "Creates a new function with a specified `this` value and optional arguments"
+      },
+      {
+        "question": "What is the primary difference between `call()` and `bind()`?",
+        "choices": [
+          "`call()` invokes the function immediately, while `bind()` returns a new function",
+          "`bind()` executes the function immediately, while `call()` creates a new function",
+          "`call()` is used to create new functions, while `bind()` is used to invoke them",
+          "`bind()` changes the `this` context, while `call()` does not"
+        ],
+        "correctAnswer": "`call()` invokes the function immediately, while `bind()` returns a new function"
+      }
+    ],
+    "image": "/path/to/image21.jpg",
+    "path": "/this-call-apply-bind",
+    "next" : "/new-constructor-instanceof-instancess"
+  },
+  {
+    "id": "22",
+    "title": "new, Constructor, instanceof, and Instances",
+    "content": "In JavaScript, `new`, constructors, `instanceof`, and instances are fundamental concepts for creating and managing objects. Here’s an overview of each:\n\n1. **`new` Keyword**: The `new` keyword is used to create instances of objects that have a constructor function. It performs the following steps:\n   - Creates a new empty object.\n   - Sets the prototype of the new object to the prototype of the constructor function.\n   - Binds `this` to the new object within the constructor function.\n   - Executes the constructor function.\n   - Returns the new object if the constructor function does not return an object.\n\n   **Example**:\n   ```javascript\n   function Person(name) {\n     this.name = name;\n   }\n   \n   const person1 = new Person('Alice');\n   console.log(person1.name); // Output: Alice\n   ```\n\n2. **Constructor Function**: A constructor function is a regular function that is used to create objects. When invoked with `new`, it initializes the new object. Constructor functions are conventionally named with a capitalized first letter.\n   - **Example**:\n   ```javascript\n   function Car(make, model) {\n     this.make = make;\n     this.model = model;\n   }\n   \n   const car1 = new Car('Toyota', 'Corolla');\n   console.log(car1.make);  // Output: Toyota\n   console.log(car1.model); // Output: Corolla\n   ```\n\n3. **`instanceof` Operator**: The `instanceof` operator is used to check if an object is an instance of a particular constructor function or class. It returns `true` if the object is an instance, and `false` otherwise.\n   - **Syntax**: `object instanceof Constructor`\n   - **Example**:\n   ```javascript\n   function Animal(name) {\n     this.name = name;\n   }\n   \n   const dog = new Animal('Dog');\n   console.log(dog instanceof Animal); // Output: true\n   console.log(dog instanceof Object); // Output: true\n   ```\n\n4. **Instances**: Instances are specific objects created from a constructor function or class. Each instance has its own properties and methods, but shares the same prototype as other instances created from the same constructor.\n   - **Example**:\n   ```javascript\n   class Rectangle {\n     constructor(width, height) {\n       this.width = width;\n       this.height = height;\n     }\n     area() {\n       return this.width * this.height;\n     }\n   }\n   \n   const rect1 = new Rectangle(10, 5);\n   console.log(rect1.area()); // Output: 50\n   ```\n\n**Summary**:\n- `new` is used to create a new instance of an object from a constructor function.\n- Constructor functions initialize new objects and are used with `new`.\n- `instanceof` checks if an object is an instance of a specific constructor or class.\n- Instances are objects created from constructor functions or classes, sharing the same prototype.",
+    "questions": [
+      {
+        "question": "What does the `new` keyword do in JavaScript?",
+        "choices": [
+          "Creates a new object and sets its prototype to the constructor's prototype",
+          "Creates a new function and assigns it to a variable",
+          "Instantiates a new class without a constructor",
+          "Calls a function immediately with specified arguments"
+        ],
+        "correctAnswer": "Creates a new object and sets its prototype to the constructor's prototype"
+      },
+      {
+        "question": "How is a constructor function typically named in JavaScript?",
+        "choices": [
+          "With a capitalized first letter",
+          "With a lowercase first letter",
+          "Using an underscore prefix",
+          "With a suffix 'Function'"
+        ],
+        "correctAnswer": "With a capitalized first letter"
+      },
+      {
+        "question": "What does the `instanceof` operator do?",
+        "choices": [
+          "Checks if an object is an instance of a specific constructor or class",
+          "Creates a new instance of a constructor",
+          "Assigns a prototype to an object",
+          "Determines the type of a variable"
+        ],
+        "correctAnswer": "Checks if an object is an instance of a specific constructor or class"
+      },
+      {
+        "question": "How are instances related to constructors in JavaScript?",
+        "choices": [
+          "Instances are objects created from a constructor function or class",
+          "Instances are functions that create new objects",
+          "Instances are methods within constructor functions",
+          "Instances are prototypes shared among objects"
+        ],
+        "correctAnswer": "Instances are objects created from a constructor function or class"
+      }
+    ],
+    "image": "/path/to/image22.jpg",
+    "path": "/new-constructor-instanceof-instances",
+    "next" : "/object-create-assign"
+  },
+  {
+    "id": "23",
+    "title": "Object.create and Object.assign",
+    "content": "In JavaScript, `Object.create` and `Object.assign` are methods used to handle object creation and property assignment. They offer different functionalities and use cases:\n\n1. **`Object.create`**: The `Object.create` method creates a new object with the specified prototype object and properties. This method allows you to set up inheritance by creating a new object with a prototype object. It is useful when you want to establish prototype-based inheritance without using a constructor function.\n   - **Syntax**: `Object.create(proto, [propertiesObject])`\n     - `proto`: The object which should be the prototype of the newly created object.\n     - `propertiesObject` (optional): An object whose properties should be added to the newly created object.\n   - **Example**:\n   ```javascript\n   const animal = {\n     eats: true\n   };\n   \n   const rabbit = Object.create(animal);\n   rabbit.hops = true;\n   \n   console.log(rabbit.eats); // Output: true\n   console.log(rabbit.hops); // Output: true\n   console.log(Object.getPrototypeOf(rabbit) === animal); // Output: true\n   ```\n\n2. **`Object.assign`**: The `Object.assign` method copies the values of all enumerable own properties from one or more source objects to a target object. This method is often used for cloning objects or merging multiple objects into one. It performs a shallow copy of properties, meaning nested objects are not cloned deeply.\n   - **Syntax**: `Object.assign(target, ...sources)`\n     - `target`: The object to which properties will be copied.\n     - `sources`: One or more objects from which properties will be copied.\n   - **Example**:\n   ```javascript\n   const target = { a: 1, b: 2 };\n   const source1 = { b: 4, c: 5 };\n   const source2 = { d: 6 };\n   \n   const returnedTarget = Object.assign(target, source1, source2);\n   console.log(returnedTarget); // Output: { a: 1, b: 4, c: 5, d: 6 }\n   console.log(target); // Output: { a: 1, b: 4, c: 5, d: 6 }\n   ```\n\n**Summary**:\n- `Object.create` is used to create a new object with a specified prototype and optional properties.\n- `Object.assign` is used to copy properties from one or more source objects to a target object, performing a shallow copy.",
+    "questions": [
+      {
+        "question": "What does `Object.create` do in JavaScript?",
+        "choices": [
+          "Creates a new object with the specified prototype object and optional properties",
+          "Copies properties from one object to another",
+          "Defines a new constructor function",
+          "Assigns a prototype to an existing object"
+        ],
+        "correctAnswer": "Creates a new object with the specified prototype object and optional properties"
+      },
+      {
+        "question": "What is the purpose of `Object.assign`?",
+        "choices": [
+          "Copies the values of all enumerable own properties from one or more source objects to a target object",
+          "Creates a new object with a specified prototype",
+          "Defines a new method on an object",
+          "Adds a new property to the prototype of an object"
+        ],
+        "correctAnswer": "Copies the values of all enumerable own properties from one or more source objects to a target object"
+      },
+      {
+        "question": "What is a key difference between `Object.create` and `Object.assign`?",
+        "choices": [
+          "`Object.create` sets up prototype inheritance, while `Object.assign` copies properties from one object to another",
+          "`Object.create` copies properties, while `Object.assign` sets up prototype inheritance",
+          "`Object.create` creates a shallow copy, while `Object.assign` creates a deep copy",
+          "`Object.create` merges objects, while `Object.assign` creates a new prototype"
+        ],
+        "correctAnswer": "`Object.create` sets up prototype inheritance, while `Object.assign` copies properties from one object to another"
+      },
+      {
+        "question": "What happens if you use `Object.assign` with multiple source objects?",
+        "choices": [
+          "Properties from later sources overwrite properties from earlier sources",
+          "Properties from earlier sources overwrite properties from later sources",
+          "It creates a new prototype chain",
+          "It performs a deep copy of properties"
+        ],
+        "correctAnswer": "Properties from later sources overwrite properties from earlier sources"
+      }
+    ],
+    "image": "/path/to/image23.jpg",
+    "path": "/object-create-assign",
+    "next" : "/map-reduce-filter"
+  },
+  {
+    "id": "24",
+    "title": "map, reduce, and filter",
+    "content": "In JavaScript, `map`, `reduce`, and `filter` are powerful array methods used for processing and transforming arrays. They are commonly used in functional programming and can make your code more concise and expressive.\n\n1. **`map`**: The `map` method creates a new array with the results of calling a provided function on every element in the calling array. It is used when you need to transform the elements of an array into a new array of the same length.\n   - **Syntax**: `array.map(callback(currentValue, index, array))`\n     - `callback`: Function that is called for every element in the array.\n     - `currentValue`: The current element being processed.\n     - `index` (optional): The index of the current element being processed.\n     - `array` (optional): The array that `map` was called upon.\n   - **Example**:\n   ```javascript\n   const numbers = [1, 2, 3, 4];\n   const doubled = numbers.map(x => x * 2);\n   console.log(doubled); // Output: [2, 4, 6, 8]\n   ```\n\n2. **`reduce`**: The `reduce` method executes a reducer function (that you provide) on each element of the array, resulting in a single output value. It is used for accumulating or combining array elements into a single result.\n   - **Syntax**: `array.reduce(callback(accumulator, currentValue, index, array), [initialValue])`\n     - `callback`: Function that is called for every element in the array.\n     - `accumulator`: The accumulated value previously returned in the last invocation of the callback.\n     - `currentValue`: The current element being processed.\n     - `index` (optional): The index of the current element being processed.\n     - `array` (optional): The array that `reduce` was called upon.\n     - `initialValue` (optional): A value to use as the first argument to the first call of the callback.\n   - **Example**:\n   ```javascript\n   const numbers = [1, 2, 3, 4];\n   const sum = numbers.reduce((acc, current) => acc + current, 0);\n   console.log(sum); // Output: 10\n   ```\n\n3. **`filter`**: The `filter` method creates a new array with all elements that pass the test implemented by the provided function. It is used to select elements from an array based on a condition.\n   - **Syntax**: `array.filter(callback(currentValue, index, array))`\n     - `callback`: Function that is called for every element in the array.\n     - `currentValue`: The current element being processed.\n     - `index` (optional): The index of the current element being processed.\n     - `array` (optional): The array that `filter` was called upon.\n   - **Example**:\n   ```javascript\n   const numbers = [1, 2, 3, 4];\n   const evenNumbers = numbers.filter(x => x % 2 === 0);\n   console.log(evenNumbers); // Output: [2, 4]\n   ```\n\n**Summary**:\n- `map` is used to transform each element of an array into a new array.\n- `reduce` is used to accumulate or combine elements of an array into a single value.\n- `filter` is used to select elements that pass a test and create a new array with those elements.",
+    "questions": [
+      {
+        "question": "What does the `map` method do?",
+        "choices": [
+          "Creates a new array with the results of calling a provided function on every element",
+          "Filters the elements based on a condition",
+          "Reduces the array to a single value",
+          "Sorts the array elements"
+        ],
+        "correctAnswer": "Creates a new array with the results of calling a provided function on every element"
+      },
+      {
+        "question": "What is the primary use of the `reduce` method?",
+        "choices": [
+          "To accumulate or combine array elements into a single output value",
+          "To transform each element of an array",
+          "To filter elements based on a condition",
+          "To create a new array with all elements that pass a test"
+        ],
+        "correctAnswer": "To accumulate or combine array elements into a single output value"
+      },
+      {
+        "question": "What does the `filter` method return?",
+        "choices": [
+          "A new array with elements that pass a test",
+          "A new array with transformed elements",
+          "A single accumulated value",
+          "The original array sorted"
+        ],
+        "correctAnswer": "A new array with elements that pass a test"
+      },
+      {
+        "question": "How can you use `map` to double the values in an array?",
+        "choices": [
+          "Use `array.map(x => x * 2)`",
+          "Use `array.reduce((acc, current) => acc + current, 0)`",
+          "Use `array.filter(x => x % 2 === 0)`",
+          "Use `array.map(x => x + 2)`"
+        ],
+        "correctAnswer": "Use `array.map(x => x * 2)`"
+      }
+    ],
+    "image": "/path/to/image24.jpg",
+    "path": "/map-reduce-filter",
+    "next" : "/pure-functions-side-effects-state-mutation"
+  },
+  {
+    "id": "25",
+    "title": "Pure Functions, Side Effects, and State Mutation",
+    "content": "Understanding the concepts of pure functions, side effects, and state mutation is crucial in functional programming and helps in writing clean and maintainable code.\n\n1. **Pure Functions**: A pure function is a function that satisfies two conditions:\n   - **Deterministic**: Given the same input, a pure function always returns the same output.\n   - **No Side Effects**: A pure function does not produce any observable side effects outside its scope. It does not modify any external state or variables.\n   - **Example**:\n     ```javascript\n     function add(a, b) {\n       return a + b;\n     }\n     // Pure function example:\n     console.log(add(2, 3)); // Output: 5\n     ```\n     In this example, `add` is a pure function because it always returns the same result for the same inputs and does not modify any external state.\n\n2. **Side Effects**: A side effect is any observable change in state that occurs outside of a function's local scope. This can include modifying global variables, altering the DOM, or performing I/O operations.\n   - **Example**:\n     ```javascript\n     let count = 0;\n     function increment() {\n       count++;\n     }\n     increment();\n     console.log(count); // Output: 1\n     ```\n     In this example, `increment` has a side effect of modifying the external variable `count`.\n\n3. **State Mutation**: State mutation refers to the modification of data or state in place. In functional programming, it is generally recommended to avoid direct state mutation to maintain immutability and avoid unintended side effects.\n   - **Example**:\n     ```javascript\n     let array = [1, 2, 3];\n     function addElement(element) {\n       array.push(element);\n     }\n     addElement(4);\n     console.log(array); // Output: [1, 2, 3, 4]\n     ```\n     In this example, `addElement` mutates the `array` by adding a new element to it.\n\n**Summary**:\n- Pure functions are predictable and do not produce side effects.\n- Side effects are changes in state or behavior that occur outside of a function's local scope.\n- State mutation involves modifying data in place, which can lead to side effects and is generally avoided in functional programming.",
+    "questions": [
+      {
+        "question": "What is a pure function?",
+        "choices": [
+          "A function that always produces the same output for the same input and has no side effects",
+          "A function that modifies external state",
+          "A function that performs I/O operations",
+          "A function that can return different results for the same input"
+        ],
+        "correctAnswer": "A function that always produces the same output for the same input and has no side effects"
+      },
+      {
+        "question": "What is considered a side effect in programming?",
+        "choices": [
+          "Changing global variables or performing I/O operations",
+          "Returning a value from a function",
+          "Creating a new variable inside a function",
+          "Performing a calculation"
+        ],
+        "correctAnswer": "Changing global variables or performing I/O operations"
+      },
+      {
+        "question": "Why is state mutation generally avoided in functional programming?",
+        "choices": [
+          "To maintain immutability and avoid unintended side effects",
+          "To make functions less predictable",
+          "To make code harder to understand",
+          "To increase performance"
+        ],
+        "correctAnswer": "To maintain immutability and avoid unintended side effects"
+      },
+      {
+        "question": "Which of the following is an example of state mutation?",
+        "choices": [
+          "Modifying an array in place",
+          "Returning a value from a function",
+          "Creating a new array from an existing one",
+          "Reading a variable's value"
+        ],
+        "correctAnswer": "Modifying an array in place"
+      }
+    ],
+    "image": "/path/to/image25.jpg",
+    "path": "/pure-functions-side-effects-state-mutation",
+    "next" : "/higher-order-functions"
+  },
+  {
+    "id": "26",
+    "title": "Higher-Order Functions",
+    "content": "Higher-order functions are a fundamental concept in functional programming. They are functions that either take one or more functions as arguments or return a function as their result. These functions allow for more abstract and reusable code by operating on functions as first-class citizens.\n\n1. **Definition**: A higher-order function is a function that meets at least one of the following criteria:\n   - It takes one or more functions as arguments.\n   - It returns a function as its result.\n\n2. **Examples of Higher-Order Functions**:\n   - **Function as Argument**:\n     ```javascript\n     function applyFunction(fn, value) {\n       return fn(value);\n     }\n     \n     function square(x) {\n       return x * x;\n     }\n     \n     console.log(applyFunction(square, 5)); // Output: 25\n     ```\n     In this example, `applyFunction` is a higher-order function because it takes another function (`square`) as an argument.\n   \n   - **Function as Return Value**:\n     ```javascript\n     function makeMultiplier(factor) {\n       return function(x) {\n         return x * factor;\n       };\n     }\n     \n     const double = makeMultiplier(2);\n     console.log(double(5)); // Output: 10\n     ```\n     Here, `makeMultiplier` is a higher-order function because it returns a new function that multiplies its argument by the given `factor`.\n\n3. **Common Higher-Order Functions**:\n   - **`map`**: Applies a function to each element in an array and returns a new array with the results.\n     ```javascript\n     const numbers = [1, 2, 3];\n     const doubled = numbers.map(x => x * 2);\n     console.log(doubled); // Output: [2, 4, 6]\n     ```\n   - **`filter`**: Creates a new array with elements that pass a test implemented by a provided function.\n     ```javascript\n     const numbers = [1, 2, 3, 4];\n     const evens = numbers.filter(x => x % 2 === 0);\n     console.log(evens); // Output: [2, 4]\n     ```\n   - **`reduce`**: Applies a function against an accumulator and each element in the array to reduce it to a single value.\n     ```javascript\n     const numbers = [1, 2, 3];\n     const sum = numbers.reduce((acc, x) => acc + x, 0);\n     console.log(sum); // Output: 6\n     ```\n\n**Summary**:\n- Higher-order functions are functions that take other functions as arguments or return functions.\n- They allow for more abstract and reusable code.\n- Common examples include `map`, `filter`, and `reduce`.",
+    "questions": [
+      {
+        "question": "What is a higher-order function?",
+        "choices": [
+          "A function that takes other functions as arguments or returns a function",
+          "A function that only returns a value",
+          "A function that performs mathematical calculations",
+          "A function that logs output to the console"
+        ],
+        "correctAnswer": "A function that takes other functions as arguments or returns a function"
+      },
+      {
+        "question": "Which of the following is an example of a higher-order function?",
+        "choices": [
+          "A function that returns another function",
+          "A function that performs arithmetic operations",
+          "A function that iterates over an array",
+          "A function that creates objects"
+        ],
+        "correctAnswer": "A function that returns another function"
+      },
+      {
+        "question": "What does the `map` function do?",
+        "choices": [
+          "Applies a function to each element in an array and returns a new array with the results",
+          "Filters elements of an array based on a condition",
+          "Reduces an array to a single value",
+          "Creates a new array by concatenating two arrays"
+        ],
+        "correctAnswer": "Applies a function to each element in an array and returns a new array with the results"
+      },
+      {
+        "question": "Which higher-order function is used to accumulate a single value from an array?",
+        "choices": ["`reduce`", "`map`", "`filter`", "`forEach`"],
+        "correctAnswer": "`reduce`"
+      }
+    ],
+    "image": "/path/to/image26.jpg",
+    "path": "/higher-order-functions",
+    "next" : "/recursion"
+  },
+  {
+    "id": "27",
+    "title": "Recursion",
+    "content": "Recursion is a programming technique where a function calls itself in order to solve a problem. This approach can simplify the solution of complex problems by breaking them down into simpler subproblems. Recursion is often used for tasks that involve repetitive or hierarchical structures, such as navigating trees or performing computations on sequences.\n\n1. **Definition**: A recursive function is one that calls itself within its own definition. To prevent infinite loops, a recursive function must have a base case that stops the recursion.\n\n2. **Components of Recursion**:\n   - **Base Case**: The condition under which the recursion stops. It prevents the function from calling itself indefinitely.\n   - **Recursive Case**: The part of the function where it calls itself with a modified argument, moving closer to the base case.\n\n3. **Example of Recursion**:\n   - **Factorial Calculation**:\n     ```javascript\n     function factorial(n) {\n       if (n === 0) {\n         return 1;\n       } else {\n         return n * factorial(n - 1);\n       }\n     }\n     \n     console.log(factorial(5)); // Output: 120\n     ```\n     In this example, the `factorial` function calls itself with `n - 1` until it reaches the base case where `n` is 0.\n\n   - **Fibonacci Sequence**:\n     ```javascript\n     function fibonacci(n) {\n       if (n <= 1) {\n         return n;\n       } else {\n         return fibonacci(n - 1) + fibonacci(n - 2);\n       }\n     }\n     \n     console.log(fibonacci(6)); // Output: 8\n     ```\n     Here, the `fibonacci` function computes the nth Fibonacci number by summing the results of the two previous numbers in the sequence.\n\n4. **Advantages of Recursion**:\n   - **Simplicity**: Recursion can simplify code for problems that have a recursive structure, such as tree traversals or combinatorial problems.\n   - **Reduced Complexity**: For some problems, recursive solutions can be more intuitive and easier to understand than iterative solutions.\n\n5. **Disadvantages of Recursion**:\n   - **Performance**: Recursive functions can be less efficient than iterative solutions due to overhead from multiple function calls and stack space usage.\n   - **Stack Overflow**: Deep recursion can lead to a stack overflow error if the recursion depth exceeds the stack size.\n\n**Summary**:\n- Recursion involves a function calling itself to solve a problem.\n- It requires a base case to prevent infinite recursion.\n- Recursive functions can simplify complex problems but may have performance and stack limitations.",
+    "questions": [
+      {
+        "question": "What is recursion?",
+        "choices": [
+          "A technique where a function calls itself to solve a problem",
+          "A method for iterating over arrays",
+          "A process to sort data",
+          "A way to handle asynchronous operations"
+        ],
+        "correctAnswer": "A technique where a function calls itself to solve a problem"
+      },
+      {
+        "question": "What are the two main components of a recursive function?",
+        "choices": [
+          "Base case and recursive case",
+          "Input and output",
+          "Function and method",
+          "Iteration and recursion"
+        ],
+        "correctAnswer": "Base case and recursive case"
+      },
+      {
+        "question": "What is the base case in a recursive function?",
+        "choices": [
+          "The condition under which recursion stops",
+          "The point where recursion starts",
+          "The first function call",
+          "The final result of recursion"
+        ],
+        "correctAnswer": "The condition under which recursion stops"
+      },
+      {
+        "question": "Which of the following is a potential disadvantage of recursion?",
+        "choices": [
+          "Stack overflow errors",
+          "Increased code simplicity",
+          "Reduced code complexity",
+          "Enhanced performance"
+        ],
+        "correctAnswer": "Stack overflow errors"
+      }
+    ],
+    "image": "/path/to/image27.jpg",
+    "path": "/recursion",
+    "next" : "/collections-generators"
+  },
+  {
+    "id": "28",
+    "title": "Collections and Generators",
+    "content": "Collections and generators are important concepts in JavaScript that help manage and work with data in various ways.\n\n**Collections**:\n1. **Arrays**: Arrays are a type of collection that can hold multiple values. They are ordered and can contain elements of any type. Arrays provide methods for iteration, manipulation, and querying.\n   - **Example**:\n     ```javascript\n     let numbers = [1, 2, 3, 4, 5];\n     console.log(numbers[0]); // Output: 1\n     console.log(numbers.length); // Output: 5\n     numbers.push(6);\n     console.log(numbers); // Output: [1, 2, 3, 4, 5, 6]\n     ```\n\n2. **Sets**: Sets are collections of unique values. They do not allow duplicate values and are useful for storing non-repeating data.\n   - **Example**:\n     ```javascript\n     let uniqueNumbers = new Set([1, 2, 3, 3, 4, 5]);\n     console.log(uniqueNumbers); // Output: Set { 1, 2, 3, 4, 5 }\n     uniqueNumbers.add(6);\n     console.log(uniqueNumbers); // Output: Set { 1, 2, 3, 4, 5, 6 }\n     ```\n\n3. **Maps**: Maps are collections of key-value pairs where keys can be of any data type. They preserve the order of insertion and provide methods for setting, getting, and deleting entries.\n   - **Example**:\n     ```javascript\n     let map = new Map();\n     map.set('name', 'Alice');\n     map.set('age', 25);\n     console.log(map.get('name')); // Output: Alice\n     console.log(map.size); // Output: 2\n     ```\n\n4. **WeakSets and WeakMaps**: WeakSets and WeakMaps are similar to Sets and Maps but with weak references. They do not prevent garbage collection of their elements or keys.\n   - **WeakSet Example**:\n     ```javascript\n     let weakSet = new WeakSet();\n     let obj = {};\n     weakSet.add(obj);\n     console.log(weakSet.has(obj)); // Output: true\n     ```\n   - **WeakMap Example**:\n     ```javascript\n     let weakMap = new WeakMap();\n     let key = {};\n     weakMap.set(key, 'value');\n     console.log(weakMap.get(key)); // Output: value\n     ```\n\n**Generators**:\n1. **Definition**: Generators are functions that can be paused and resumed, allowing them to yield multiple values over time. They use the `function*` syntax and the `yield` keyword.\n\n2. **Creating Generators**:\n   - **Example**:\n     ```javascript\n     function* range(start, end) {\n       while (start <= end) {\n         yield start;\n         start++;\n       }\n     }\n     \n     let iterator = range(1, 3);\n     console.log(iterator.next().value); // Output: 1\n     console.log(iterator.next().value); // Output: 2\n     console.log(iterator.next().value); // Output: 3\n     console.log(iterator.next().value); // Output: undefined\n     ```\n\n3. **Using Generators**:\n   - Generators are useful for creating iterators, managing state, and handling asynchronous operations with a synchronous-like syntax using `yield` and `yield*`.\n\n4. **Iterating with Generators**:\n   - Generators can be iterated using a `for...of` loop or manually using the `.next()` method.\n   - **Example**:\n     ```javascript\n     for (let value of range(1, 3)) {\n       console.log(value);\n     }\n     // Output: 1, 2, 3\n     ```\n\n**Summary**:\n- Collections like Arrays, Sets, Maps, WeakSets, and WeakMaps help manage and organize data in JavaScript.\n- Generators provide a way to create iterators and manage state with the ability to pause and resume execution using `yield`.",
+    "questions": [
+      {
+        "question": "What is a key feature of Sets in JavaScript?",
+        "choices": [
+          "They contain only unique values",
+          "They maintain insertion order",
+          "They allow duplicate values",
+          "They are indexed by keys"
+        ],
+        "correctAnswer": "They contain only unique values"
+      },
+      {
+        "question": "How do you create a generator function in JavaScript?",
+        "choices": [
+          "Using the `function*` syntax",
+          "Using the `function` keyword",
+          "Using the `async function` syntax",
+          "Using the `generator` keyword"
+        ],
+        "correctAnswer": "Using the `function*` syntax"
+      },
+      {
+        "question": "What does the `yield` keyword do in a generator function?",
+        "choices": [
+          "Pauses the generator function and returns a value",
+          "Starts the generator function",
+          "Ends the generator function",
+          "Creates a new generator function"
+        ],
+        "correctAnswer": "Pauses the generator function and returns a value"
+      },
+      {
+        "question": "Which collection type in JavaScript allows you to store key-value pairs where keys can be of any type?",
+        "choices": ["Map", "Set", "WeakMap", "Array"],
+        "correctAnswer": "Map"
+      }
+    ],
+    "image": "/path/to/image28.jpg",
+    "path": "/collections-generators",
+    "next" : "/data-structure"
+  },
+  {
+    "id": "29",
+    "title": "Data Structures",
+    "content": "Data structures are a way of organizing and storing data in a computer so that it can be accessed and modified efficiently. Understanding different data structures is crucial for optimizing algorithms and handling data effectively. Here are some common data structures in JavaScript:\n\n**1. Arrays**:\n- **Definition**: Arrays are ordered collections of elements, where each element can be accessed by its index. Arrays can hold elements of any type, including other arrays.\n- **Operations**: Insertion, deletion, access, and iteration.\n  - **Example**:\n    ```javascript\n    let fruits = ['apple', 'banana', 'cherry'];\n    console.log(fruits[1]); // Output: banana\n    fruits.push('date');\n    console.log(fruits); // Output: ['apple', 'banana', 'cherry', 'date']\n    ```\n\n**2. Linked Lists**:\n- **Definition**: A linked list is a linear data structure where each element (node) points to the next element in the sequence. It allows for efficient insertion and deletion operations.\n- **Operations**: Insertion, deletion, traversal.\n  - **Example**:\n    ```javascript\n    class Node {\n      constructor(value) {\n        this.value = value;\n        this.next = null;\n      }\n    }\n    \n    class LinkedList {\n      constructor() {\n        this.head = null;\n      }\n      \n      append(value) {\n        let newNode = new Node(value);\n        if (this.head === null) {\n          this.head = newNode;\n        } else {\n          let current = this.head;\n          while (current.next) {\n            current = current.next;\n          }\n          current.next = newNode;\n        }\n      }\n    }\n    \n    let list = new LinkedList();\n    list.append(1);\n    list.append(2);\n    list.append(3);\n    ```\n\n**3. Stacks**:\n- **Definition**: A stack is a linear data structure that follows the Last In, First Out (LIFO) principle. Elements can only be added or removed from the top of the stack.\n- **Operations**: Push (add), pop (remove), peek (view top element).\n  - **Example**:\n    ```javascript\n    class Stack {\n      constructor() {\n        this.items = [];\n      }\n      \n      push(element) {\n        this.items.push(element);\n      }\n      \n      pop() {\n        return this.items.pop();\n      }\n      \n      peek() {\n        return this.items[this.items.length - 1];\n      }\n    }\n    \n    let stack = new Stack();\n    stack.push(1);\n    stack.push(2);\n    console.log(stack.peek()); // Output: 2\n    stack.pop();\n    console.log(stack.peek()); // Output: 1\n    ```\n\n**4. Queues**:\n- **Definition**: A queue is a linear data structure that follows the First In, First Out (FIFO) principle. Elements are added at the end and removed from the front.\n- **Operations**: Enqueue (add), dequeue (remove), front (view first element).\n  - **Example**:\n    ```javascript\n    class Queue {\n      constructor() {\n        this.items = [];\n      }\n      \n      enqueue(element) {\n        this.items.push(element);\n      }\n      \n      dequeue() {\n        return this.items.shift();\n      }\n      \n      front() {\n        return this.items[0];\n      }\n    }\n    \n    let queue = new Queue();\n    queue.enqueue(1);\n    queue.enqueue(2);\n    console.log(queue.front()); // Output: 1\n    queue.dequeue();\n    console.log(queue.front()); // Output: 2\n    ```\n\n**5. Hash Tables**:\n- **Definition**: A hash table is a data structure that maps keys to values using a hash function to compute an index into an array of buckets or slots.\n- **Operations**: Insertion, deletion, lookup.\n  - **Example**:\n    ```javascript\n    class HashTable {\n      constructor(size) {\n        this.size = size;\n        this.table = new Array(size);\n      }\n      \n      hash(key) {\n        let hash = 0;\n        for (let char of key) {\n          hash = (hash + char.charCodeAt(0)) % this.size;\n        }\n        return hash;\n      }\n      \n      set(key, value) {\n        let index = this.hash(key);\n        this.table[index] = value;\n      }\n      \n      get(key) {\n        let index = this.hash(key);\n        return this.table[index];\n      }\n    }\n    \n    let hashTable = new HashTable(10);\n    hashTable.set('name', 'Alice');\n    console.log(hashTable.get('name')); // Output: Alice\n    ```\n\n**6. Trees**:\n- **Definition**: A tree is a hierarchical data structure with a root element and sub-elements arranged in a parent-child relationship. Common types include binary trees, binary search trees, and balanced trees.\n- **Operations**: Insertion, deletion, traversal.\n  - **Example**:\n    ```javascript\n    class TreeNode {\n      constructor(value) {\n        this.value = value;\n        this.left = null;\n        this.right = null;\n      }\n    }\n    \n    class BinaryTree {\n      constructor() {\n        this.root = null;\n      }\n      \n      insert(value) {\n        let newNode = new TreeNode(value);\n        if (this.root === null) {\n          this.root = newNode;\n        } else {\n          this.insertNode(this.root, newNode);\n        }\n      }\n      \n      insertNode(node, newNode) {\n        if (newNode.value < node.value) {\n          if (node.left === null) {\n            node.left = newNode;\n          } else {\n            this.insertNode(node.left, newNode);\n          }\n        } else {\n          if (node.right === null) {\n            node.right = newNode;\n          } else {\n            this.insertNode(node.right, newNode);\n          }\n        }\n      }\n    }\n    \n    let tree = new BinaryTree();\n    tree.insert(10);\n    tree.insert(5);\n    tree.insert(15);\n    ```\n\n**Summary**:\n- **Arrays**: Ordered collections of elements.\n- **Linked Lists**: Linear collections with nodes pointing to the next element.\n- **Stacks**: LIFO data structures for adding and removing elements.\n- **Queues**: FIFO data structures for managing elements.\n- **Hash Tables**: Data structures for mapping keys to values.\n- **Trees**: Hierarchical structures with nodes arranged in a parent-child relationship.\nUnderstanding these data structures is fundamental for effective programming and algorithm design.",
+    "questions": [
+      {
+        "question": "What is a characteristic of arrays in JavaScript?",
+        "choices": [
+          "They are ordered collections indexed by integers",
+          "They are unordered collections with unique elements",
+          "They are collections of key-value pairs",
+          "They are linear data structures with nodes pointing to each other"
+        ],
+        "correctAnswer": "They are ordered collections indexed by integers"
+      },
+      {
+        "question": "What principle does a stack follow?",
+        "choices": [
+          "Last In, First Out (LIFO)",
+          "First In, First Out (FIFO)",
+          "Last In, Last Out (LILO)",
+          "First In, Last Out (FILO)"
+        ],
+        "correctAnswer": "Last In, First Out (LIFO)"
+      },
+      {
+        "question": "What is the main advantage of a hash table?",
+        "choices": [
+          "Efficient key-value pair management with constant-time complexity",
+          "Efficient insertion and deletion operations",
+          "Maintaining elements in sorted order",
+          "Managing hierarchical data with parent-child relationships"
+        ],
+        "correctAnswer": "Efficient key-value pair management with constant-time complexity"
+      },
+      {
+        "question": "In a binary tree, where are nodes with lesser values placed compared to their parent nodes?",
+        "choices": [
+          "On the left side",
+          "On the right side",
+          "At the root",
+          "At the bottom"
+        ],
+        "correctAnswer": "On the left side"
+      }
+    ],
+    "image": "/path/to/image29.jpg",
+    "path": "/data-structures",
+    "next" : "/design-patterns"
+  },
+  {
+    "id": "30",
+    "title": "Design Patterns",
+    "content": "Design patterns are general reusable solutions to common problems in software design. They provide a way to solve problems that occur frequently and can help in creating more flexible, reusable, and maintainable code. Here are some commonly used design patterns in software development:\n\n**1. Singleton Pattern**:\n- **Definition**: The Singleton pattern ensures that a class has only one instance and provides a global point of access to it.\n- **Use Case**: When you need exactly one instance of a class to coordinate actions across the system.\n  - **Example**:\n    ```javascript\n    class Singleton {\n      constructor() {\n        if (Singleton.instance) {\n          return Singleton.instance;\n        }\n        Singleton.instance = this;\n      }\n      \n      getInstance() {\n        return Singleton.instance;\n      }\n    }\n    \n    const instance1 = new Singleton();\n    const instance2 = new Singleton();\n    console.log(instance1 === instance2); // Output: true\n    ```\n\n**2. Factory Pattern**:\n- **Definition**: The Factory pattern provides an interface for creating objects in a super class but allows subclasses to alter the type of objects that will be created.\n- **Use Case**: When you need to create objects without specifying the exact class of object that will be created.\n  - **Example**:\n    ```javascript\n    class Car {\n      constructor(make) {\n        this.make = make;\n      }\n    }\n    \n    class CarFactory {\n      static createCar(make) {\n        return new Car(make);\n      }\n    }\n    \n    const car1 = CarFactory.createCar('Toyota');\n    const car2 = CarFactory.createCar('Honda');\n    console.log(car1.make); // Output: Toyota\n    console.log(car2.make); // Output: Honda\n    ```\n\n**3. Observer Pattern**:\n- **Definition**: The Observer pattern defines a one-to-many dependency between objects, so that when one object changes state, all its dependents are notified and updated automatically.\n- **Use Case**: When a change to one object requires changing others, and you want to avoid tight coupling between the objects.\n  - **Example**:\n    ```javascript\n    class Subject {\n      constructor() {\n        this.observers = [];\n      }\n      \n      addObserver(observer) {\n        this.observers.push(observer);\n      }\n      \n      notifyObservers(data) {\n        this.observers.forEach(observer => observer.update(data));\n      }\n    }\n    \n    class Observer {\n      update(data) {\n        console.log('Observer received data:', data);\n      }\n    }\n    \n    const subject = new Subject();\n    const observer1 = new Observer();\n    const observer2 = new Observer();\n    subject.addObserver(observer1);\n    subject.addObserver(observer2);\n    subject.notifyObservers('Hello Observers!');\n    ```\n\n**4. Strategy Pattern**:\n- **Definition**: The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. The strategy allows the algorithm to vary independently from clients that use it.\n- **Use Case**: When you have multiple algorithms for a task and want to switch between them easily.\n  - **Example**:\n    ```javascript\n    class Strategy {\n      execute(a, b) {}\n    }\n    \n    class AddStrategy extends Strategy {\n      execute(a, b) {\n        return a + b;\n      }\n    }\n    \n    class SubtractStrategy extends Strategy {\n      execute(a, b) {\n        return a - b;\n      }\n    }\n    \n    class Context {\n      constructor(strategy) {\n        this.strategy = strategy;\n      }\n      \n      setStrategy(strategy) {\n        this.strategy = strategy;\n      }\n      \n      executeStrategy(a, b) {\n        return this.strategy.execute(a, b);\n      }\n    }\n    \n    const context = new Context(new AddStrategy());\n    console.log(context.executeStrategy(5, 3)); // Output: 8\n    context.setStrategy(new SubtractStrategy());\n    console.log(context.executeStrategy(5, 3)); // Output: 2\n    ```\n\n**5. Decorator Pattern**:\n- **Definition**: The Decorator pattern attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.\n- **Use Case**: When you need to add responsibilities to objects without altering their structure.\n  - **Example**:\n    ```javascript\n    class Coffee {\n      cost() {\n        return 5;\n      }\n    }\n    \n    class MilkDecorator {\n      constructor(coffee) {\n        this.coffee = coffee;\n      }\n      \n      cost() {\n        return this.coffee.cost() + 2;\n      }\n    }\n    \n    class SugarDecorator {\n      constructor(coffee) {\n        this.coffee = coffee;\n      }\n      \n      cost() {\n        return this.coffee.cost() + 1;\n      }\n    }\n    \n    let coffee = new Coffee();\n    coffee = new MilkDecorator(coffee);\n    coffee = new SugarDecorator(coffee);\n    console.log(coffee.cost()); // Output: 8\n    ```\n\n**Summary**:\n- **Singleton Pattern**: Ensures a class has only one instance.\n- **Factory Pattern**: Provides an interface for creating objects.\n- **Observer Pattern**: Defines one-to-many dependency between objects.\n- **Strategy Pattern**: Defines a family of algorithms and makes them interchangeable.\n- **Decorator Pattern**: Attaches additional responsibilities to an object dynamically.\nUnderstanding and applying these design patterns can help in creating well-structured and maintainable code.",
+    "questions": [
+      {
+        "question": "What does the Singleton pattern ensure?",
+        "choices": [
+          "Only one instance of a class exists",
+          "Multiple instances of a class exist",
+          "A class can only have one method",
+          "A class can be instantiated only once"
+        ],
+        "correctAnswer": "Only one instance of a class exists"
+      },
+      {
+        "question": "When would you use the Factory pattern?",
+        "choices": [
+          "When you need to create objects without specifying the exact class of object",
+          "When you need to ensure only one instance of a class exists",
+          "When you want to notify multiple objects about a change",
+          "When you want to add responsibilities to an object dynamically"
+        ],
+        "correctAnswer": "When you need to create objects without specifying the exact class of object"
+      },
+      {
+        "question": "What is the purpose of the Observer pattern?",
+        "choices": [
+          "To define one-to-many dependency between objects",
+          "To ensure a class has only one instance",
+          "To encapsulate algorithms and make them interchangeable",
+          "To attach additional responsibilities to an object"
+        ],
+        "correctAnswer": "To define one-to-many dependency between objects"
+      },
+      {
+        "question": "What is the Strategy pattern used for?",
+        "choices": [
+          "To define a family of algorithms and make them interchangeable",
+          "To notify multiple objects about a change",
+          "To ensure a class has only one instance",
+          "To dynamically attach additional responsibilities to an object"
+        ],
+        "correctAnswer": "To define a family of algorithms and make them interchangeable"
+      },
+      {
+        "question": "What does the Decorator pattern allow you to do?",
+        "choices": [
+          "Add responsibilities to an object dynamically",
+          "Create objects without specifying the exact class",
+          "Ensure a class has only one instance",
+          "Define one-to-many dependency between objects"
+        ],
+        "correctAnswer": "Add responsibilities to an object dynamically"
+      }
+    ],
+    "image": "/path/to/image30.jpg",
+    "path": "/design-patterns",
+    "next" : "/tpartial-applications-currying-compose-pipe"
+  },
+  {
+    "id": "32",
+    "title": "Partial Applications, Currying, Compose, and Pipe",
+    "content": "Understanding functional programming concepts such as partial applications, currying, compose, and pipe can greatly enhance your ability to write clean, reusable, and maintainable code. Here’s a breakdown of these concepts:\n\n**1. Partial Applications**:\n- **Definition**: Partial application is a technique where you fix a number of arguments to a function, producing another function that takes the remaining arguments. It allows you to create new functions from existing ones by pre-filling some of the arguments.\n- **Use Case**: When you need to create more specific functions from a general function by presetting some parameters.\n  - **Example**:\n    ```javascript\n    function multiply(a, b) {\n      return a * b;\n    }\n    \n    function partialMultiplyBy2(b) {\n      return multiply(2, b);\n    }\n    \n    console.log(partialMultiplyBy2(5)); // Output: 10\n    ```\n\n**2. Currying**:\n- **Definition**: Currying is the process of breaking down a function that takes multiple arguments into a series of functions that each take a single argument. It transforms a function that takes multiple arguments into a sequence of functions that each take a single argument.\n- **Use Case**: When you need to create a series of functions that build up to a final result by sequentially supplying arguments.\n  - **Example**:\n    ```javascript\n    function curryMultiply(a) {\n      return function(b) {\n        return a * b;\n      };\n    }\n    \n    const multiplyBy2 = curryMultiply(2);\n    console.log(multiplyBy2(5)); // Output: 10\n    ```\n\n**3. Compose**:\n- **Definition**: Compose is a higher-order function that takes multiple functions as arguments and returns a new function that is the composition of those functions. It applies functions from right to left.\n- **Use Case**: When you want to combine multiple functions into one by passing the output of one function as the input to the next.\n  - **Example**:\n    ```javascript\n    function compose(f, g) {\n      return function(x) {\n        return f(g(x));\n      };\n    }\n    \n    function add2(x) {\n      return x + 2;\n    }\n    \n    function multiplyBy3(x) {\n      return x * 3;\n    }\n    \n    const addThenMultiply = compose(multiplyBy3, add2);\n    console.log(addThenMultiply(4)); // Output: 18\n    ```\n\n**4. Pipe**:\n- **Definition**: Pipe is similar to compose but applies functions from left to right. It takes multiple functions as arguments and returns a new function that applies these functions in sequence.\n- **Use Case**: When you need to process data through multiple functions, applying them from left to right.\n  - **Example**:\n    ```javascript\n    function pipe(...functions) {\n      return function(x) {\n        return functions.reduce((acc, fn) => fn(acc), x);\n      };\n    }\n    \n    function add2(x) {\n      return x + 2;\n    }\n    \n    function multiplyBy3(x) {\n      return x * 3;\n    }\n    \n    const pipeAddThenMultiply = pipe(add2, multiplyBy3);\n    console.log(pipeAddThenMultiply(4)); // Output: 18\n    ```\n\n**Summary**:\n- **Partial Application**: Fixes some arguments of a function, creating a new function with fewer arguments.\n- **Currying**: Transforms a function with multiple arguments into a sequence of functions that each take a single argument.\n- **Compose**: Combines multiple functions into one, applying them from right to left.\n- **Pipe**: Applies multiple functions in sequence from left to right.\nThese concepts are foundational in functional programming and can help you write more modular and expressive code.",
+    "questions": [
+      {
+        "question": "What is partial application?",
+        "choices": [
+          "Fixing some arguments of a function to create a new function with fewer arguments",
+          "Breaking down a function that takes multiple arguments into a sequence of functions",
+          "Combining multiple functions into one by applying them from right to left",
+          "Applying multiple functions in sequence from left to right"
+        ],
+        "correctAnswer": "Fixing some arguments of a function to create a new function with fewer arguments"
+      },
+      {
+        "question": "What is currying used for?",
+        "choices": [
+          "Transforming a function with multiple arguments into a sequence of functions with single arguments",
+          "Creating a new function from an existing one by pre-filling some arguments",
+          "Applying multiple functions in sequence from left to right",
+          "Combining multiple functions into one by applying them from right to left"
+        ],
+        "correctAnswer": "Transforming a function with multiple arguments into a sequence of functions with single arguments"
+      },
+      {
+        "question": "How does the compose function work?",
+        "choices": [
+          "Applies functions from right to left",
+          "Applies functions from left to right",
+          "Creates a new function with fixed arguments",
+          "Transforms a function into a sequence of functions"
+        ],
+        "correctAnswer": "Applies functions from right to left"
+      },
+      {
+        "question": "What is the primary difference between compose and pipe?",
+        "choices": [
+          "Compose applies functions from right to left, while pipe applies functions from left to right",
+          "Pipe creates a new function with fewer arguments, while compose transforms a function into a sequence",
+          "Compose is used for partial application, while pipe is used for currying",
+          "Pipe applies functions in sequence, while compose combines them into one"
+        ],
+        "correctAnswer": "Compose applies functions from right to left, while pipe applies functions from left to right"
+      }
+    ],
+    "image": "/path/to/image32.jpg",
+    "path": "/partial-applications-currying-compose-pipe",
+    "next" : "/clean-code"
+  },
+  {
+    "id": "33",
+    "title": "Clean Code",
+    "content": "Clean Code refers to writing code in a way that is easy to understand, maintain, and enhance. It's a concept popularized by Robert C. Martin in his book 'Clean Code: A Handbook of Agile Software Craftsmanship.' Here are the key principles and practices of Clean Code:\n\n**1. Meaningful Names**:\n- **Definition**: Use descriptive and unambiguous names for variables, functions, and classes. Names should convey the purpose or role of the element they represent.\n- **Practice**: Avoid generic names like `data` or `temp`. Instead, use names like `userList` or `calculateTotalPrice` that reflect their purpose.\n  - **Example**:\n    ```javascript\n    // Poor Naming\n    function calc(a, b) {\n      return a + b;\n    }\n    \n    // Better Naming\n    function calculateTotalPrice(itemPrice, taxAmount) {\n      return itemPrice + taxAmount;\n    }\n    ```\n\n**2. Functions Should Do One Thing**:\n- **Definition**: Functions should be small and focus on a single responsibility or task. This makes them easier to understand, test, and maintain.\n- **Practice**: Break down large functions into smaller, well-named helper functions that each perform a specific part of the task.\n  - **Example**:\n    ```javascript\n    // Poor Function\n    function processOrder(order) {\n      validateOrder(order);\n      applyDiscount(order);\n      chargeCustomer(order);\n      sendConfirmation(order);\n    }\n    \n    // Better Function\n    function processOrder(order) {\n      validateOrder(order);\n      applyDiscount(order);\n      chargeCustomer(order);\n      sendConfirmationEmail(order);\n    }\n    ```\n\n**3. Avoid Duplication**:\n- **Definition**: Duplicate code is a sign of poor design and can lead to inconsistencies and increased maintenance effort. Instead, aim to abstract common functionality into reusable functions or modules.\n- **Practice**: Use functions, classes, and modules to encapsulate repeated logic and avoid code repetition.\n  - **Example**:\n    ```javascript\n    // Duplicate Code\n    function calculateAreaOfRectangle(width, height) {\n      return width * height;\n    }\n    \n    function calculateAreaOfSquare(side) {\n      return side * side;\n    }\n    \n    // Reusable Function\n    function calculateArea(width, height = width) {\n      return width * height;\n    }\n    ```\n\n**4. Proper Error Handling**:\n- **Definition**: Handle errors gracefully and provide meaningful error messages. Avoid using generic error messages that don’t help diagnose the issue.\n- **Practice**: Use try-catch blocks, validate inputs, and throw descriptive errors to make debugging easier.\n  - **Example**:\n    ```javascript\n    // Poor Error Handling\n    function divide(a, b) {\n      if (b === 0) {\n        throw new Error('Error');\n      }\n      return a / b;\n    }\n    \n    // Better Error Handling\n    function divide(a, b) {\n      if (b === 0) {\n        throw new Error('Division by zero is not allowed.');\n      }\n      return a / b;\n    }\n    ```\n\n**5. Keep Code Simple and Readable**:\n- **Definition**: Aim for simplicity and clarity in your code. Avoid complex constructs and deeply nested logic that can be hard to follow.\n- **Practice**: Use straightforward logic, avoid unnecessary complexity, and adhere to coding conventions to make your code more readable.\n  - **Example**:\n    ```javascript\n    // Complex Code\n    if (x > 10 && y < 20 || z === 30) {\n      // Some complex logic\n    }\n    \n    // Simplified Code\n    const isXValid = x > 10;\n    const isYValid = y < 20;\n    const isZValid = z === 30;\n    if ((isXValid && isYValid) || isZValid) {\n      // Some simplified logic\n    }\n    ```\n\n**6. Write Tests**:\n- **Definition**: Writing tests ensures that your code works as expected and helps catch bugs early. It also serves as documentation for how your code should behave.\n- **Practice**: Write unit tests, integration tests, and use test-driven development (TDD) practices to improve code quality and reliability.\n  - **Example**:\n    ```javascript\n    // Example Test using Jest\n    test('should calculate total price correctly', () => {\n      expect(calculateTotalPrice(100, 20)).toBe(120);\n    });\n    ```\n\n**Summary**:\n- Use meaningful names for variables and functions.\n- Ensure functions perform a single task.\n- Avoid code duplication by abstracting common logic.\n- Handle errors with meaningful messages.\n- Keep code simple and readable.\n- Write tests to ensure code quality and correctness.\nAdhering to these principles will lead to cleaner, more maintainable, and higher-quality code.",
+    "questions": [
+      {
+        "question": "What is a key principle of Clean Code regarding function design?",
+        "choices": [
+          "Functions should do one thing and do it well",
+          "Functions should have multiple responsibilities",
+          "Functions should be as long as possible",
+          "Functions should use generic names"
+        ],
+        "correctAnswer": "Functions should do one thing and do it well"
+      },
+      {
+        "question": "Why is avoiding code duplication important in Clean Code?",
+        "choices": [
+          "It prevents inconsistencies and reduces maintenance effort",
+          "It increases the complexity of the code",
+          "It makes code harder to read",
+          "It requires more documentation"
+        ],
+        "correctAnswer": "It prevents inconsistencies and reduces maintenance effort"
+      },
+      {
+        "question": "How should errors be handled according to Clean Code principles?",
+        "choices": [
+          "With meaningful error messages and graceful handling",
+          "By using generic error messages",
+          "By ignoring errors",
+          "By logging errors without providing information"
+        ],
+        "correctAnswer": "With meaningful error messages and graceful handling"
+      },
+      {
+        "question": "What is a recommended practice for naming variables and functions in Clean Code?",
+        "choices": [
+          "Use descriptive and unambiguous names",
+          "Use single-letter names",
+          "Use abbreviations",
+          "Use names that are difficult to understand"
+        ],
+        "correctAnswer": "Use descriptive and unambiguous names"
+      }
+    ],
+    "image": "/path/to/image34.jpg",
+    "path": "/clean-code",
+    "next" : "/end"
+  }
+]

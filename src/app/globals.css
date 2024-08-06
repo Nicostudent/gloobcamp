@@ -2,32 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {  
+  @apply bg-slate-100;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* markdown content styling, pls dont remove this*/
+
+.markdown-content {
+  width: 100%;
+  box-sizing: border-box; 
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* this pre styling is for the code block */
+.markdown-content pre {
+  background-color: black;
+  color: #fff;
+  width: 100%;
+  border-radius: 5px;
+  white-space: pre-wrap; 
+  margin: 1rem 0; 
+  padding: 1rem 0.5rem;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.markdown-content pre code {
+  width: 100%;
+  display: block; 
+  box-sizing: border-box; 
 }

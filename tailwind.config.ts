@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: [
@@ -13,8 +14,19 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        primary: "#644CE5",
+        secondary: "#24262F",
+        tertiary: "#4E525A",
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    plugin(function ({addVariant}) {
+      addVariant('progress-unfilled', ['&::-webkit-progress-bar', '&']);
+      addVariant('progress-filled', ['&::-webkit-progress-value', '&::-moz-progress-bar', '&']);
+  })
+  ],
 };
 export default config;
