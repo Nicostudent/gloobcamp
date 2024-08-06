@@ -1,7 +1,7 @@
-const Paragraph = ({ text, addClass }) => {
+const Paragraph = ({ children, addClass }) => {
   return (
-    <p className={`py-2 text-sm md:text-lg text-tertiary ${addClass}}`}>
-      {text}.
+    <p className={`text-sm md:text-lg text-tertiary ${addClass}}`}>
+      {children}
     </p>
   );
 };

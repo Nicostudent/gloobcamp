@@ -5,18 +5,19 @@ import Paragraph from "@/components/Writing/Paragraph";
 
 const page = () => {
   return (
-    <div className="flex flex-col justify-center items-center">
-      <Heading text="Wellcome" />
-      <Paragraph text="Choose your content" />
-      <div className="flex justify-between items-center mt-20 gap-20">
-        <div className="border-2 rounded-lg  p-4 px-6 ">
-          <LinkButton href={"/content/JavaScript"} title={"Javascript"} />
-        </div>
-        <div className="border-2 rounded-lg  p-4 px-6 ">
-          <LinkButton href={"/content/React"} title={"React"} />
-        </div>
+    <section className="flex flex-col justify-center items-center h-screen">
+      <Heading>Welcome</Heading>
+      <Paragraph>Choose your content</Paragraph>
+
+      <div className="flex justify-between items-center gap-8">
+        <LinkButton dark href={"/content/javascript"}>
+          JavaScript
+        </LinkButton>
+        <LinkButton dark href={"/content/react"}>
+          ReactJS
+        </LinkButton>
       </div>
-    </div>
+    </section>
   );
 };
 export default page;

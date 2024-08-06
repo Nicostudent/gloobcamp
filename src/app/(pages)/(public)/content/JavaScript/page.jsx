@@ -1,36 +1,29 @@
 "use client";
 import Heading from "@/components/Writing/Heading";
-import Paragraph from "@/components/Writing/Paragraph";
 import SubTitle from "@/components/Writing/SubTitle";
+
 import jsTopics from "@/utils/js-topics-and-questions.json";
+import Card from "@/components/Dashboard/Card";
+
 import ProgressBar from "@/components/ProgressBar";
-import JSConfetti from "js-confetti";
-import IndexCard  from "@/components/IndexCard/IndexCard";
-import useProgress from "@/utils/useProgress";
+import useProgress from "@/hooks/useProgress";
+import CompletedContent from "@/components/Dashboard/CompletedContent";
 
 const Subject = () => {
   const { progress, handleCheckboxChange } = useProgress(jsTopics.length);
+  const PROGRESS_MAX_VALUE = 10;
+  const PROGRESS_VALUE = progress.toFixed();
 
-  const jsConfetti = new JSConfetti();
-  const totalProgres = progress.toFixed(2);
-  if (totalProgres >= 100) {
-    return (
-      jsConfetti.addConfetti() && (
-        <section>
-          <Heading text="JavaScript" />
-          <SubTitle text="Content" />
-          <Paragraph text="Congratulations, you have completed all the topics!" />
-        </section>
-      )
-    );
+  if (PROGRESS_VALUE >= PROGRESS_MAX_VALUE) {
+    return <CompletedContent title={"JavaScript"} />;
   }
 
   return (
-    <section>
-      <Heading text="JavaScript" />
-      <SubTitle text="Content" />
+    <section className="space-y-4 py-24">
+      <Heading>JavaScript</Heading>
+      <SubTitle>Content</SubTitle>
       <ProgressBar progress={progress} />
-      <IndexCard handleCheckboxChange={handleCheckboxChange} />
+      <Card handleCheckboxChange={handleCheckboxChange} />
     </section>
   );
 };

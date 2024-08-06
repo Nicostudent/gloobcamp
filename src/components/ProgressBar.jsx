@@ -1,17 +1,17 @@
 const ProgressBar = ({ progress }) => {
-  
   return (
-    <article>
-      <div className="flex w-full justify-center mt-10">
-        {progress > 0 && <p className="text-center text-2xl text-black">%{progress.toFixed(2)}</p>}
-      </div>
+    <article className="flex justify-center items-center">
+      {progress > 0 && (
+        <p className="left-[50%] z-10 absolute text-black text-center text-md">
+          {progress.toFixed(0)}%
+        </p>
+      )}
       <progress
         id="progress-bar"
         value={progress}
         max="100"
-        className="progress-filled:bg-primary progress-unfilled:bg-slate-300 mb-12 progress-unfilled:rounded-lg progress-filled:rounded-lg w-full"
-      >
-      </progress>   
+        className="z-0 progress-filled:bg-primary progress-unfilled:bg-slate-300 progress-filled:rounded-full progress-unfilled:rounded-full w-full h-6"
+      ></progress>
     </article>
   );
 };

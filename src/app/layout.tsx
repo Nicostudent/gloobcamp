@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 import "./globals.css";
 import Navbar from "@/components/NavBar/Navbar";
 
@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <Navbar />
         <ToastContainer />
-        <main className="max-w-7xl mx-auto py-24 px-4">{children}</main>
+        <main className="mx-auto px-4 max-w-7xl">{children}</main>
       </body>
     </html>
   );
