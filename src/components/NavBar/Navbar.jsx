@@ -25,15 +25,15 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-primary p-3">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="z-50 fixed bg-primary p-3 w-full">
+      <div className="flex justify-between items-center mx-auto container">
         <Logo />
-        <div className="hidden md:flex items-center">
+        <div className="md:flex items-center hidden">
           {pages.map((page) => (
             <Link
               key={page.to}
               href={page.to}
-              className="text-white px-3 py-2 rounded-md text-sm font-medium"
+              className="px-3 py-2 rounded-md font-medium text-sm text-white"
             >
               {page.label}
             </Link>
@@ -44,13 +44,13 @@ const Navbar = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center md:hidden">
           {pages.map((page) => (
             <Link
               onClick={toggleDropdown}
               key={page.to}
               href={page.to}
-              className="text-white px-3 py-2 rounded-md text-sm font-medium"
+              className="px-3 py-2 rounded-md font-medium text-sm text-white"
             >
               {page.label}
             </Link>
