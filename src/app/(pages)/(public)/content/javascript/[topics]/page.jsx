@@ -21,7 +21,7 @@ const TopicPage = ({ params: { topics } }) => {
       <ContentPage title={topicData.title} content={topicData.content}>
         <Quiz
           questions={topicData.questions}
-          nextTopicPath={`/content/JavaScript/${topicData.next}`}
+          nextTopicPath={`/content/javascript/${topicData.next}`}
         />
       </ContentPage>
     </div>

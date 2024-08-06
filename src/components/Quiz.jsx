@@ -4,8 +4,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { LinkButton } from "./LinkButton";
 
-
-
 const Quiz = ({ questions, nextTopicPath }) => {
   const [questionIndex, setQuestionIndex] = useState(0);
 
@@ -52,7 +50,9 @@ const Quiz = ({ questions, nextTopicPath }) => {
             </p>
           </div>
         </div>
-        <LinkButton href={nextTopicPath} title={"Next Topic"}/>        
+        <div className="flex justify-center">
+          <LinkButton dark href={nextTopicPath} >Next Topic</LinkButton>
+        </div>
       </div>
     );
   }
