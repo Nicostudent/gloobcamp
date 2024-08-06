@@ -1,27 +1,47 @@
 "use client";
 
-import React, { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
+import React, { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 
 const ContentPage = ({ title, content, children = null }) => {
   const [modal, setModal] = useState(false);
+  const modalRef = useRef(null);
+
+  // useEffect(() => {
+  //   if (modal && modalRef.current) {
+  //     modalRef.current.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // }, [modal]);
+
+  //se soluciona agregando un timeout
+  useEffect(() => {
+    if (modal && modalRef.current) {
+      const timeoutId = setTimeout(() => {
+        modalRef.current.scrollIntoView({ behavior: "smooth" });
+      }, 50);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [modal]);
 
   return (
-    <div className='w-full h-full flex flex-col md:gap-10 justify-between items-center '>
-      <h1 className='text-center text-2xl md:text-4xl font-bold mt-32'>{title}</h1>
-      <div className='flex justify-center items-center w-full'>
-        <div className='w-full  prose md:prose-lg text-left markdown-content'>
+    <div className="w-full h-full flex flex-col md:gap-10 justify-between items-center">
+      <h1 className="text-center text-2xl md:text-4xl font-bold mt-32">
+        {title}
+      </h1>
+      <div className="flex justify-center items-center w-full">
+        <div className="w-full prose md:prose-lg text-left markdown-content">
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
       </div>
       <button
-        className='border rounded-lg px-4 py-2 md:px-6 md:py-3'
+        className="border rounded-lg px-4 py-2 md:px-6 md:py-3"
         onClick={() => setModal(!modal)}
       >
         Take the Quiz
       </button>
       {modal && (
-        <div className='w-full mt-4'>
+        <div ref={modalRef} id="modal" className="w-full mt-4">
           {children}
         </div>
       )}
