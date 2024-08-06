@@ -3,7 +3,7 @@ const ProgressBar = ({ progress }) => {
   return (
     <article>
       <div className="flex w-full justify-center mt-10">
-        {progress > 0 && <p className="text-center text-2xl text-black">{`%${Math.round(progress)}`}</p>}
+        {progress > 0 && <p className="text-center text-2xl text-black">%{progress.toFixed(2)}</p>}
       </div>
       <progress
         id="progress-bar"

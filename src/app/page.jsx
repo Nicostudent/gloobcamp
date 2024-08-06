@@ -13,7 +13,7 @@ const App = () => {
       </div>
       <div className="flex flex-col justify-center items-center px-4 max-w-lg text-center">
          <Paragraph text="Start your learning journey!" />
-         <LinkButton href={"/content/JavaScript"}  title={"Click here"} />       
+         <LinkButton dark href={"/content/JavaScript"}  title={"Click here"} />       
       </div>
     </main>
   );

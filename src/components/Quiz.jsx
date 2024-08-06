@@ -40,19 +40,19 @@ const Quiz = ({ questions, nextTopicPath }) => {
     return (
       <div className="w-full rounded-xl bg-gradient-to-br from-primary via-purple-100 to-primary p-1 m-1">
         <div className="flex flex-col h-full w-full bg-black p-6 rounded-xl text-indigo-300 justify-center items-center text-center">
-          <h1 className="text-4xl md:text-8xl font-black text-center mb-6">
+          <h1 className="text-2xl md:text-4xl font-black text-center mb-6">
             Resultados
           </h1>
           <div className="mb-3">
-            <p className="text-3xl">Respuestas correctas: {correctChoices}</p>
+            <p className="text-xl ">Respuestas correctas: {correctChoices}</p>
           </div>
           <div className="mb-3">
-            <p className="text-3xl">
+            <p className="text-xl">
               Respuestas incorrectas: {incorrectChoices}
             </p>
           </div>
         </div>
-        <LinkButton href={nextTopicPath} />        
+        <LinkButton href={nextTopicPath} title={"Next Topic"}/>        
       </div>
     );
   }
@@ -60,7 +60,7 @@ const Quiz = ({ questions, nextTopicPath }) => {
   return (
     <div className="w-full rounded-xl bg-gradient-to-br from-primary via-purple-100 to-primary p-1 m-1">
       <div className="flex flex-col h-full w-full bg-black p-6 rounded-xl text-indigo-300">
-        <h1 className="text-6xl md:text-8xl font-black text-center mb-6">
+        <h1 className="text-2xl md:text-4xl font-black text-center mb-6">
           ¡Quiz!
         </h1>
         <p className="text-end text-xl mb-3">
@@ -72,13 +72,13 @@ const Quiz = ({ questions, nextTopicPath }) => {
               {questionIndex + 1}
             </button>
           </span>
-          <h2 className="text-2xl md:text-4xl text-center text-pretty">
+          <h2 className="text-xl md:text-2xl text-center text-pretty">
             {currentQuestion.question}
           </h2>
         </div>
         <section className="text-center h-auto flex flex-col justify-center items-center">
-          <ul className="w-full md:w-3/4 md:text-2xl text-pretty">
-            {currentQuestion.choices.map((choice, index) => (
+          <ul className="w-full md:w-3/4 md:text-xl text-pretty">
+            {currentQuestion.choices.map((choices, index) => (
               <li
                 className="bg-gradient-to-br from-primary via-purple-100 to-primary p-1 w-full my-6 rounded-full"
                 key={index}
@@ -87,7 +87,7 @@ const Quiz = ({ questions, nextTopicPath }) => {
                   className="bg-black py-3 rounded-full w-full"
                   onClick={handleIsCorrectChoice}
                 >
-                  {choice}
+                  {choices}
                 </button>
               </li>
             ))}

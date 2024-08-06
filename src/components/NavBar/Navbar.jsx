@@ -16,11 +16,11 @@ const Navbar = () => {
         label:"Home"
       },
       {
-        to:"aboutus",
+        to:"/aboutus",
         label:"About"
       },
       {
-        to:"contact-us",
+        to:"/contact-us",
         label:"Contact us"
       },    
     ];
@@ -60,6 +60,7 @@ const Navbar = () => {
         <div className="md:hidden">
                {pages.map((page) => (
             <Link
+              onClick={toggleDropdown}
               key={page.to}
               href={page.to}
               className="text-white px-3 py-2 rounded-md text-sm font-medium"

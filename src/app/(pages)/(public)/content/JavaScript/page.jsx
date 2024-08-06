@@ -12,8 +12,8 @@ const Subject = () => {
   const { progress, handleCheckboxChange } = useProgress(jsTopics.length);
 
   const jsConfetti = new JSConfetti();
-
-  if (progress >= 100) {
+  const totalProgres = progress.toFixed(2);
+  if (totalProgres >= 100) {
     return (
       jsConfetti.addConfetti() && (
         <section>
