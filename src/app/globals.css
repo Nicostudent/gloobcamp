@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+body {  
   @apply bg-slate-100;
+}
+
+/* markdown content styling, pls dont remove this*/
+
+.markdown-content {
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+/* this pre styling is for the code block */
+.markdown-content pre {
+  background-color: black;
+  color: #fff;
+  width: 100%;
+  border-radius: 5px;
+  white-space: pre-wrap; 
+  margin: 1rem 0; 
+  padding: 1rem 0.5rem;
+}
+
+.markdown-content pre code {
+  width: 100%;
+  display: block; 
+  box-sizing: border-box; 
 }
