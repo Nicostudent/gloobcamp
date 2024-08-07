@@ -4,7 +4,7 @@ import Link from "next/link";
 const Sidebar = () => {
   return (
     <>
-      <aside className="w-64  overflow-y-scroll py-14 border-4 border-blue-500 relative left-0">
+      <aside className="w-64 h-screen mt-16 overflow-y-scroll py-14 border-4 border-blue-500 ">
         <nav className="flex h-full flex-col p-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Contenido</h2>
           <ul className="space-y-2">
