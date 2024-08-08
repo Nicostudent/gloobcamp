@@ -2,7 +2,13 @@ import Heading from "@/components/Writing/Heading";
 import Paragraph from "@/components/Writing/Paragraph";
 import { LinkButton } from "@/components/LinkButton";
 
+
+/* Ejemplo de usoooo */
+
+
 const App = () => {
+
+
   return (
     <main className="flex flex-col justify-center items-center space-y-16 py-24 min-h-screen align-middle">
       <div className="text-center">
