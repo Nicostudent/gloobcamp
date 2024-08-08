@@ -19,7 +19,7 @@ const Subject = () => {
   }
 
   return (
-    <section className="space-y-4 py-24">
+    <section className="space-y-4 py-10">
       <Heading>JavaScript</Heading>
       <SubTitle>Content</SubTitle>
       <ProgressBar progress={progress} />
