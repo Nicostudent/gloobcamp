@@ -7,7 +7,7 @@ const ContentPage = ({ title, content, children = null }) => {
   const [modal, setModal] = useState(false);
 
   return (
-    <div className='w-full h-full flex flex-col md:gap-10 justify-between items-center py-24 border-8 border-pink-500'>
+    <div className='w-full h-full flex flex-col md:gap-10 justify-between items-center py-24'>
       <h1 className='text-center text-2xl md:text-4xl font-bold '>{title}</h1>
       <div className='flex justify-center items-center w-full'>
         <div className='w-full  prose md:prose-lg text-left markdown-content'>

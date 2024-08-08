@@ -9,7 +9,7 @@ const ClientLayout = () => {
   const showSidebar = contentPatterns.some((pattern) => pattern.test(pathname));
 
   return (
-    <div className="flex  absolute items-center border-4 border-red-500">
+    <div className="flex  absolute items-center">
       {showSidebar && (
         <div className="relative left-0">
           <Sidebar />
