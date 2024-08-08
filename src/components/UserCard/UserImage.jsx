@@ -9,7 +9,7 @@ const UserImage = ({ source }) => {
         alt="A picture of the member team"
         width={500}
         height={500}
-        className="size-72"
+        className="rounded-lg size-72"
       />
     </article>
   );
