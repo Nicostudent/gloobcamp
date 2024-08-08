@@ -4,11 +4,10 @@ export default function Layout({ children }) {
   return (
     <>
       <Breadcrumb
-          homeElement={'Home'}
-          separator={<span> | </span>}
-          capitalizeLinks
+        homeElement={'Home'}
+        separator={<span> | </span>}
+        capitalizeLinks
       />
-      
       <main>{children}</main>
     </>
   )
