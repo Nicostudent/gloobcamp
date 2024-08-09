@@ -5,6 +5,8 @@ import { useState } from "react";
 import { LinkButton } from "./LinkButton";
 
 const Quiz = ({ questions, nextTopicPath }) => {
+  // TODO: We can move this to a custom hook like useQuiz
+  
   const [questionIndex, setQuestionIndex] = useState(0);
 
   const [isFinished, setIsFinished] = useState(false);

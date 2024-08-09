@@ -10,9 +10,12 @@ export const sendForm = async (values) => {
         body: JSON.stringify(values)
       });
 
+      // TODO: this is not necessary, or at least here
       const data = await response.json();
 
       if (!response.ok) {
+        // TODO: may be like this?  const errorData = await response.json();
+        //  return { success: false, data: errorData };
         return { success: false };
       }
   
