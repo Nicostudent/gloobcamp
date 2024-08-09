@@ -1,3 +1,7 @@
+// TODO: not provide a button description will cause accessibility issues
+// you should put an aria-label attribute or aria-labelledby
+// ref: https://dequeuniversity.com/rules/axe/4.4/button-name?application=axeAPI
+
 const BurgerButton = ({ isOpen, toggleDropdown }) => (
     <button
       onClick={toggleDropdown}
