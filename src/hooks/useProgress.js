@@ -3,10 +3,12 @@ import { useState } from "react";
 
 const useProgress = (limit) => {
   const [progress, setProgress] = useState(0);
+  const [selectedTopics, setSelectedTopics] = useState({});
 
   const handleCheckboxChange = (event) => {
     const percentage = 100 / limit;
     const isChecked = event.target.checked;
+    const topicId = event.target.id;
 
     setProgress((prevProgress) => {
       let newProgress = isChecked
@@ -18,9 +20,14 @@ const useProgress = (limit) => {
 
       return newProgress;
     });
+
+    setSelectedTopics((prevSelected) => ({
+      ...prevSelected,
+      [topicId]: isChecked
+    }));
   };
 
-  return { progress, handleCheckboxChange };
+  return { progress, selectedTopics, handleCheckboxChange };
 };
 
 export default useProgress;
